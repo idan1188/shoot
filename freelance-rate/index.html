@@ -76,7 +76,16 @@
     .logo-type { display: flex; flex-direction: column; line-height: 1.05; }
     .logo-type strong { font-size: .9rem; font-weight: 600; }
     .logo-type em { font-style: normal; font-size: .66rem; letter-spacing: .16em; color: var(--muted); font-weight: 600; }
-    .top-actions { display: flex; align-items: center; gap: 14px; }
+    .top-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
+    .topbar .share { margin: 0; }
+    .meter { height: 8px; background: #23272e; border-radius: 99px; overflow: hidden; margin: 8px 0 4px; }
+    .meter span { display: block; height: 8px; width: 0; background: #c6a56d; }
+    .sum-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .aid-block { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line); }
+    .aid-block h3 { font-size: .9rem; margin: 0 0 6px; }
+    .matrix { width: 100%; border-collapse: collapse; font-size: .78rem; margin-top: 8px; }
+    .matrix th, .matrix td { padding: 6px 4px; border-bottom: 1px solid var(--line); text-align: end; font-variant-numeric: tabular-nums; }
+    .matrix th:first-child, .matrix td:first-child { text-align: start; color: var(--muted); font-weight: 500; }
     .text-link { color: var(--muted); text-decoration: none; font-size: .82rem; font-weight: 600; }
     .text-link:hover { color: var(--text); }
     .lang { display: inline-flex; align-items: center; }
@@ -204,7 +213,7 @@
       .hero-field path { stroke-dashoffset: 0 !important; }
     }
     @media print {
-      .topbar, .share, .steps, .no-print, .locked { display: none !important; }
+      .scroll-rail, .topbar, .crumbs, .share, .steps, .step-meter, .no-print, .sum-actions, .locked { display: none !important; }
       body, .card, .summary, .stat, .pkg { background: #fff; color: #111; }
     }
   </style>
@@ -223,6 +232,13 @@
           <span class="lang-sep" aria-hidden="true">|</span>
           <button type="button" data-lang="he" aria-pressed="false">HE</button>
         </div>
+        <div class="share no-print" data-share>
+          <span data-i18n="share">Share</span>
+          <a class="share-btn" data-share="whatsapp" data-i18n="shareWa" href="https://wa.me/?text=https%3A%2F%2Fidan1188.github.io%2Fshoot%2Ffreelance-rate%2F" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a class="share-btn" data-share="linkedin" data-i18n="shareLi" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fidan1188.github.io%2Fshoot%2Ffreelance-rate%2F" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <button type="button" class="share-btn" data-share="copy" data-i18n="shareCopy">Copy link</button>
+          <span data-share-status role="status" hidden data-i18n="shareCopied">Link copied</span>
+        </div>
         <a class="text-link" href="../why/" data-i18n="whyLink">Why us</a>
         <a class="text-link" href="../#tools" data-i18n="allTools">All tools</a>
       </div>
@@ -233,13 +249,6 @@
       <a href="../">Career Tools IL</a><span aria-hidden="true">/</span>
       <span aria-current="page" data-i18n="crumb">Freelance quote</span>
     </nav>
-    <div class="share no-print" data-share>
-      <span data-i18n="share">Share</span>
-      <a class="share-btn" data-share="whatsapp" data-i18n="shareWa" href="https://wa.me/?text=https%3A%2F%2Fidan1188.github.io%2Fshoot%2Ffreelance-rate%2F" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-      <a class="share-btn" data-share="linkedin" data-i18n="shareLi" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fidan1188.github.io%2Fshoot%2Ffreelance-rate%2F" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <button type="button" class="share-btn" data-share="copy" data-i18n="shareCopy">Copy link</button>
-      <span data-share-status role="status" hidden data-i18n="shareCopied">Link copied</span>
-    </div>
     <header class="head">
       <svg class="hero-field" viewBox="0 0 520 160" aria-hidden="true">
         <path pathLength="1" d="M8 36H280" stroke-width="1.5"/>
@@ -251,15 +260,15 @@
       <p data-i18n="sub">A break-even rate, a quote with margin, utilization sensitivity, and a proposal you can edit before you send it. Rough Israeli tax uplifts — not advice from an accountant.</p>
     </header>
     <nav class="steps no-print" aria-label="Sections" data-i18n-aria="stepsLabel">
-      <a href="#sec-target" data-step="sec-target" class="on"><b>01</b> <span data-i18n="step1">Target</span></a>
-      <a href="#sec-capacity" data-step="sec-capacity"><b>02</b> <span data-i18n="step2">Capacity</span></a>
-      <a href="#sec-proposal" data-step="sec-proposal"><b>03</b> <span data-i18n="step3">Proposal</span></a>
+      <a href="#sec-target" data-step="sec-target" class="on"><b>01</b> <span data-i18n="step1">Inputs</span></a>
+      <a href="#sec-aids" data-step="sec-aids"><b>02</b> <span data-i18n="step2">Decision aids</span></a>
+      <a href="#sec-proposal" data-step="sec-proposal"><b>03</b> <span data-i18n="step3">Language</span></a>
     </nav>
     <div class="step-meter no-print" aria-hidden="true"><span id="stepMeter"></span></div>
     <div class="app">
       <div>
         <section class="card reveal" id="sec-target">
-          <h2 data-i18n="inH">01 · What has to be left</h2>
+          <h2 data-i18n="inH">01 · Inputs</h2>
           <div class="presets" role="group" aria-label="Presets" data-i18n-aria="presetAria">
             <button type="button" class="chip" data-preset="solo" data-i18n="preSolo">Solo, patur</button>
             <button type="button" class="chip" data-preset="studio" data-i18n="preStudio">Studio, murshe</button>
@@ -285,7 +294,7 @@
           <p class="hint" id="taxHint"></p>
         </section>
         <section class="card reveal" id="sec-capacity">
-          <h2 data-i18n="capH">02 · Hours you can actually bill</h2>
+          <h2 data-i18n="capH">Hours you can actually bill</h2>
           <div class="row2">
             <div>
               <label for="hours" data-i18n="labHours">Work hours / week</label>
@@ -302,36 +311,55 @@
           <label for="stress" data-i18n="labStress">Quiet-month utilization % (optional)</label>
           <input type="number" id="stress" min="0" max="100" step="5" value="" inputmode="numeric" placeholder="auto −15" data-i18n-placeholder="phStress" />
           <p class="hint" data-i18n="hintStress">Leave blank to stress the quote at 15 points below your utilization. A number replaces that low case.</p>
-          <h2 style="margin-top:16px" data-i18n="pkgBuild">Package builder</h2>
-          <div class="row2">
-            <div>
-              <label for="pkgH1" data-i18n="labH1">Starter hours</label>
-              <input type="number" id="pkgH1" min="1" step="1" value="8" inputmode="numeric" />
+        </section>
+        <section class="card reveal" id="sec-aids">
+          <h2 data-i18n="aidH">02 · Decision aids</h2>
+          <div class="aid-block" style="margin-top:0;padding-top:0;border-top:0">
+            <h3 data-i18n="utilH">Utilization — quiet, base, busy</h3>
+            <div id="utilTable"></div>
+          </div>
+          <div class="aid-block">
+            <h3 data-i18n="pkgBuild">Package builder</h3>
+            <div class="row2">
+              <div>
+                <label for="pkgH1" data-i18n="labH1">Starter hours</label>
+                <input type="number" id="pkgH1" min="1" step="1" value="8" inputmode="numeric" />
+              </div>
+              <div>
+                <label for="pkgD1" data-i18n="labD1">Starter discount %</label>
+                <input type="number" id="pkgD1" min="0" max="40" step="1" value="0" inputmode="numeric" />
+              </div>
             </div>
-            <div>
-              <label for="pkgD1" data-i18n="labD1">Starter discount %</label>
-              <input type="number" id="pkgD1" min="0" max="40" step="1" value="0" inputmode="numeric" />
+            <div class="row2">
+              <div>
+                <label for="pkgH2" data-i18n="labH2">Standard hours</label>
+                <input type="number" id="pkgH2" min="1" step="1" value="20" inputmode="numeric" />
+              </div>
+              <div>
+                <label for="pkgD2" data-i18n="labD2">Standard discount %</label>
+                <input type="number" id="pkgD2" min="0" max="40" step="1" value="8" inputmode="numeric" />
+              </div>
+            </div>
+            <div class="row2">
+              <div>
+                <label for="pkgH3" data-i18n="labH3">Premium hours</label>
+                <input type="number" id="pkgH3" min="1" step="1" value="40" inputmode="numeric" />
+              </div>
+              <div>
+                <label for="pkgD3" data-i18n="labD3">Premium discount %</label>
+                <input type="number" id="pkgD3" min="0" max="40" step="1" value="12" inputmode="numeric" />
+              </div>
             </div>
           </div>
-          <div class="row2">
-            <div>
-              <label for="pkgH2" data-i18n="labH2">Standard hours</label>
-              <input type="number" id="pkgH2" min="1" step="1" value="20" inputmode="numeric" />
-            </div>
-            <div>
-              <label for="pkgD2" data-i18n="labD2">Standard discount %</label>
-              <input type="number" id="pkgD2" min="0" max="40" step="1" value="8" inputmode="numeric" />
-            </div>
-          </div>
-          <div class="row2">
-            <div>
-              <label for="pkgH3" data-i18n="labH3">Premium hours</label>
-              <input type="number" id="pkgH3" min="1" step="1" value="40" inputmode="numeric" />
-            </div>
-            <div>
-              <label for="pkgD3" data-i18n="labD3">Premium discount %</label>
-              <input type="number" id="pkgD3" min="0" max="40" step="1" value="12" inputmode="numeric" />
-            </div>
+          <div class="aid-block">
+            <h3 data-i18n="scopeH">Scope checklist</h3>
+            <p class="hint" data-i18n="scopeHint">In and out. These boxes do not change the rate.</p>
+            <label class="check"><input type="checkbox" data-scope="in" value="discovery" /><span data-i18n="scIn1">In: discovery</span></label>
+            <label class="check"><input type="checkbox" data-scope="in" value="build" /><span data-i18n="scIn2">In: the build you described</span></label>
+            <label class="check"><input type="checkbox" data-scope="in" value="review" /><span data-i18n="scIn3">In: one review</span></label>
+            <label class="check"><input type="checkbox" data-scope="out" value="rush" /><span data-i18n="scOut1">Out: rush</span></label>
+            <label class="check"><input type="checkbox" data-scope="out" value="extra" /><span data-i18n="scOut2">Out: extra stakeholders</span></label>
+            <label class="check"><input type="checkbox" data-scope="out" value="retainer" /><span data-i18n="scOut3">Out: ongoing support</span></label>
           </div>
         </section>
         <footer class="moat"><div data-i18n="foot1">Runs locally. Nothing you type is sent. Save this file and it still works.</div></footer>
@@ -344,6 +372,8 @@
           <div class="stat"><div class="k" data-i18n="mDay">Day rate</div><div class="n" id="dayRate">—</div></div>
           <div class="stat"><div class="k" data-i18n="mHours">Break-even hours</div><div class="n" id="beHours">—</div></div>
         </div>
+        <div class="meter" id="beMeter" aria-hidden="true"><span id="beFill"></span></div>
+        <p class="fine" id="beMeterLabel"></p>
         <p class="fine" id="slackLine"></p>
         <div class="stack" id="stack" aria-hidden="true"></div>
         <div class="legend" id="legend"></div>
@@ -352,11 +382,16 @@
         <h2 style="margin-top:8px" data-i18n="pkgH">Packages</h2>
         <div class="pkgs" id="pkgs"></div>
         <p class="fine" data-i18n="marginNote">Margin is the quote package versus hours at the break-even rate. The day rate is eight quote-hours with a small efficiency discount.</p>
+        <div class="sum-actions no-print">
+          <button type="button" class="btn" id="copyQuoteSum" data-i18n="copy">Copy</button>
+          <button type="button" class="btn secondary" id="dlQuote" data-i18n="dlQuote">Download .txt</button>
+          <button type="button" class="btn secondary" id="printQuote" data-i18n="printQuote">Print</button>
+        </div>
       </aside>
     </div>
     <section class="card reveal" id="sec-proposal" style="margin-top:4px">
       <div class="editor-head">
-        <h2 data-i18n="propH">03 · Proposal</h2>
+        <h2 data-i18n="propH">03 · Language</h2>
         <div style="display:flex;gap:8px;align-items:center">
           <span class="dirty" id="dirtyFlag" hidden data-i18n="edited">Edited</span>
           <button type="button" class="btn secondary" id="regen" data-i18n="regen">Refresh from numbers</button>
@@ -380,7 +415,7 @@
       <label class="check"><input type="checkbox" id="clRev" /><span data-i18n="clRev">Add: up to two revision rounds</span></label>
       <label class="check"><input type="checkbox" id="clDays" /><span data-i18n="clDays">Add: valid 14 days</span></label>
       <div class="locked">
-        <div class="head" data-i18n="advHead">Full export: three utilization cases, payment terms, revision limit (Pro)</div>
+        <div class="head" data-i18n="advHead">Full export: three utilization cases, payment terms, revision limit, B2B note (Pro)</div>
         <div class="body" id="advBody"></div>
         <div class="locked-cta">
           <p data-i18n="proBlurb">The demo already includes the quote, the sensitivity, the packages, and an editable proposal. Pro adds the longer export.</p>
@@ -389,6 +424,19 @@
             <span class="price-now">₪23</span>
             <s class="price-was">₪69</s>
             <a class="btn disabled" id="payCta" href="../#lead" aria-disabled="true" tabindex="-1" data-i18n="proCta">Pro soon · leave your email</a>
+          </div>
+        </div>
+      </div>
+      <div class="locked">
+        <div class="head" data-i18n="multiHead">Second client — compare side by side (Pro)</div>
+        <div class="body" id="multiBody"></div>
+        <div class="locked-cta">
+          <p data-i18n="multiBlurb">Pro compares a second client against this quote. The demo keeps one quote, the sensitivity table, and the download.</p>
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <span class="sale-flag" data-i18n="sale">LAUNCH</span>
+            <span class="price-now">₪23</span>
+            <s class="price-was">₪69</s>
+            <a class="btn disabled" id="payCta2" href="../#lead" aria-disabled="true" tabindex="-1" data-i18n="proCta">Pro soon · leave your email</a>
           </div>
         </div>
       </div>
@@ -405,28 +453,38 @@
         crumb: "Freelance quote", share: "Share", shareWa: "WhatsApp", shareLi: "LinkedIn", shareCopy: "Copy link", shareCopied: "Link copied", shareCopiedShort: "Copied",
         kicker: "Freelance quote", h1: "Price the work, not the hour you hope to bill.",
         sub: "A break-even rate, a quote with margin, utilization sensitivity, and a proposal you can edit before you send it. Rough Israeli tax uplifts — not advice from an accountant.",
-        step1: "Target", step2: "Capacity", step3: "Proposal",
-        inH: "01 · What has to be left", labNet: "Monthly net you want (₪)",
+        step1: "Inputs", step2: "Decision aids", step3: "Language",
+        inH: "01 · Inputs", labNet: "Monthly net you want (₪)",
         hintNet: "Cash you want after a rough tax uplift and tools. Not a profit-and-loss statement.",
         labTools: "Tools and overhead / month (₪)", labTax: "Tax status", taxAria: "Tax status",
         taxNone: "No uplift", taxPatur: "Osek patur ≈", taxMurshe: "Osek murshe ≈",
-        capH: "02 · Hours you can actually bill", labHours: "Work hours / week", labAdmin: "Unpaid admin / week", labUtil: "Client utilization %",
+        capH: "Hours you can actually bill", labHours: "Work hours / week", labAdmin: "Unpaid admin / week", labUtil: "Client utilization %",
         hintUtil: "Utilization is the share of non-admin hours a client pays for. Marketing sits outside it. 4.33 weeks are used for a month.",
         presetAria: "Presets", preSolo: "Solo, patur", preStudio: "Studio, murshe", preQuiet: "Quiet month",
         labStress: "Quiet-month utilization % (optional)", phStress: "auto −15",
         hintStress: "Leave blank to stress the quote at 15 points below your utilization. A number replaces that low case.",
+        aidH: "02 · Decision aids",
+        utilH: "Utilization — quiet, base, busy",
         pkgBuild: "Package builder",
+        scopeH: "Scope checklist",
+        scopeHint: "In and out. These boxes do not change the rate.",
+        scIn1: "In: discovery", scIn2: "In: the build you described", scIn3: "In: one review",
+        scOut1: "Out: rush", scOut2: "Out: extra stakeholders", scOut3: "Out: ongoing support",
+        dlQuote: "Download .txt", printQuote: "Print",
+        beMeter: "Hours to the monthly net target",
+        multiHead: "Second client — compare side by side (Pro)",
+        multiBlurb: "Pro compares a second client against this quote. The demo keeps one quote, the sensitivity table, and the download.",
         labH1: "Starter hours", labD1: "Starter discount %", labH2: "Standard hours", labD2: "Standard discount %", labH3: "Premium hours", labD3: "Premium discount %",
         clPay: "Add: 50% up front, 50% on delivery", clRev: "Add: up to two revision rounds", clDays: "Add: valid 14 days",
         sumH: "The quote", mFloor: "Break-even / hour", mQuote: "Quote / hour", mDay: "Day rate", mHours: "Break-even hours",
         sensH: "Utilization", pkgH: "Packages",
         marginNote: "Margin is the quote package versus hours at the break-even rate. The day rate is eight quote-hours with a small efficiency discount.",
-        propH: "03 · Proposal", edited: "Edited", regen: "Refresh from numbers", copy: "Copy", copied: "Copied",
+        propH: "03 · Language", edited: "Edited", regen: "Refresh from numbers", copy: "Copy", copied: "Copied",
         labClient: "Client", labProject: "Work", phClient: "Client name", phProject: "What the work is",
         labProposal: "Client-facing text",
         propHint: "Edits stay until you refresh. Switching language rewrites the draft in that language.",
-        advHead: "Full export: three utilization cases, payment terms, revision limit (Pro)",
-        proBlurb: "The demo already includes the quote, the sensitivity, the packages, and an editable proposal. Pro adds the longer export.",
+        advHead: "Full export: three utilization cases, payment terms, revision limit, B2B note (Pro)",
+        proBlurb: "The demo already includes the quote, the sensitivity table, the packages, and an editable proposal. Pro adds the longer export.",
         sale: "LAUNCH", proCta: "Pro soon · leave your email",
         foot1: "Runs locally. Nothing you type is sent. Save this file and it still works.",
         ldName: "Freelance rate calculator", ldOffer: "Launch offer. Original price 69 ILS."
@@ -439,28 +497,38 @@
         crumb: "הצעת פרילנס", share: "שתפו", shareWa: "וואטסאפ", shareLi: "לינקדאין", shareCopy: "העתקת קישור", shareCopied: "הקישור הועתק", shareCopiedShort: "הועתק",
         kicker: "הצעת פרילנס", h1: "מתמחרים את העבודה, לא את השעה שמקווים לחייב.",
         sub: "תעריף איזון, הצעת מחיר עם מרווח, רגישות לניצולת, והצעה שאפשר לערוך לפני השליחה. תוספי מס גסים לישראל — לא ייעוץ של רואה חשבון.",
-        step1: "יעד", step2: "קיבולת", step3: "הצעה",
-        inH: "01 · מה חייב להישאר", labNet: "נטו חודשי רצוי (₪)",
+        step1: "קלט", step2: "עזרי החלטה", step3: "ניסוח",
+        inH: "01 · קלט", labNet: "נטו חודשי רצוי (₪)",
         hintNet: "המזומן שרוצים אחרי תוספת מס גסה וכלים. לא דוח רווח והפסד.",
         labTools: "כלים ותקורה / חודש (₪)", labTax: "מצב מס", taxAria: "מצב מס",
         taxNone: "בלי תוספת", taxPatur: "עוסק פטור ≈", taxMurshe: "עוסק מורשה ≈",
-        capH: "02 · שעות שאפשר באמת לחייב", labHours: "שעות עבודה / שבוע", labAdmin: "אדמין לא משולם / שבוע", labUtil: "ניצולת לקוחות %",
+        capH: "שעות שאפשר באמת לחייב", labHours: "שעות עבודה / שבוע", labAdmin: "אדמין לא משולם / שבוע", labUtil: "ניצולת לקוחות %",
         hintUtil: "ניצולת היא החלק משעות שאינן אדמין שלקוח משלם עליהן. שיווק נשאר בחוץ. חודש מחושב כ־4.33 שבועות.",
         presetAria: "הגדרות מוכנות", preSolo: "סולו, פטור", preStudio: "סטודיו, מורשה", preQuiet: "חודש שקט",
         labStress: "ניצולת לחודש שקט % (רשות)", phStress: "אוטומטי −15",
         hintStress: "השאירו ריק כדי לבדוק 15 נקודות מתחת לניצולת. מספר מחליף את המקרה הנמוך.",
+        aidH: "02 · עזרי החלטה",
+        utilH: "ניצולת — שקט, בסיס, עמוס",
         pkgBuild: "בניית חבילות",
+        scopeH: "רשימת היקף",
+        scopeHint: "בפנים ובחוץ. הסימונים האלה לא משנים את התעריף.",
+        scIn1: "בפנים: אפיון", scIn2: "בפנים: העבודה שתוארה", scIn3: "בפנים: סבב סקירה אחד",
+        scOut1: "בחוץ: דחיפות", scOut2: "בחוץ: בעלי עניין נוספים", scOut3: "בחוץ: תמיכה שוטפת",
+        dlQuote: "הורדת .txt", printQuote: "הדפסה",
+        beMeter: "שעות עד ליעד הנטו החודשי",
+        multiHead: "לקוח שני — השוואה זה לצד זה (Pro)",
+        multiBlurb: "Pro משווה לקוח שני מול הציטוט הזה. הדמו שומר ציטוט אחד, טבלת רגישות, והורדה.",
         labH1: "שעות סטארטר", labD1: "הנחת סטארטר %", labH2: "שעות סטנדרט", labD2: "הנחת סטנדרט %", labH3: "שעות פרימיום", labD3: "הנחת פרימיום %",
         clPay: "הוסיפו: 50% מראש, 50% במסירה", clRev: "הוסיפו: עד שני סבבי תיקון", clDays: "הוסיפו: בתוקף 14 יום",
         sumH: "ההצעה", mFloor: "איזון / שעה", mQuote: "הצעה / שעה", mDay: "תעריף יומי", mHours: "שעות לאיזון",
         sensH: "ניצולת", pkgH: "חבילות",
         marginNote: "המרווח הוא מחיר החבילה מול שעות בתעריף האיזון. התעריף היומי הוא שמונה שעות הצעה עם הנחת יעילות קטנה.",
-        propH: "03 · הצעה", edited: "נערך", regen: "רענון מהמספרים", copy: "העתק", copied: "הועתק",
+        propH: "03 · ניסוח", edited: "נערך", regen: "רענון מהמספרים", copy: "העתק", copied: "הועתק",
         labClient: "לקוח", labProject: "העבודה", phClient: "שם הלקוח", phProject: "מה העבודה",
         labProposal: "טקסט ללקוח",
         propHint: "עריכות נשמרות עד לרענון. החלפת שפה כותבת את הטיוטה מחדש באותה שפה.",
-        advHead: "ייצוא מלא: שלושה תרחישי ניצולת, תנאי תשלום, מגבלת תיקונים (Pro)",
-        proBlurb: "הדמו כבר כולל את התעריף, הרגישות, החבילות והצעה לעריכה. Pro מוסיף את הייצוא הארוך.",
+        advHead: "ייצוא מלא: שלושה תרחישי ניצולת, תנאי תשלום, מגבלת תיקונים, הערת B2B (Pro)",
+        proBlurb: "הדמו כבר כולל את התעריף, טבלת הרגישות, החבילות והצעה לעריכה. Pro מוסיף את הייצוא הארוך.",
         sale: "השקה", proCta: "Pro בקרוב · השאירו מייל",
         foot1: "רץ מקומית. מה שמזינים לא נשלח. שמירת הקובץ מספיקה כדי להמשיך לעבוד.",
         ldName: "מחשבון תעריף פרילנס", ldOffer: "הצעת השקה. המחיר המקורי 69 ש״ח."
@@ -535,6 +603,8 @@
     var QUOTE_MULT = 1.25;
     var taxMode = "patur";
     var proposalDirty = false;
+    var lastQuote = "";
+    var restoring = false;
     function $(id) { return document.getElementById(id); }
     function he() { return document.documentElement.lang === "he"; }
     function nis(n) {
@@ -624,9 +694,9 @@
         return "   " + (i + 1) + ") " + pk.name + ": " + pk.hours + (he() ? " ש׳ · " : "h · ") + nis(pk.price) + disc;
       }).join("\n");
       if (he()) {
-        return "ייצוא מלא\n\n1. איזון " + nis(m.base.hourlyNice) + " · הצעה " + nis(m.quote) + " · יום " + nis(m.day) + "\n2. ניצולת:\n   " + line(m.lowU + "%", m.low) + "\n   " + line(p.util + "%", m.base) + "\n   " + line(m.highU + "%", m.high) + "\n3. חבילות:\n" + pkgs + "\n4. תשלום: 50% מקדמה · 50% במסירה.\n5. כלול: עד שני סבבי תיקון. מעבר לזה — תעריף שעתי.\n6. תוקף: 14 יום.";
+        return "ייצוא מלא\n\n1. איזון " + nis(m.base.hourlyNice) + " · הצעה " + nis(m.quote) + " · יום " + nis(m.day) + "\n2. ניצולת:\n   " + line(m.lowU + "%", m.low) + "\n   " + line(p.util + "%", m.base) + "\n   " + line(m.highU + "%", m.high) + "\n3. חבילות:\n" + pkgs + "\n4. תשלום: 50% מקדמה · 50% במסירה.\n5. כלול: עד שני סבבי תיקון. מעבר לזה — תעריף שעתי.\n6. תוקף: 14 יום.\n7. B2B: הציטוט בין עסקים. מע״מ לפי סטטוס המס למעלה.";
       }
-      return "Full export\n\n1. Break-even " + nis(m.base.hourlyNice) + " · quote " + nis(m.quote) + " · day " + nis(m.day) + "\n2. Utilization:\n   " + line(m.lowU + "%", m.low) + "\n   " + line(p.util + "%", m.base) + "\n   " + line(m.highU + "%", m.high) + "\n3. Packages:\n" + pkgs + "\n4. Payment: 50% up front · 50% on delivery.\n5. Includes up to two light revision rounds. Beyond that, the hourly quote.\n6. Valid 14 days.";
+        return "Full export\n\n1. Break-even " + nis(m.base.hourlyNice) + " · quote " + nis(m.quote) + " · day " + nis(m.day) + "\n2. Utilization:\n   " + line(m.lowU + "%", m.low) + "\n   " + line(p.util + "%", m.base) + "\n   " + line(m.highU + "%", m.high) + "\n3. Packages:\n" + pkgs + "\n4. Payment: 50% up front · 50% on delivery.\n5. Includes up to two light revision rounds. Beyond that, the hourly quote.\n6. Valid 14 days.\n7. B2B: the quote is between businesses. VAT follows the tax status above.";
     }
     function render() {
       var p = read();
@@ -636,6 +706,13 @@
       $("dayRate").textContent = nis(m.day);
       $("beHours").textContent = m.beHours > 0 ? (Math.round(m.beHours * 10) / 10).toLocaleString(he() ? "he-IL" : "en-IL") : "—";
       var spare = m.base.billable - m.beHours;
+      var bePct = m.base.billable > 0 ? Math.max(0, Math.min(100, (m.beHours / m.base.billable) * 100)) : 0;
+      if ($("beFill")) $("beFill").style.width = bePct + "%";
+      if ($("beMeterLabel")) {
+        $("beMeterLabel").textContent = he()
+          ? "שעות עד ליעד הנטו החודשי: " + (Math.round(m.beHours * 10) / 10) + " מתוך כ־" + (Math.round(m.base.billable * 10) / 10) + " שעות חיוב."
+          : "Hours to the monthly net target: " + (Math.round(m.beHours * 10) / 10) + " of about " + (Math.round(m.base.billable * 10) / 10) + " billable hours.";
+      }
       $("slackLine").textContent = m.base.billable > 0
         ? (he()
           ? "קיבולת חיוב החודש כ־" + (Math.round(m.base.billable * 10) / 10) + " שעות. בתעריף ההצעה היעד מכוסה בכ־" + (Math.round(m.beHours * 10) / 10) + " שעות" + (spare >= 0 ? " (נותרות כ־" + Math.round(spare) + ")." : " (חסרות שעות בקיבולת הזו).")
@@ -695,8 +772,82 @@
         pkgs.appendChild(card);
       });
       $("advBody").textContent = advancedText(p, m);
+      if ($("multiBody")) {
+        $("multiBody").textContent = he()
+          ? "לקוח ב׳\nאותו ציטוט " + nis(m.quote) + " מול יעד נטו אחר.\nההשוואה המלאה נעולה."
+          : "Client B\nSame quote " + nis(m.quote) + " against another net target.\nThe full compare stays locked.";
+      }
+      paintUtil(p, m);
       if (!proposalDirty) $("proposal").value = proposalText(p, m);
+      lastQuote = quoteFile(p, m);
+      saveFr();
       if (window.ctilAfterRender) window.ctilAfterRender($("summary"));
+    }
+    function paintUtil(p, m) {
+      var host = $("utilTable");
+      if (!host) return;
+      host.textContent = "";
+      function hoursAt(block) {
+        var q = roundNice(block.hourlyNice * QUOTE_MULT);
+        return q > 0 ? Math.round((block.gross / q) * 10) / 10 : 0;
+      }
+      var cols = [
+        { name: he() ? "שקט" : "Quiet", u: m.lowU, block: m.low },
+        { name: he() ? "בסיס" : "Base", u: p.util, block: m.base },
+        { name: he() ? "עמוס" : "Busy", u: m.highU, block: m.high }
+      ];
+      var table = document.createElement("table");
+      table.className = "matrix";
+      var head = document.createElement("tr");
+      head.appendChild(document.createElement("th"));
+      cols.forEach(function (c) {
+        var th = document.createElement("th");
+        th.textContent = c.name + " " + c.u + "%";
+        head.appendChild(th);
+      });
+      table.appendChild(head);
+      function row(label, pick) {
+        var tr = document.createElement("tr");
+        var td = document.createElement("td");
+        td.textContent = label;
+        tr.appendChild(td);
+        cols.forEach(function (c) {
+          var cell = document.createElement("td");
+          cell.textContent = pick(c);
+          tr.appendChild(cell);
+        });
+        table.appendChild(tr);
+      }
+      row(he() ? "איזון / שעה" : "Break-even / hour", function (c) { return nis(c.block.hourlyNice); });
+      row(he() ? "ציטוט / שעה" : "Quote / hour", function (c) { return nis(roundNice(c.block.hourlyNice * QUOTE_MULT)); });
+      row(he() ? "שעות איזון" : "Break-even hours", function (c) { return String(hoursAt(c.block)); });
+      host.appendChild(table);
+    }
+    function quoteFile(p, m) {
+      var scope = [];
+      document.querySelectorAll("[data-scope]").forEach(function (box) {
+        if (box.checked) scope.push(box.parentNode.textContent.trim());
+      });
+      var pkgs = m.pkgs.map(function (pk) {
+        return pk.name + " · " + pk.hours + (he() ? " שעות · " : " h · ") + nis(pk.price);
+      }).join("\n");
+      return [
+        he() ? "ציטוט פרילנס" : "Freelance quote",
+        (he() ? "איזון / שעה " : "Break-even / hour ") + nis(m.base.hourlyNice),
+        (he() ? "ציטוט / שעה " : "Quote / hour ") + nis(m.quote),
+        (he() ? "תעריף יומי " : "Day rate ") + nis(m.day),
+        (he() ? "שעות איזון ליעד הנטו " : "Break-even hours to the net target ") + (Math.round(m.beHours * 10) / 10),
+        "",
+        (he() ? "ניצולת שקט / בסיס / עמוס: " : "Utilization quiet / base / busy: ") + m.lowU + "% / " + p.util + "% / " + m.highU + "%",
+        "",
+        he() ? "חבילות" : "Packages",
+        pkgs,
+        "",
+        he() ? "טקסט ללקוח" : "Client text",
+        $("proposal").value,
+        scope.length ? ((he() ? "היקף" : "Scope") + "\n" + scope.join("\n")) : "",
+        he() ? "הערכה, לא ייעוץ מס." : "An estimate, not tax advice."
+      ].filter(function (line) { return line !== ""; }).join("\n");
     }
     document.querySelectorAll("#taxToggles .tog").forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -723,7 +874,69 @@
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok).catch(ok);
       else ok();
     });
-    $("payCta").addEventListener("click", function (e) { e.preventDefault(); location.href = "../#lead"; });
+    function goLead(e) { e.preventDefault(); location.href = "../#lead"; }
+    $("payCta").addEventListener("click", goLead);
+    if ($("payCta2")) $("payCta2").addEventListener("click", goLead);
+    function copyText(btn, text, restoreKey) {
+      var pack = window.CTIL_I18N[he() ? "he" : "en"];
+      function ok() { btn.textContent = pack.copied; btn.classList.add("copied"); setTimeout(function () { btn.textContent = pack[restoreKey]; btn.classList.remove("copied"); }, 1400); }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok).catch(ok);
+      else ok();
+    }
+    if ($("copyQuoteSum")) {
+      $("copyQuoteSum").addEventListener("click", function () { copyText($("copyQuoteSum"), lastQuote || $("proposal").value, "copy"); });
+    }
+    if ($("dlQuote")) {
+      $("dlQuote").addEventListener("click", function () {
+        var blob = new Blob([lastQuote || ""], { type: "text/plain;charset=utf-8" });
+        var a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "career-tools-il-freelance-quote.txt";
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+      });
+    }
+    if ($("printQuote")) $("printQuote").addEventListener("click", function () { window.print(); });
+    document.querySelectorAll("[data-scope]").forEach(function (box) { box.addEventListener("change", render); });
+    var FR_KEY = "ctil_freelance_v1";
+    var FR_FIELDS = ["net", "tools", "hours", "admin", "util", "stress", "pkgH1", "pkgD1", "pkgH2", "pkgD2", "pkgH3", "pkgD3", "client", "project"];
+    function saveFr() {
+      if (restoring) return;
+      var data = { tax: taxMode, dirty: proposalDirty, proposal: proposalDirty ? $("proposal").value : "", clauses: [], scope: [] };
+      FR_FIELDS.forEach(function (id) { var n = $(id); if (n) data[id] = n.value; });
+      ["clPay", "clRev", "clDays"].forEach(function (id) { var n = $(id); if (n && n.checked) data.clauses.push(id); });
+      document.querySelectorAll("[data-scope]").forEach(function (b) {
+        if (b.checked) data.scope.push(b.getAttribute("data-scope") + ":" + b.value);
+      });
+      try { localStorage.setItem(FR_KEY, JSON.stringify(data)); } catch (e) {}
+    }
+    function loadFr() {
+      var raw = null;
+      try { raw = localStorage.getItem(FR_KEY); } catch (e) { return; }
+      if (!raw) return;
+      var data;
+      try { data = JSON.parse(raw); } catch (e2) { return; }
+      if (!data || typeof data !== "object") return;
+      restoring = true;
+      FR_FIELDS.forEach(function (id) { if (data[id] != null && $(id)) $(id).value = data[id]; });
+      if (data.tax) setTax(data.tax);
+      ["clPay", "clRev", "clDays"].forEach(function (id) {
+        var n = $(id);
+        if (n) n.checked = Array.isArray(data.clauses) && data.clauses.indexOf(id) >= 0;
+      });
+      document.querySelectorAll("[data-scope]").forEach(function (b) {
+        var key = b.getAttribute("data-scope") + ":" + b.value;
+        b.checked = Array.isArray(data.scope) && data.scope.indexOf(key) >= 0;
+      });
+      proposalDirty = !!data.dirty;
+      if (proposalDirty && data.proposal && $("proposal")) {
+        $("proposal").value = data.proposal;
+        var flag = $("dirtyFlag");
+        if (flag) flag.hidden = false;
+      }
+      restoring = false;
+    }
     ["net", "hours", "util", "admin", "tools", "client", "project", "stress", "pkgH1", "pkgD1", "pkgH2", "pkgD2", "pkgH3", "pkgD3"].forEach(function (id) {
       var node = $(id);
       if (!node) return;
@@ -767,17 +980,20 @@
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
           if (!en.isIntersecting) return;
+          var stepOf = { "sec-target": "sec-target", "sec-capacity": "sec-target", "sec-aids": "sec-aids", "sec-proposal": "sec-proposal" };
+          var step = stepOf[en.target.id] || en.target.id;
           document.querySelectorAll(".steps a").forEach(function (a) {
-            a.classList.toggle("on", a.getAttribute("data-step") === en.target.id);
+            a.classList.toggle("on", a.getAttribute("data-step") === step);
           });
           var meter = document.getElementById("stepMeter");
-          var widths = { "sec-target": "34%", "sec-capacity": "67%", "sec-proposal": "100%" };
+          var widths = { "sec-target": "34%", "sec-capacity": "34%", "sec-aids": "67%", "sec-proposal": "100%" };
           if (meter && widths[en.target.id]) meter.style.width = widths[en.target.id];
         });
       }, { rootMargin: "-45% 0px -45% 0px", threshold: 0.01 });
-      ["sec-target", "sec-capacity", "sec-proposal"].forEach(function (id) { var n = $(id); if (n) io.observe(n); });
+      ["sec-target", "sec-capacity", "sec-aids", "sec-proposal"].forEach(function (id) { var n = $(id); if (n) io.observe(n); });
     }
     window.ctilAfterLang = function () { proposalDirty = false; var flag = $("dirtyFlag"); if (flag) flag.hidden = true; render(); };
+    loadFr();
     render();
   })();
   </script>

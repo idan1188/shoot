@@ -154,7 +154,13 @@
     .score-track { height: 4px; background: #23272e; border-radius: 99px; margin: 6px 0; }
     .score-fill { height: 4px; border-radius: 99px; background: var(--brass); width: 0; transition: width .25s ease; }
     .fine { color: var(--faint); font-size: .72rem; margin: 10px 0 0; }
-    .sum-actions { display: flex; gap: 8px; margin-top: 12px; }
+    .sum-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .top-actions { flex-wrap: wrap; justify-content: flex-end; }
+    .topbar .share { margin: 0; }
+    input[type="range"] { width: 100%; accent-color: #c6a56d; margin-top: 8px; }
+    .aid-block { margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--line); }
+    .aid-block h3 { font-size: .9rem; margin-bottom: 4px; }
+    textarea#redLines { min-height: 72px; }
     .btn { appearance: none; border: 1px solid transparent; background: var(--brass); color: var(--ink); font: inherit; font-weight: 600; font-size: .78rem; border-radius: 7px; padding: 8px 12px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
     .btn:hover { background: var(--brass-2); }
     .btn.secondary { background: transparent; }
@@ -219,7 +225,7 @@
       .hero-field path { stroke-dashoffset: 0 !important; }
     }
     @media print {
-      .topbar, .share, .steps, .no-print, .sum-actions, .locked { display: none !important; }
+      .scroll-rail, .topbar, .crumbs, .share, .steps, .step-meter, .no-print, .sum-actions, .locked { display: none !important; }
       body { background: #fff; color: #111; }
       .summary, .card { break-inside: avoid; border-color: #ccc; background: #fff; }
       .stat, .script { background: #fff; }
@@ -240,6 +246,13 @@
           <span class="lang-sep" aria-hidden="true">|</span>
           <button type="button" data-lang="he" aria-pressed="false">HE</button>
         </div>
+        <div class="share no-print" data-share>
+          <span data-i18n="share">Share</span>
+          <a class="share-btn" data-share="whatsapp" data-i18n="shareWa" href="https://wa.me/?text=https%3A%2F%2Fidan1188.github.io%2Fshoot%2Fsalary-negotiator%2F" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a class="share-btn" data-share="linkedin" data-i18n="shareLi" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fidan1188.github.io%2Fshoot%2Fsalary-negotiator%2F" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <button type="button" class="share-btn" data-share="copy" data-i18n="shareCopy">Copy link</button>
+          <span class="share-status" data-share-status role="status" hidden data-i18n="shareCopied">Link copied</span>
+        </div>
         <a class="text-link" href="../why/" data-i18n="whyLink">Why us</a>
         <a class="text-link" href="../#tools" data-i18n="allTools">All tools</a>
       </div>
@@ -250,13 +263,6 @@
       <a href="../">Career Tools IL</a><span aria-hidden="true">/</span>
       <span aria-current="page" data-i18n="crumb">Salary brief</span>
     </nav>
-    <div class="share no-print" data-share>
-      <span data-i18n="share">Share</span>
-      <a class="share-btn" data-share="whatsapp" data-i18n="shareWa" href="https://wa.me/?text=https%3A%2F%2Fidan1188.github.io%2Fshoot%2Fsalary-negotiator%2F" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-      <a class="share-btn" data-share="linkedin" data-i18n="shareLi" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fidan1188.github.io%2Fshoot%2Fsalary-negotiator%2F" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <button type="button" class="share-btn" data-share="copy" data-i18n="shareCopy">Copy link</button>
-      <span class="share-status" data-share-status role="status" hidden data-i18n="shareCopied">Link copied</span>
-    </div>
     <header class="head">
       <svg class="hero-field" viewBox="0 0 520 160" aria-hidden="true">
         <path pathLength="1" d="M8 36H280" stroke-width="1.5"/>
@@ -271,7 +277,7 @@
     </header>
     <nav class="steps no-print" aria-label="Sections" data-i18n-aria="stepsLabel">
       <a href="#sec-inputs" data-step="sec-inputs" class="on"><span>01</span> <span data-i18n="step1">Inputs</span></a>
-      <a href="#sec-levers" data-step="sec-levers"><span>02</span> <span data-i18n="step2">Leverage</span></a>
+      <a href="#sec-aids" data-step="sec-aids"><span>02</span> <span data-i18n="step2">Decision aids</span></a>
       <a href="#sec-language" data-step="sec-language"><span>03</span> <span data-i18n="step3">Language</span></a>
     </nav>
     <div class="step-meter no-print" aria-hidden="true"><span id="stepMeter"></span></div>
@@ -330,24 +336,10 @@
             <option value="south" data-i18n="citySouth">Be'er Sheva / south (×0.95)</option>
           </select>
           <p class="hint" data-i18n="cityHint">Cost-of-living factors are a rough proxy, not an official index. The brief updates as you type.</p>
-          <details class="method" style="margin-top:12px">
-            <summary data-i18n="advSum">Second offer and a one-time bonus</summary>
-            <div class="row2">
-              <div>
-                <label for="offerB" data-i18n="labOfferB">Offer B, gross (₪/month)</label>
-                <input type="number" id="offerB" min="0" step="500" value="0" inputmode="numeric" />
-              </div>
-              <div>
-                <label for="bonus" data-i18n="labBonus">Signing bonus, once (₪)</label>
-                <input type="number" id="bonus" min="0" step="1000" value="0" inputmode="numeric" />
-              </div>
-            </div>
-            <p class="hint" data-i18n="advHint">Offer B uses the same leverage. The bonus is cash once. It is not folded into the monthly ask.</p>
-          </details>
         </section>
 
         <section class="card reveal" id="sec-levers">
-          <h2 data-i18n="levH">02 · Leverage checklist</h2>
+          <h2 data-i18n="levH">Leverage checklist</h2>
           <p class="hint" style="margin-top:0" data-i18n="levIntro">Check only what you can defend out loud. The score chooses conservative, base, or stretch. It does not invent a competing offer.</p>
           <label class="check"><input type="checkbox" data-lev="compete" /><span data-i18n="levCompete">A real second process is underway</span></label>
           <label class="check"><input type="checkbox" data-lev="impact" /><span data-i18n="levImpact">You can cite a measured result</span></label>
@@ -355,6 +347,56 @@
           <label class="check"><input type="checkbox" data-lev="scope" /><span data-i18n="levScope">Scope grew after the number was set</span></label>
           <label class="check"><input type="checkbox" data-lev="gap" /><span data-i18n="levGap">You can explain the gap versus current pay</span></label>
           <label class="check"><input type="checkbox" data-lev="writing" /><span data-i18n="levWriting">You will confirm the number in writing the same day</span></label>
+        </section>
+
+        <section class="card reveal" id="sec-aids">
+          <h2 data-i18n="aidH">02 · Decision aids</h2>
+          <div class="aid-block" style="margin-top:0;padding-top:0;border-top:0">
+            <h3 data-i18n="cntH">If they counter at</h3>
+            <label for="counter" data-i18n="labCounter">Their counter, gross (₪/month)</label>
+            <input type="number" id="counter" min="0" step="100" value="0" inputmode="numeric" />
+            <input type="range" id="counterRange" min="0" max="50000" step="100" value="0" data-i18n-aria="cntAria" aria-label="Counter slider" />
+            <div id="counterOut"></div>
+          </div>
+          <div class="aid-block">
+            <h3 data-i18n="sensH">Offer sensitivity</h3>
+            <p class="hint" data-i18n="sensHint">Same leverage. Only the offer moves ±5% and ±10%. The recommended case above stays on the offer you typed.</p>
+            <div id="sensOut"></div>
+          </div>
+          <div class="aid-block">
+            <h3 data-i18n="cmpH">Compare up to two offers</h3>
+            <div class="row2">
+              <div>
+                <label for="coA" data-i18n="labCoA">Company A</label>
+                <input type="text" id="coA" data-i18n-placeholder="phCo" placeholder="Company" />
+                <label for="roleA" data-i18n="labRoleA">Role A</label>
+                <input type="text" id="roleA" data-i18n-placeholder="phRole" placeholder="Role" />
+                <label for="bonus" data-i18n="labBonus">Signing bonus A, once (₪)</label>
+                <input type="number" id="bonus" min="0" step="1000" value="0" inputmode="numeric" />
+                <p class="hint" data-i18n="cmpAHint">Gross A is the offer above. The bonus is cash once. It is not folded into the monthly ask.</p>
+              </div>
+              <div>
+                <label for="coB" data-i18n="labCoB">Company B</label>
+                <input type="text" id="coB" data-i18n-placeholder="phCo" placeholder="Company" />
+                <label for="roleB" data-i18n="labRoleB">Role B</label>
+                <input type="text" id="roleB" data-i18n-placeholder="phRole" placeholder="Role" />
+                <label for="offerB" data-i18n="labOfferB">Offer B, gross (₪/month)</label>
+                <input type="number" id="offerB" min="0" step="500" value="0" inputmode="numeric" />
+                <label for="bonusB" data-i18n="labBonusB">Signing bonus B, once (₪)</label>
+                <input type="number" id="bonusB" min="0" step="1000" value="0" inputmode="numeric" />
+              </div>
+            </div>
+            <div id="cmpOut"></div>
+          </div>
+          <div class="aid-block">
+            <h3 data-i18n="dayH">Day-of checklist</h3>
+            <p class="hint" data-i18n="dayHint">Separate from leverage. These boxes do not move the case.</p>
+            <label class="check"><input type="checkbox" data-day="write" /><span data-i18n="dayWrite">Written confirmation the same day</span></label>
+            <label class="check"><input type="checkbox" data-day="benefits" /><span data-i18n="dayBen">Benefits still to ask</span></label>
+            <label class="check"><input type="checkbox" data-day="red" /><span data-i18n="dayRed">Red lines named out loud</span></label>
+            <label for="redLines" data-i18n="labRed">Red lines</label>
+            <textarea id="redLines" rows="3" data-i18n-placeholder="phRed" placeholder="The number, the title, or the clause you will not trade."></textarea>
+          </div>
         </section>
 
         <section class="card reveal" id="sec-language">
@@ -405,6 +447,19 @@
               </div>
             </div>
           </div>
+          <div class="script locked reveal">
+            <header><h3 data-i18n="page2H">Print page 2 — expanded export</h3><button type="button" class="btn disabled" disabled data-i18n="locked">Locked</button></header>
+            <pre id="page2Msg"></pre>
+            <div class="locked-cta">
+              <p data-i18n="page2Blurb">Pro adds the second page: the call, the benefit trade, and the written recap. The download above is the demo brief.</p>
+              <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                <span class="sale-flag" data-i18n="sale">LAUNCH</span>
+                <span class="price-now">₪26</span>
+                <s class="price-was">₪79</s>
+                <a class="btn disabled" id="payCta2" href="../#lead" aria-disabled="true" tabindex="-1" data-i18n="proCta">Pro soon · leave your email</a>
+              </div>
+            </div>
+          </div>
         </section>
         <footer class="moat">
           <div data-i18n="foot1">Runs locally. Nothing you type is sent. Save this file and it still works.</div>
@@ -417,6 +472,7 @@
         <p class="fine" data-i18n="netNote">“Illustrative net” uses a stepped ratio on gross. It is not Israeli tax, national insurance, or your payslip.</p>
         <div class="sum-actions no-print">
           <button type="button" class="btn" id="copyBrief" data-i18n="copyBrief">Copy brief</button>
+          <button type="button" class="btn secondary" id="dlBrief" data-i18n="dlBrief">Download .txt</button>
           <button type="button" class="btn secondary" id="printBrief" data-i18n="printBrief">Print</button>
         </div>
       </aside>
@@ -435,12 +491,12 @@
         shareCopy: "Copy link", shareCopied: "Link copied", shareCopiedShort: "Copied",
         kicker: "Salary brief", h1: "Ask, target, and walk-away.",
         sub: "Three cases, a counter ladder, and language for the conversation. Rounded to ₪100. A heuristic for practice — not a market survey and not pay advice.",
-        step1: "Inputs", step2: "Leverage", step3: "Language",
+        step1: "Inputs", step2: "Decision aids", step3: "Language",
         inH: "01 · The offer", labCurrent: "Current gross (₪/month)", labOffer: "Offer, gross (₪/month)",
         labYears: "Relevant years", labSen: "Seniority", labRole: "Role family", labCity: "City / area",
         cityHint: "Cost-of-living factors are a rough proxy, not an official index. The brief updates as you type.",
         presetAria: "Presets", preFirst: "First offer", preSenior: "Senior, with proof", preBelow: "Offer under current",
-        advSum: "Second offer and a one-time bonus", labOfferB: "Offer B, gross (₪/month)", labBonus: "Signing bonus, once (₪)",
+        advSum: "Second offer and a one-time bonus", labOfferB: "Offer B, gross (₪/month)", labBonus: "Signing bonus A, once (₪)",
         advHint: "Offer B uses the same leverage. The bonus is cash once. It is not folded into the monthly ask.",
         noteH: "Ladder lines. Leave blank to keep the default.",
         labN1: "Open", labN2: "Concede", labN3: "Land", labN4: "Stop",
@@ -450,7 +506,26 @@
         roleOps: "Operations / HR / admin", roleFinance: "Finance / legal / compliance", roleHealth: "Health / education", roleService: "Service / support / retail",
         cityTlv: "Tel Aviv / Gush Dan (×1.15)", citySharon: "Sharon / center (×1.08)", cityJerusalem: "Jerusalem (×1.05)",
         cityRemote: "Remote / hybrid, nationwide (×1.02)", cityHaifa: "Haifa / north (×1.00)", citySouth: "Be'er Sheva / south (×0.95)",
-        levH: "02 · Leverage checklist",
+        levH: "Leverage checklist",
+        aidH: "02 · Decision aids",
+        cntH: "If they counter at", labCounter: "Their counter, gross (₪/month)", cntAria: "Counter slider",
+        sensH: "Offer sensitivity",
+        sensHint: "Same leverage. Only the offer moves ±5% and ±10%. The recommended case above stays on the offer you typed.",
+        cmpH: "Compare up to two offers",
+        labCoA: "Company A", labRoleA: "Role A", labCoB: "Company B", labRoleB: "Role B",
+        phCo: "Company", phRole: "Role",
+        labBonusB: "Signing bonus B, once (₪)",
+        cmpAHint: "Gross A is the offer above. The bonus is cash once. It is not folded into the monthly ask.",
+        dayH: "Day-of checklist",
+        dayHint: "Separate from leverage. These boxes do not move the case.",
+        dayWrite: "Written confirmation the same day",
+        dayBen: "Benefits still to ask",
+        dayRed: "Red lines named out loud",
+        labRed: "Red lines",
+        phRed: "The number, the title, or the clause you will not trade.",
+        page2H: "Print page 2 — expanded export",
+        page2Blurb: "Pro adds the second page: the call, the benefit trade, and the written recap. The download above is the demo brief.",
+        dlBrief: "Download .txt",
         levIntro: "Check only what you can defend out loud. The score chooses conservative, base, or stretch. It does not invent a competing offer.",
         levCompete: "A real second process is underway", levImpact: "You can cite a measured result",
         levScarce: "This skill is hard to hire this quarter", levScope: "Scope grew after the number was set",
@@ -473,12 +548,12 @@
         shareCopy: "העתקת קישור", shareCopied: "הקישור הועתק", shareCopiedShort: "הועתק",
         kicker: "תדריך שכר", h1: "בקשה, יעד, ומספר יציאה.",
         sub: "שלושה תרחישים, סולם נגד, וניסוח לשיחה. מעוגל ל־₪100. היוריסטיקה לתרגול — לא סקר שוק ולא ייעוץ שכר.",
-        step1: "קלט", step2: "מנופים", step3: "ניסוח",
+        step1: "קלט", step2: "עזרי החלטה", step3: "ניסוח",
         inH: "01 · ההצעה", labCurrent: "שכר נוכחי, ברוטו (₪/חודש)", labOffer: "הצעה, ברוטו (₪/חודש)",
         labYears: "שנות ניסיון רלוונטי", labSen: "בכירות", labRole: "משפחת תפקיד", labCity: "עיר / אזור",
         cityHint: "מכפילי יוקר המחיה הם קירוב, לא מדד רשמי. התדריך מתעדכן תוך כדי הקלדה.",
         presetAria: "הגדרות מוכנות", preFirst: "הצעה ראשונה", preSenior: "סיניור, עם הוכחה", preBelow: "הצעה מתחת לנוכחי",
-        advSum: "הצעה שנייה ובונוס חד־פעמי", labOfferB: "הצעה ב׳, ברוטו (₪/חודש)", labBonus: "בונוס חתימה, פעם אחת (₪)",
+        advSum: "הצעה שנייה ובונוס חד־פעמי", labOfferB: "הצעה ב׳, ברוטו (₪/חודש)", labBonus: "בונוס חתימה א׳, פעם אחת (₪)",
         advHint: "הצעה ב׳ נמדדת באותו מינוף. הבונוס הוא מזומן פעם אחת. הוא לא נכנס לבקשה החודשית.",
         noteH: "שורות הסולם. השאירו ריק כדי לשמור על ברירת המחדל.",
         labN1: "פתיחה", labN2: "ויתור", labN3: "נחיתה", labN4: "עצירה",
@@ -488,7 +563,26 @@
         roleOps: "תפעול / HR / אדמין", roleFinance: "כספים / משפטים / רגולציה", roleHealth: "בריאות / חינוך", roleService: "שירות / תמיכה / קמעונאות",
         cityTlv: "תל אביב / גוש דן (×1.15)", citySharon: "השרון / מרכז (×1.08)", cityJerusalem: "ירושלים (×1.05)",
         cityRemote: "מרחוק / היברידי ארצי (×1.02)", cityHaifa: "חיפה / צפון (×1.00)", citySouth: "באר שבע / דרום (×0.95)",
-        levH: "02 · רשימת מנופים",
+        levH: "רשימת מנופים",
+        aidH: "02 · עזרי החלטה",
+        cntH: "אם הם חוזרים עם", labCounter: "הנגד שלהם, ברוטו (₪/חודש)", cntAria: "מחוון נגד",
+        sensH: "רגישות ההצעה",
+        sensHint: "אותו מינוף. רק ההצעה זזה ב־±5% וב־±10%. התרחיש המומלץ למעלה נשאר על ההצעה שהקלדתם.",
+        cmpH: "השוואת עד שתי הצעות",
+        labCoA: "חברה א׳", labRoleA: "תפקיד א׳", labCoB: "חברה ב׳", labRoleB: "תפקיד ב׳",
+        phCo: "חברה", phRole: "תפקיד",
+        labBonusB: "בונוס חתימה ב׳, פעם אחת (₪)",
+        cmpAHint: "הברוטו של א׳ הוא ההצעה למעלה. הבונוס הוא מזומן פעם אחת. הוא לא נכנס לבקשה החודשית.",
+        dayH: "רשימת יום השיחה",
+        dayHint: "בנפרד מהמינוף. הסימונים האלה לא מזיזים את התרחיש.",
+        dayWrite: "אישור בכתב באותו היום",
+        dayBen: "הטבות שעוד צריך לבקש",
+        dayRed: "קווים אדומים שנאמרו בקול",
+        labRed: "קווים אדומים",
+        phRed: "המספר, התואר, או הסעיף שלא סוחרים בו.",
+        page2H: "עמוד הדפסה 2 — ייצוא מורחב",
+        page2Blurb: "Pro מוסיף עמוד שני: השיחה, סחר ההטבות, וסיכום בכתב. ההורדה למעלה היא תדריך הדמו.",
+        dlBrief: "הורדת .txt",
         levIntro: "סמנו רק מה שאפשר להגן עליו בקול. הציון בוחר שמרני, בסיס או מתיחה. הוא לא ממציא הצעה מתחרה.",
         levCompete: "יש תהליך שני אמיתי שמתקדם", levImpact: "אפשר לצטט תוצאה מדודה",
         levScarce: "הכישור קשה לגיוס ברבעון הזה", levScope: "היקף התפקיד גדל אחרי שהמספר נקבע",
@@ -627,6 +721,29 @@
       var v = node && node.value.trim();
       return v || fallback;
     }
+    function relWord(counter, n) {
+      if (counter > n) return he() ? "מעל" : "above";
+      if (counter === n) return he() ? "על" : "at";
+      return he() ? "מתחת" : "below";
+    }
+    function counterGuide(counter, s) {
+      if (!(counter > 0)) return "";
+      var where = (he() ? "הנגד " : "Their counter ") + nis(counter) + (he() ? " — " : " — ")
+        + relWord(counter, s.ask) + (he() ? " הבקשה, " : " the ask, ")
+        + relWord(counter, s.target) + (he() ? " היעד, " : " the target, ")
+        + relWord(counter, s.walk) + (he() ? " נקודת היציאה." : " the walk-away.");
+      var tip;
+      if (counter >= s.ask) tip = he() ? " אם הכתב תואם — זו הסכמה." : " If the writing matches, that is a yes.";
+      else if (counter >= s.target) tip = he() ? " בתוך אזור הנחיתה. אישור אחד, ואז עוצרים." : " Inside the landing zone. One confirmation, then stop talking.";
+      else if (counter >= s.walk) tip = he() ? " מעל היציאה ומתחת ליעד. מהלך אחד לכיוון היעד. לא יורדים לרצפה עדיין." : " Above the walk-away and short of the target. One move toward the target. Do not drop to the floor yet.";
+      else tip = he() ? " מתחת ליציאה. מודים ועוצרים, או פותחים מחדש את ההיקף. לא מקבלים את המספר הזה." : " Below the walk-away. Thank them and stop, or reopen scope. Do not accept this number.";
+      return where + tip;
+    }
+    function caseAt(offer, total, base) {
+      var p2 = { current: base.current, offer: offer, years: base.years, seniority: base.seniority, role: base.role, city: base.city };
+      var key = pick(total, p2);
+      return { key: key, s: scenarios(compute(p2))[key] };
+    }
     function compute(p) {
       var city = CITY[p.city] || CITY.haifa;
       var sen = SEN[p.seniority] || SEN.mid;
@@ -758,7 +875,9 @@
       if (p.offer <= 0 && p.current <= 0) {
         body.appendChild(el("p", "empty", he() ? "הזינו שכר נוכחי או הצעה." : "Enter current pay or an offer."));
         $("waMsg").textContent = ""; $("emailMsg").textContent = ""; $("followMsg").textContent = ""; $("advMsg").textContent = "";
+        if ($("page2Msg")) $("page2Msg").textContent = "";
         lastBrief = "";
+        saveSal();
         return;
       }
       var c = compute(p);
@@ -818,6 +937,8 @@
       if (p.bonus > 0) {
         body.appendChild(el("p", "why", (he() ? "שנה ראשונה ביעד, כולל בונוס חד־פעמי: " : "First year at the target, including the one-time bonus: ") + nis(s.target * 12 + p.bonus)));
       }
+      var counterNow = Number($("counter") && $("counter").value) || 0;
+      if (counterNow > 0) body.appendChild(el("p", "why", counterGuide(counterNow, s)));
 
       var net = el("table", "matrix");
       var nr = el("tr");
@@ -889,6 +1010,18 @@
       $("emailMsg").textContent = msgs.email;
       $("followMsg").textContent = msgs.follow;
       $("advMsg").textContent = msgs.adv;
+      if ($("page2Msg")) {
+        $("page2Msg").textContent = he()
+          ? "עמוד 2 — ייצוא מורחב\nשיחה: פתיחה " + nis(s.ask) + " · נחיתה " + nis(s.target) + " · עצירה " + nis(s.walk) + "\nהטבות אחרי שהבסיס נחת: פנסיה, ימי חופשה, היברידי, תואר.\nכתב: מייל סיכום בתוך שעתיים, עם המספר וההיקף."
+          : "Page 2 — expanded export\nCall: open " + nis(s.ask) + " · land " + nis(s.target) + " · stop " + nis(s.walk) + "\nBenefits after base has landed: pension, vacation days, hybrid, title.\nWriting: recap email within two hours, with the number and the scope.";
+      }
+      paintAids(p, s, total, names);
+      var ladderTxt = steps.map(function (st) { return st[0] + "  " + nis(st[1]) + " — " + st[2]; }).join("\n");
+      var dayBits = [];
+      document.querySelectorAll("[data-day]").forEach(function (box) {
+        if (box.checked) dayBits.push(box.parentNode.textContent.trim());
+      });
+      var red = ($("redLines") && $("redLines").value.trim()) || "";
       lastBrief = [
         (he() ? "תדריך שכר · " : "Salary brief · ") + names[key],
         (he() ? "בקשה " : "Ask ") + nis(s.ask),
@@ -896,9 +1029,104 @@
         (he() ? "יציאה " : "Walk-away ") + nis(s.walk),
         (he() ? "ציון מנופים " : "Leverage ") + total + "/100",
         (he() ? "שמרני / בסיס / מתיחה — בקשה: " : "Conservative / base / stretch — ask: ") + nis(sc.conservative.ask) + " / " + nis(sc.base.ask) + " / " + nis(sc.stretch.ask),
+        "",
+        he() ? "סולם" : "Ladder",
+        ladderTxt,
+        "",
+        he() ? "הודעות" : "Scripts",
+        msgs.wa,
+        "",
+        msgs.email,
+        "",
+        msgs.follow,
+        dayBits.length ? ((he() ? "יום השיחה" : "Day-of") + "\n" + dayBits.join("\n")) : "",
+        red ? ((he() ? "קווים אדומים: " : "Red lines: ") + red) : "",
+        counterNow > 0 ? counterGuide(counterNow, s) : "",
         he() ? "הערכה לתרגול, לא ייעוץ שכר." : "A practice estimate, not pay advice."
-      ].join("\n");
+      ].filter(function (line) { return line !== ""; }).join("\n");
+      saveSal();
       if (window.ctilAfterRender) window.ctilAfterRender($("summary"));
+    }
+    function paintAids(p, s, total, names) {
+      var counter = Number($("counter") && $("counter").value) || 0;
+      var range = $("counterRange");
+      if (range) {
+        var cap = Math.max(50000, p.offer || 0, p.current || 0, counter);
+        range.max = String(Math.ceil(cap / 100) * 100);
+        range.value = String(Math.min(counter, Number(range.max)));
+      }
+      var cout = $("counterOut");
+      if (cout) {
+        cout.textContent = "";
+        if (!(counter > 0)) {
+          cout.appendChild(el("p", "hint", he() ? "קבעו נגד כדי לראות אותו מול הבקשה, היעד ונקודת היציאה." : "Set their counter to see it against the ask, the target, and the walk-away."));
+        } else {
+          var ct = el("table", "matrix");
+          [[he() ? "נגד" : "Counter", nis(counter)], [he() ? "בקשה" : "Ask", nis(s.ask) + " · " + relWord(counter, s.ask)], [he() ? "יעד" : "Target", nis(s.target) + " · " + relWord(counter, s.target)], [he() ? "יציאה" : "Walk-away", nis(s.walk) + " · " + relWord(counter, s.walk)]].forEach(function (row) {
+            var tr = el("tr");
+            tr.appendChild(el("td", null, row[0]));
+            tr.appendChild(el("td", null, row[1]));
+            ct.appendChild(tr);
+          });
+          cout.appendChild(ct);
+          cout.appendChild(el("p", "why", counterGuide(counter, s)));
+        }
+      }
+      var sens = $("sensOut");
+      if (sens) {
+        sens.textContent = "";
+        if (!(p.offer > 0)) {
+          sens.appendChild(el("p", "hint", he() ? "הזינו הצעה כדי לראות את התזוזה." : "Enter an offer to see the shift."));
+        } else {
+          var st = el("table", "matrix");
+          var sh = el("tr");
+          [he() ? "הצעה" : "Offer", he() ? "תרחיש" : "Case", he() ? "יעד" : "Target"].forEach(function (h) { sh.appendChild(el("th", null, h)); });
+          st.appendChild(sh);
+          [-0.10, -0.05, 0, 0.05, 0.10].forEach(function (pct) {
+            var hit = caseAt(p.offer * (1 + pct), total, p);
+            var tr = el("tr");
+            var label = (pct > 0 ? "+" : "") + Math.round(pct * 100) + "% · " + nis(round100(p.offer * (1 + pct)));
+            if (pct === 0) label = (he() ? "ההצעה שהוקלדה · " : "Typed offer · ") + nis(round100(p.offer));
+            tr.appendChild(el("td", pct === 0 ? "rec" : "", label));
+            tr.appendChild(el("td", pct === 0 ? "rec" : "", names[hit.key]));
+            tr.appendChild(el("td", pct === 0 ? "rec" : "", nis(hit.s.target)));
+            st.appendChild(tr);
+          });
+          sens.appendChild(st);
+        }
+      }
+      var cmp = $("cmpOut");
+      if (cmp) {
+        cmp.textContent = "";
+        var bonusB = Number($("bonusB") && $("bonusB").value) || 0;
+        var bHit = p.offerB > 0 ? caseAt(p.offerB, total, p) : null;
+        var rows = [
+          [he() ? "חברה" : "Company", ($("coA") && $("coA").value.trim()) || "—", ($("coB") && $("coB").value.trim()) || "—"],
+          [he() ? "תפקיד" : "Role", ($("roleA") && $("roleA").value.trim()) || "—", ($("roleB") && $("roleB").value.trim()) || "—"],
+          [he() ? "ברוטו" : "Gross", p.offer > 0 ? nis(p.offer) : "—", p.offerB > 0 ? nis(p.offerB) : "—"],
+          [he() ? "בונוס" : "Bonus", nis(p.bonus || 0), p.offerB > 0 ? nis(bonusB) : "—"],
+          [he() ? "יעד" : "Target", nis(s.target), bHit ? nis(bHit.s.target) : "—"],
+          [he() ? "יציאה" : "Walk-away", nis(s.walk), bHit ? nis(bHit.s.walk) : "—"],
+          [he() ? "ברוטו מול יציאה" : "Gross vs walk-away", p.offer > 0 ? nis(p.offer - s.walk) : "—", bHit ? nis(p.offerB - bHit.s.walk) : "—"]
+        ];
+        var table = el("table", "matrix");
+        var head = el("tr");
+        ["", he() ? "א׳" : "A", he() ? "ב׳" : "B"].forEach(function (h) { head.appendChild(el("th", null, h)); });
+        table.appendChild(head);
+        rows.forEach(function (row) {
+          var tr = el("tr");
+          row.forEach(function (cell) { tr.appendChild(el("td", null, cell)); });
+          table.appendChild(tr);
+        });
+        cmp.appendChild(table);
+        var noteA = p.offer > 0 && p.offer < s.walk
+          ? (he() ? "הצעה א׳ מתחת לנקודת היציאה." : "Offer A is below the walk-away.")
+          : (he() ? "הצעה א׳ מול נקודת היציאה של התרחיש המומלץ." : "Offer A against the walk-away of the recommended case.");
+        var noteB = !bHit ? "" : (p.offerB < bHit.s.walk
+          ? (he() ? " הצעה ב׳ מתחת לנקודת היציאה שלה." : " Offer B is below its walk-away.")
+          : (he() ? " הצעה ב׳ מול נקודת היציאה שלה, באותו מינוף." : " Offer B against its own walk-away, with the same leverage."));
+        cmp.appendChild(el("p", "why", noteA + noteB));
+      }
     }
 
     document.querySelectorAll("[data-copy]").forEach(function (btn) {
@@ -920,8 +1148,20 @@
       else ok();
     });
     $("printBrief").addEventListener("click", function () { window.print(); });
-    $("payCta").addEventListener("click", function (e) { e.preventDefault(); location.href = "../#lead"; });
-    ["current", "offer", "years", "seniority", "role", "city", "offerB", "bonus", "noteOpen", "noteMid", "noteLand", "noteStop"].forEach(function (id) {
+    $("dlBrief").addEventListener("click", function () {
+      if (!lastBrief) return;
+      var blob = new Blob([lastBrief], { type: "text/plain;charset=utf-8" });
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "career-tools-il-salary-brief.txt";
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+    });
+    function goLead(e) { e.preventDefault(); location.href = "../#lead"; }
+    $("payCta").addEventListener("click", goLead);
+    if ($("payCta2")) $("payCta2").addEventListener("click", goLead);
+    ["current", "offer", "years", "seniority", "role", "city", "offerB", "bonus", "bonusB", "counter", "coA", "roleA", "coB", "roleB", "noteOpen", "noteMid", "noteLand", "noteStop", "redLines"].forEach(function (id) {
       var node = $(id);
       if (!node) return;
       node.addEventListener("input", render);
@@ -950,22 +1190,67 @@
       });
     });
     document.querySelectorAll("[data-lev]").forEach(function (box) { box.addEventListener("change", render); });
-    var secs = ["sec-inputs", "sec-levers", "sec-language"];
+    document.querySelectorAll("[data-day]").forEach(function (box) { box.addEventListener("change", render); });
+    if ($("counterRange")) {
+      $("counterRange").addEventListener("input", function () {
+        $("counter").value = $("counterRange").value;
+        render();
+      });
+    }
+    var SAL_KEY = "ctil_salary_v1";
+    var restoring = false;
+    var SAL_FIELDS = ["current", "offer", "years", "seniority", "role", "city", "offerB", "bonus", "bonusB", "counter", "coA", "roleA", "coB", "roleB", "noteOpen", "noteMid", "noteLand", "noteStop", "redLines"];
+    function saveSal() {
+      if (restoring) return;
+      var data = { levers: [], day: [] };
+      SAL_FIELDS.forEach(function (id) { var n = $(id); if (n) data[id] = n.value; });
+      document.querySelectorAll("[data-lev]").forEach(function (b) { if (b.checked) data.levers.push(b.getAttribute("data-lev")); });
+      document.querySelectorAll("[data-day]").forEach(function (b) { if (b.checked) data.day.push(b.getAttribute("data-day")); });
+      try { localStorage.setItem(SAL_KEY, JSON.stringify(data)); } catch (e) {}
+    }
+    function loadSal() {
+      var raw = null;
+      try { raw = localStorage.getItem(SAL_KEY); } catch (e) { return; }
+      if (!raw) return;
+      var data;
+      try { data = JSON.parse(raw); } catch (e2) { return; }
+      if (!data || typeof data !== "object") return;
+      restoring = true;
+      SAL_FIELDS.forEach(function (id) {
+        if (data[id] == null || !$(id)) return;
+        $(id).value = data[id];
+      });
+      if (Array.isArray(data.levers)) {
+        document.querySelectorAll("[data-lev]").forEach(function (b) {
+          b.checked = data.levers.indexOf(b.getAttribute("data-lev")) >= 0;
+        });
+      }
+      if (Array.isArray(data.day)) {
+        document.querySelectorAll("[data-day]").forEach(function (b) {
+          b.checked = data.day.indexOf(b.getAttribute("data-day")) >= 0;
+        });
+      }
+      restoring = false;
+    }
+    var secs = ["sec-inputs", "sec-levers", "sec-aids", "sec-language"];
+    var stepOf = { "sec-inputs": "sec-inputs", "sec-levers": "sec-inputs", "sec-aids": "sec-aids", "sec-language": "sec-language" };
     if ("IntersectionObserver" in window) {
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
           if (!en.isIntersecting) return;
+          var step = stepOf[en.target.id] || en.target.id;
           document.querySelectorAll(".steps a").forEach(function (a) {
-            a.classList.toggle("on", a.getAttribute("data-step") === en.target.id);
+            a.classList.toggle("on", a.getAttribute("data-step") === step);
           });
           var meter = document.getElementById("stepMeter");
-          var widths = { "sec-inputs": "34%", "sec-levers": "67%", "sec-language": "100%" };
+          var widths = { "sec-inputs": "34%", "sec-levers": "34%", "sec-aids": "67%", "sec-language": "100%" };
           if (meter && widths[en.target.id]) meter.style.width = widths[en.target.id];
         });
       }, { rootMargin: "-45% 0px -45% 0px", threshold: 0.01 });
       secs.forEach(function (id) { var n = $(id); if (n) io.observe(n); });
     }
     window.ctilAfterLang = render;
+    loadSal();
     render();
   })();
   </script>
