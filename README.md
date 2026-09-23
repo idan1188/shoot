@@ -14,17 +14,17 @@ Screenshots: social cards (Open Graph, Twitter, WhatsApp, LinkedIn) use [`previe
 | --- | --- |
 | `index.html` | Landing, why-us sections, FAQ, share links, and local email capture (`#lead`) |
 | `why/` | The full case: why us, problem and outcome, comparison with a free calculator, FAQ |
-| `why-us/` | Why these calculators: live formulas, Israel heuristics, offline files. Sale prices ₪26 / ₪23 / ₪43. English default. |
+| `why-us/` | Why choose us: three numbers, language for the room, Israel, browser privacy, the employee and freelancer bundle. Launch prices ₪26 / ₪23 / ₪43. |
+| `command-center/` | War room: employer-reply simulator, round log (`ctil_cc_rounds_v1`), six-message pack, two-offer compare, offline export. Reads `ctil_salary_v1`. Pro blocks link to `#lead` only. |
 | `osek-patur-vs-murshah/` | Hebrew-first explainer of how the freelance calculator treats osek patur vs murshe. Not tax or legal advice. |
-| `salary-negotiator/` | Negotiation Command Center: counters, message pack, offer battle, session vault. Existing brief math and accessories stay. |
+| `salary-negotiator/` | Salary brief. Existing command-center accessories stay. Header links to `/command-center/`. |
 | `freelance-rate/` | Pricing OS: scope wizard, objection replies, break-even and utilization on one desk. |
+| `404.html` | Not-found page (EN default, HE toggle); nested misses still link back under `/shoot/` |
 
 ## Changelog
 
-- Salary: employer-counter simulator (low / mid / high, gap vs walk-away, EN+HE next line), message pack (ask / counter / accept-or-walk), offer battle for three offers with a score and a printable HTML brief, session vault in `localStorage`.
-- Freelance: scope → package wizard on the live rate, patur ×1.28 and murshe ×1.35 + 17% VAT illustration, three bilingual push-back replies, break-even and utilization gathered into the Pricing OS panel.
-- Home, Why, and Why Us: the story is the system, not another calculator. Links to `/why-us/` and `/osek-patur-vs-murshah/` stay. No checkout URLs.
-| `404.html` | Not-found page (EN default, HE toggle); nested misses still link back under `/shoot/` |
+- War room at `/command-center/`: counter, stall, ask-first, final, and silence paths; local round log (max 8); six messages that rewrite with the zone and the round; copy, `.txt`, and print export; two-offer total-comp compare. Counter at a number reuses the salary sensitivity.
+- Home, Why, and Why Us: launch wording. Hero is “Know the number before you say it.” Prices stay ₪26 / ₪23 / ₪43, framed as a launch. No checkout URLs.
 | `robots.txt`, `sitemap.xml`, `site.webmanifest` | Crawl and install metadata |
 
 Public CTAs stay on `#lead`. Tool Pro buttons stay “Pro soon” until a real checkout URL exists. Do not add payment keys, a `CNAME`, or placeholder tokens like `{{…}}`.
