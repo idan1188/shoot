@@ -1,6 +1,6 @@
 # Career Tools IL
 
-Browser tools for salary talks and freelance quotes, for Israel. English is the default; Hebrew is available from the EN | HE toggle (saved in `localStorage` as `ctil_lang`). The salary brief gives an ask, a target, a walk-away, a counter ladder, and a leverage score. The freelance quote gives a break-even rate, a commercial rate with margin, utilization sensitivity, and an editable proposal. Illustrative estimates, not tax or career advice. Scroll progress, the hero rules, and section reveals use CSS scroll timelines where the browser supports them, with a small script otherwise. `prefers-reduced-motion: reduce` keeps the pages static.
+Browser tools for salary talks and freelance quotes, for Israel. English is the default; Hebrew is available from the EN | HE toggle (saved in `localStorage` as `ctil_lang`). The osek explainer is the exception: with no saved choice it renders in Hebrew, and it writes `ctil_lang` only after the toggle is used. The salary brief gives an ask, a target, a walk-away, a counter ladder, and a leverage score. The freelance quote gives a break-even rate, a commercial rate with margin, utilization sensitivity, and an editable proposal. Illustrative estimates, not tax or career advice. Scroll progress, the hero rules, and section reveals use CSS scroll timelines where the browser supports them, with a small script otherwise. `prefers-reduced-motion: reduce` keeps the pages static.
 
 Sale prices, with the original struck through on the page: bundle ₪43 (was ₪129), salary tool ₪26 (was ₪79), freelance tool ₪23 (was ₪69). Bought separately on sale that is ₪49 (was ₪148).
 
@@ -13,6 +13,8 @@ Screenshots: social cards (Open Graph, Twitter, WhatsApp, LinkedIn) use [`previe
 | Path | Role |
 | --- | --- |
 | `index.html` | Landing, FAQ, share links, and local email capture (`#lead`) |
+| `why-us/` | Why these calculators: live formulas, Israel heuristics, offline files |
+| `osek-patur-vs-murshah/` | Educational osek patur vs murshe pricing explainer (not tax advice) |
 | `salary-negotiator/` | Salary brief: ask, target, walk-away, counter ladder |
 | `freelance-rate/` | Freelance quote: margin, sensitivity, editable proposal |
 | `404.html` | Not-found page (EN default, HE toggle); nested misses still link back under `/shoot/` |

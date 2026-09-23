@@ -31,4 +31,24 @@
     <xhtml:link rel="alternate" hreflang="he-IL" href="https://idan1188.github.io/shoot/freelance-rate/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://idan1188.github.io/shoot/freelance-rate/"/>
   </url>
+  <url>
+    <loc>https://idan1188.github.io/shoot/why-us/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://idan1188.github.io/shoot/why-us/"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://idan1188.github.io/shoot/why-us/"/>
+    <xhtml:link rel="alternate" hreflang="he-IL" href="https://idan1188.github.io/shoot/why-us/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://idan1188.github.io/shoot/why-us/"/>
+  </url>
+  <url>
+    <loc>https://idan1188.github.io/shoot/osek-patur-vs-murshah/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://idan1188.github.io/shoot/osek-patur-vs-murshah/"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://idan1188.github.io/shoot/osek-patur-vs-murshah/"/>
+    <xhtml:link rel="alternate" hreflang="he-IL" href="https://idan1188.github.io/shoot/osek-patur-vs-murshah/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://idan1188.github.io/shoot/osek-patur-vs-murshah/"/>
+  </url>
 </urlset>
