@@ -1,6 +1,6 @@
 # Career Tools IL
 
-Browser tools for salary talks and freelance quotes, for Israel. English is the default; Hebrew is available from the EN | HE toggle (saved in `localStorage` as `ctil_lang`). The salary brief gives an ask, a target, a walk-away, a counter ladder, and a leverage score. The freelance quote gives a break-even rate, a commercial rate with margin, utilization sensitivity, and an editable proposal. Illustrative estimates, not tax or career advice. Scroll progress, the hero rules, and section reveals use CSS scroll timelines where the browser supports them, with a small script otherwise. `prefers-reduced-motion: reduce` keeps the pages static.
+Browser tools for salary talks and freelance quotes, for Israel. English is the default; Hebrew is available from the EN | HE toggle (saved in `localStorage` as `ctil_lang`). The osek explainer is the exception: with no saved choice it renders in Hebrew and does not write `ctil_lang` until a language is already saved or the toggle is used. The salary brief gives an ask, a target, a walk-away, a counter ladder, and a leverage score. The freelance quote gives a break-even rate, a commercial rate with margin, utilization sensitivity, and an editable proposal. Illustrative estimates, not tax or career advice. Scroll progress, the hero rules, and section reveals use CSS scroll timelines where the browser supports them, with a small script otherwise. `prefers-reduced-motion: reduce` keeps the pages static.
 
 Launch prices, with the original struck through on the page: bundle ₪43 (was ₪129), salary tool ₪26 (was ₪79), freelance tool ₪23 (was ₪69). Bought separately at the launch price that is ₪49 (was ₪148). The badge reads LAUNCH / השקה.
 
@@ -14,6 +14,8 @@ Screenshots: social cards (Open Graph, Twitter, WhatsApp, LinkedIn) use [`previe
 | --- | --- |
 | `index.html` | Landing, why-us sections, FAQ, share links, and local email capture (`#lead`) |
 | `why/` | The full case: why us, problem and outcome, comparison with a free calculator, FAQ |
+| `why-us/` | Why these calculators: live formulas, Israel heuristics, offline files. Sale prices ₪26 / ₪23 / ₪43. English default. |
+| `osek-patur-vs-murshah/` | Hebrew-first explainer of how the freelance calculator treats osek patur vs murshe. Not tax or legal advice. |
 | `salary-negotiator/` | Salary brief: presets, two offers, bonus, editable counter ladder |
 | `freelance-rate/` | Freelance quote: presets, utilization stress, package builder, proposal clauses |
 | `404.html` | Not-found page (EN default, HE toggle); nested misses still link back under `/shoot/` |

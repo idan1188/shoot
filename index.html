@@ -151,6 +151,14 @@
               "@type": "Answer",
               "text": "Three numbers and a counter ladder. What to say when they push back. Send-ready messages. An offline file. Israel-focused."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "How does osek patur vs murshe change a freelance quote?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The freelance calculator uses a rough ×1.28 uplift for osek patur (no VAT line) and ×1.35 before VAT for osek murshe. Its illustration adds 17% VAT on the invoice and does not treat that as income. That is a pricing heuristic, not tax advice. The explainer is the osek patur vs murshe page, and the next step is the live freelance calculator."
+            }
           }
         ]
       }
@@ -618,6 +626,8 @@
       <div class="nav-links" id="navLinks">
         <a href="#tools" data-i18n="navTools">Tools</a>
         <a href="./why/" data-i18n="navWhy">Why us</a>
+        <a href="./why-us/" data-i18n="navFit">Why these tools</a>
+        <a href="./osek-patur-vs-murshah/" data-i18n="navOsek">Osek guide</a>
         <a href="#bundle" data-i18n="navPricing">Pricing</a>
         <a href="#faq" data-i18n="navFaq">FAQ</a>
         <a href="#lead" data-i18n="navEmail">Email</a>
@@ -692,7 +702,7 @@
         <div class="band-rule" aria-hidden="true"></div>
         <div class="section-head reveal">
           <h2 data-i18n="whyH">Why us — not another calculator</h2>
-          <p><a href="./why/" data-i18n="whyMore">Read the full case</a></p>
+          <p><a href="./why/" data-i18n="whyMore">Read the full case</a> · <a href="./why-us/" data-i18n="navFit">Why these tools</a></p>
         </div>
         <ol class="why-list">
           <li class="reveal d1"><strong data-i18n="w1t">A position, not an average</strong><span data-i18n="w1d">Ask, target, and walk-away, plus a reason and leverage.</span></li>
@@ -901,6 +911,10 @@
           <summary data-i18n="q6">What a free calculator won’t give you?</summary>
           <p data-i18n="a6">Three numbers and a counter ladder. What to say when they push back. Send-ready messages. An offline file. Israel-focused.</p>
         </details>
+        <details>
+          <summary data-i18n="q7">How does osek patur vs murshe change a freelance quote?</summary>
+          <p data-i18n-html="a7html">The freelance calculator uses a rough ×1.28 uplift for osek patur (no VAT line) and ×1.35 before VAT for osek murshe. Its illustration adds 17% VAT on the invoice and does not treat that as income. That is a pricing heuristic, not tax advice. Read <a href="./osek-patur-vs-murshah/">osek patur vs murshe</a>, then run your numbers in the <a href="./freelance-rate/">live calculator</a>.</p>
+        </details>
       </section>
 
       <section class="section reveal" id="lead" aria-label="Email for a purchase link" data-i18n-aria="leadAria">
@@ -933,11 +947,13 @@
       <div class="links">
         <a href="#tools" data-i18n="navTools">Tools</a>
         <a href="./why/" data-i18n="navWhy">Why us</a>
+        <a href="./why-us/" data-i18n="navFit">Why these tools</a>
         <a href="#bundle" data-i18n="navPricing">Pricing</a>
         <a href="#faq" data-i18n="navFaq">FAQ</a>
         <a href="#disclosure" data-i18n="footDisc">Disclosure</a>
         <a href="./salary-negotiator/" data-i18n="footSal">Salary negotiation</a>
         <a href="./freelance-rate/" data-i18n="footFr">Freelance rate</a>
+        <a href="./osek-patur-vs-murshah/" data-i18n="footOsek">Osek patur vs murshe</a>
       </div>
       <p data-i18n="footCopy">Career Tools IL · © 2026 · Digital tools for Israel · Not professional advice</p>
     </div>
@@ -955,6 +971,8 @@
         menu: "Menu",
         navTools: "Tools",
         navWhy: "Why us",
+        navFit: "Why these tools",
+        navOsek: "Osek guide",
         navPricing: "Pricing",
         navFaq: "FAQ",
         navEmail: "Email",
@@ -1060,6 +1078,9 @@
         a5: "Private — in the browser, offline after download, no tracking. Calculations stay on your machine. The email you leave is stored only in your browser.",
         q6: "What a free calculator won’t give you?",
         a6: "Three numbers and a counter ladder. What to say when they push back. Send-ready messages. An offline file. Israel-focused.",
+        q7: "How does osek patur vs murshe change a freelance quote?",
+        a7: "The freelance calculator uses a rough ×1.28 uplift for osek patur (no VAT line) and ×1.35 before VAT for osek murshe. Its illustration adds 17% VAT on the invoice and does not treat that as income. That is a pricing heuristic, not tax advice. The explainer is the osek patur vs murshe page, and the next step is the live freelance calculator.",
+        a7html: "The freelance calculator uses a rough ×1.28 uplift for osek patur (no VAT line) and ×1.35 before VAT for osek murshe. Its illustration adds 17% VAT on the invoice and does not treat that as income. That is a pricing heuristic, not tax advice. Read <a href=\"./osek-patur-vs-murshah/\">osek patur vs murshe</a>, then run your numbers in the <a href=\"./freelance-rate/\">live calculator</a>.",
         leadAria: "Email for a purchase link",
         leadH: "Get the bundle by email",
         leadP: "We save the address in your browser and show a confirmation. We follow up with a purchase link for the Career Tools IL bundle — <strong>₪43</strong> <s>₪129</s>. No spam.",
@@ -1073,6 +1094,7 @@
         footDisc: "Disclosure",
         footSal: "Salary negotiation",
         footFr: "Freelance rate",
+        footOsek: "Osek patur vs murshe",
         footCopy: "Career Tools IL · © 2026 · Digital tools for Israel · Not professional advice",
         ldSite: "Know the number before you say it. Launch offer: bundle ₪43 (was ₪129). Estimates, not advice.",
         ldSal: "Salary negotiation calculator",
@@ -1092,6 +1114,8 @@
         menu: "תפריט",
         navTools: "הכלים",
         navWhy: "למה אנחנו",
+        navFit: "למה הכלים",
+        navOsek: "מדריך עוסק",
         navPricing: "תמחור",
         navFaq: "שאלות",
         navEmail: "מייל",
@@ -1197,6 +1221,9 @@
         a5: "פרטיות — בדפדפן, אופליין אחרי הורדה, בלי מעקב. החישוב נשאר אצלך. המייל נשמר רק בדפדפן.",
         q6: "מה מחשבון חינמי לא נותן לך?",
         a6: "שלושה מספרים וסולם נגד. מה לומר כשדוחפים חזרה. הודעות מוכנות לשליחה. קובץ אופליין. ממוקד בישראל.",
+        q7: "איך עוסק פטור מול מורשה משנה הצעת פרילנס?",
+        a7: "מחשבון הפרילנס משתמש בתוספת גסה של ×1.28 לעוסק פטור (בלי שורת מע״מ) וב־×1.35 לפני מע״מ לעוסק מורשה. ההמחשה מוסיפה 17% מע״מ על החשבונית ולא מתייחסת לזה כהכנסה. זו היוריסטיקת תמחור, לא ייעוץ מס. ההסבר בעמוד עוסק פטור מול מורשה, והשלב הבא הוא המחשבון החי.",
+        a7html: "מחשבון הפרילנס משתמש בתוספת גסה של ×1.28 לעוסק פטור (בלי שורת מע״מ) וב־×1.35 לפני מע״מ לעוסק מורשה. ההמחשה מוסיפה 17% מע״מ על החשבונית ולא מתייחסת לזה כהכנסה. זו היוריסטיקת תמחור, לא ייעוץ מס. קראו את <a href=\"./osek-patur-vs-murshah/\">עוסק פטור מול מורשה</a>, ואז הריצו את המספרים ב<a href=\"./freelance-rate/\">מחשבון החי</a>.",
         leadAria: "השארת מייל לקישור רכישה",
         leadH: "קבלו את החבילה במייל",
         leadP: "נשמור את הכתובת בדפדפן ונציג אישור. נחזור עם קישור רכישה לחבילת Career Tools IL — <strong>₪43</strong> <s>₪129</s>. בלי ספאם.",
@@ -1210,6 +1237,7 @@
         footDisc: "גילוי נאות",
         footSal: "משא ומתן לשכר",
         footFr: "תעריף פרילנס",
+        footOsek: "עוסק פטור מול מורשה",
         footCopy: "Career Tools IL · © 2026 · כלים דיגיטליים לישראל · לא ייעוץ מקצועי",
         ldSite: "תדע את המספר לפני שאתה אומר אותו. הצעת השקה: באנדל ₪43 במקום ₪129. הערכות — לא ייעוץ.",
         ldSal: "מחשבון משא ומתן לשכר",
@@ -1304,7 +1332,7 @@
             "@type": "FAQPage",
             inLanguage: code,
             url: "https://idan1188.github.io/shoot/#faq",
-            mainEntity: [1, 2, 3, 4, 5, 6].map(function (i) {
+            mainEntity: [1, 2, 3, 4, 5, 6, 7].map(function (i) {
               return {
                 "@type": "Question",
                 name: d["q" + i],
