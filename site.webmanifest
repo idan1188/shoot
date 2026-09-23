@@ -12,9 +12,17 @@
   "icons": [
     {
       "src": "./preview.png",
-      "sizes": "512x512",
+      "sizes": "1280x1600",
       "type": "image/png",
       "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "./preview.png",
+      "sizes": "1280x1600",
+      "type": "image/png",
+      "label": "Career Tools IL — מחשבון שכר ומחשבון תעריף פרילנס"
     }
   ]
 }
