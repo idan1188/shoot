@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Salary brief: ask, target, walk-away | Career Tools IL</title>
-  <meta name="description" content="A salary brief for Israel: ask, target, and walk-away, with a counter ladder, leverage score, and language you can send. Illustrative, not pay advice. Pro on sale for ₪26 (was ₪79)." />
+  <meta name="description" content="A salary brief for Israel: ask, target, and walk-away, with a counter ladder, leverage score, and language you can send. Illustrative, not pay advice. Launch offer: ₪26 (was ₪79)." />
   <meta name="theme-color" content="#0c0e12" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://idan1188.github.io/shoot/salary-negotiator/" />
@@ -19,7 +19,7 @@
   <meta property="og:locale:alternate" content="he_IL" />
   <meta property="og:site_name" content="Career Tools IL" />
   <meta property="og:title" content="Salary brief: ask, target, walk-away | Career Tools IL" />
-  <meta property="og:description" content="A salary brief for Israel: ask, target, and walk-away, with a counter ladder, leverage score, and language you can send. Illustrative, not pay advice. Pro on sale for ₪26 (was ₪79)." />
+  <meta property="og:description" content="A salary brief for Israel: ask, target, and walk-away, with a counter ladder, leverage score, and language you can send. Illustrative, not pay advice. Launch offer: ₪26 (was ₪79)." />
   <meta property="og:url" content="https://idan1188.github.io/shoot/salary-negotiator/" />
   <meta property="og:image" content="https://idan1188.github.io/shoot/preview.png" />
   <meta property="og:image:type" content="image/png" />
@@ -28,11 +28,11 @@
   <meta property="og:image:alt" content="Career Tools IL salary brief" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Salary brief: ask, target, walk-away | Career Tools IL" />
-  <meta name="twitter:description" content="A salary brief for Israel: ask, target, and walk-away, with a counter ladder, leverage score, and language you can send. Illustrative, not pay advice. Pro on sale for ₪26 (was ₪79)." />
+  <meta name="twitter:description" content="A salary brief for Israel: ask, target, and walk-away, with a counter ladder, leverage score, and language you can send. Illustrative, not pay advice. Launch offer: ₪26 (was ₪79)." />
   <meta name="twitter:image" content="https://idan1188.github.io/shoot/preview.png" />
   <meta name="twitter:image:alt" content="Career Tools IL salary brief" />
   <script type="application/ld+json" id="ld-main">
-  {"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Salary negotiation calculator","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"en","url":"https://idan1188.github.io/shoot/salary-negotiator/","offers":{"@type":"Offer","price":"26","priceCurrency":"ILS","availability":"https://schema.org/InStock","url":"https://idan1188.github.io/shoot/#lead","description":"Sale price. Original price 79 ILS."},"isPartOf":{"@type":"WebSite","name":"Career Tools IL","url":"https://idan1188.github.io/shoot/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Career Tools IL","item":"https://idan1188.github.io/shoot/"},{"@type":"ListItem","position":2,"name":"Salary negotiation calculator","item":"https://idan1188.github.io/shoot/salary-negotiator/"}]}]}
+  {"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Salary negotiation calculator","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"en","url":"https://idan1188.github.io/shoot/salary-negotiator/","offers":{"@type":"Offer","price":"26","priceCurrency":"ILS","availability":"https://schema.org/InStock","url":"https://idan1188.github.io/shoot/#lead","description":"Launch offer. Original price 79 ILS."},"isPartOf":{"@type":"WebSite","name":"Career Tools IL","url":"https://idan1188.github.io/shoot/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Career Tools IL","item":"https://idan1188.github.io/shoot/"},{"@type":"ListItem","position":2,"name":"Salary negotiation calculator","item":"https://idan1188.github.io/shoot/salary-negotiator/"}]}]}
   </script>
   <script>
   (function () {
@@ -116,6 +116,10 @@
     .hint { color: var(--faint); font-size: .75rem; margin: 8px 0 0; }
     .check { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid var(--line); color: var(--text); font-size: .88rem; cursor: pointer; }
     .check input { margin-top: 3px; accent-color: #c6a56d; }
+    .presets { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+    .chip { background: var(--bg); border: 1px solid var(--line); color: var(--muted); border-radius: 999px; padding: 6px 10px; font: inherit; font-size: .75rem; font-weight: 600; cursor: pointer; }
+    .chip:hover, .chip.on { color: var(--text); border-color: #4a4336; background: #1c1914; }
+    input[type="text"] { width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 7px; padding: 10px 12px; font: inherit; font-size: .95rem; }
     .summary {
       position: sticky; top: 62px; max-height: calc(100vh - 78px); overflow: auto;
       background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px;
@@ -236,6 +240,7 @@
           <span class="lang-sep" aria-hidden="true">|</span>
           <button type="button" data-lang="he" aria-pressed="false">HE</button>
         </div>
+        <a class="text-link" href="../why/" data-i18n="whyLink">Why us</a>
         <a class="text-link" href="../#tools" data-i18n="allTools">All tools</a>
       </div>
     </div>
@@ -274,6 +279,11 @@
       <div>
         <section class="card reveal" id="sec-inputs">
           <h2 data-i18n="inH">01 · The offer</h2>
+          <div class="presets" role="group" aria-label="Presets" data-i18n-aria="presetAria">
+            <button type="button" class="chip" data-preset="first" data-i18n="preFirst">First offer</button>
+            <button type="button" class="chip" data-preset="senior" data-i18n="preSenior">Senior, with proof</button>
+            <button type="button" class="chip" data-preset="below" data-i18n="preBelow">Offer under current</button>
+          </div>
           <div class="row2">
             <div>
               <label for="current" data-i18n="labCurrent">Current gross (₪/month)</label>
@@ -320,6 +330,20 @@
             <option value="south" data-i18n="citySouth">Be'er Sheva / south (×0.95)</option>
           </select>
           <p class="hint" data-i18n="cityHint">Cost-of-living factors are a rough proxy, not an official index. The brief updates as you type.</p>
+          <details class="method" style="margin-top:12px">
+            <summary data-i18n="advSum">Second offer and a one-time bonus</summary>
+            <div class="row2">
+              <div>
+                <label for="offerB" data-i18n="labOfferB">Offer B, gross (₪/month)</label>
+                <input type="number" id="offerB" min="0" step="500" value="0" inputmode="numeric" />
+              </div>
+              <div>
+                <label for="bonus" data-i18n="labBonus">Signing bonus, once (₪)</label>
+                <input type="number" id="bonus" min="0" step="1000" value="0" inputmode="numeric" />
+              </div>
+            </div>
+            <p class="hint" data-i18n="advHint">Offer B uses the same leverage. The bonus is cash once. It is not folded into the monthly ask.</p>
+          </details>
         </section>
 
         <section class="card reveal" id="sec-levers">
@@ -335,6 +359,27 @@
 
         <section class="card reveal" id="sec-language">
           <h2 data-i18n="scrH">03 · Language</h2>
+          <p class="hint" style="margin-top:0" data-i18n="noteH">Ladder lines. Leave blank to keep the default.</p>
+          <div class="row2">
+            <div>
+              <label for="noteOpen" data-i18n="labN1">Open</label>
+              <input type="text" id="noteOpen" data-i18n-placeholder="phN1" placeholder="Say it once, then wait." />
+            </div>
+            <div>
+              <label for="noteMid" data-i18n="labN2">Concede</label>
+              <input type="text" id="noteMid" data-i18n-placeholder="phN2" placeholder="If they move, meet them here." />
+            </div>
+          </div>
+          <div class="row2">
+            <div>
+              <label for="noteLand" data-i18n="labN3">Land</label>
+              <input type="text" id="noteLand" data-i18n-placeholder="phN3" placeholder="Acceptable if the writing matches." />
+            </div>
+            <div>
+              <label for="noteStop" data-i18n="labN4">Stop</label>
+              <input type="text" id="noteStop" data-i18n-placeholder="phN4" placeholder="Below this, thank them and stop." />
+            </div>
+          </div>
           <div class="script reveal">
             <header><h3 data-i18n="scrWa">First reply</h3><button type="button" class="btn" data-copy="waMsg" data-i18n="copy">Copy</button></header>
             <pre id="waMsg"></pre>
@@ -353,7 +398,7 @@
             <div class="locked-cta">
               <p data-i18n="proBlurb">Pro adds the live-call script. The demo already includes the brief, the ladder, and the three messages above.</p>
               <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-                <span class="sale-flag" data-i18n="sale">SALE</span>
+                <span class="sale-flag" data-i18n="sale">LAUNCH</span>
                 <span class="price-now">₪26</span>
                 <s class="price-was">₪79</s>
                 <a class="btn disabled" id="payCta" href="../#lead" aria-disabled="true" tabindex="-1" data-i18n="proCta">Pro soon · leave your email</a>
@@ -383,9 +428,9 @@
     var I18N = {
       en: {
         title: "Salary brief: ask, target, walk-away | Career Tools IL",
-        description: "A salary brief for Israel: ask, target, and walk-away, with a counter ladder, leverage score, and language you can send. Illustrative, not pay advice. Pro on sale for ₪26 (was ₪79).",
+        description: "A salary brief for Israel: ask, target, and walk-away, with a counter ladder, leverage score, and language you can send. Illustrative, not pay advice. Launch offer: ₪26 (was ₪79).",
         ogAlt: "Career Tools IL salary brief",
-        langLabel: "Language", allTools: "All tools", crumbsLabel: "Breadcrumb", stepsLabel: "Sections",
+        langLabel: "Language", whyLink: "Why us", allTools: "All tools", crumbsLabel: "Breadcrumb", stepsLabel: "Sections",
         crumb: "Salary brief", share: "Share", shareWa: "WhatsApp", shareLi: "LinkedIn",
         shareCopy: "Copy link", shareCopied: "Link copied", shareCopiedShort: "Copied",
         kicker: "Salary brief", h1: "Ask, target, and walk-away.",
@@ -394,6 +439,12 @@
         inH: "01 · The offer", labCurrent: "Current gross (₪/month)", labOffer: "Offer, gross (₪/month)",
         labYears: "Relevant years", labSen: "Seniority", labRole: "Role family", labCity: "City / area",
         cityHint: "Cost-of-living factors are a rough proxy, not an official index. The brief updates as you type.",
+        presetAria: "Presets", preFirst: "First offer", preSenior: "Senior, with proof", preBelow: "Offer under current",
+        advSum: "Second offer and a one-time bonus", labOfferB: "Offer B, gross (₪/month)", labBonus: "Signing bonus, once (₪)",
+        advHint: "Offer B uses the same leverage. The bonus is cash once. It is not folded into the monthly ask.",
+        noteH: "Ladder lines. Leave blank to keep the default.",
+        labN1: "Open", labN2: "Concede", labN3: "Land", labN4: "Stop",
+        phN1: "Say it once, then wait.", phN2: "If they move, meet them here.", phN3: "Acceptable if the writing matches.", phN4: "Below this, thank them and stop.",
         senJunior: "Junior", senMid: "Mid", senSenior: "Senior", senLead: "Lead / Principal", senManager: "Manager",
         roleSoftware: "Software / data / product", roleSales: "Sales / BizDev", roleMarketing: "Marketing / content / design",
         roleOps: "Operations / HR / admin", roleFinance: "Finance / legal / compliance", roleHealth: "Health / education", roleService: "Service / support / retail",
@@ -407,17 +458,17 @@
         scrH: "03 · Language", scrWa: "First reply", scrEmail: "Email", scrFollow: "After silence",
         scrAdv: "Call script, including a real competing process", copy: "Copy", copied: "Copied", locked: "Locked",
         proBlurb: "Pro adds the live-call script. The demo already includes the brief, the ladder, and the three messages above.",
-        sale: "SALE", proCta: "Pro soon · leave your email",
+        sale: "LAUNCH", proCta: "Pro soon · leave your email",
         sumKicker: "Recommended case",
         netNote: "“Illustrative net” uses a stepped ratio on gross. It is not Israeli tax, national insurance, or your payslip.",
         copyBrief: "Copy brief", printBrief: "Print", foot1: "Runs locally. Nothing you type is sent. Save this file and it still works.",
-        ldName: "Salary negotiation calculator", ldOffer: "Sale price. Original price 79 ILS."
+        ldName: "Salary negotiation calculator", ldOffer: "Launch offer. Original price 79 ILS."
       },
       he: {
         title: "תדריך שכר: בקשה, יעד, יציאה | Career Tools IL",
-        description: "תדריך שכר לישראל: בקשה, יעד ומספר יציאה, עם סולם נגד, ציון מנופים וניסוח שאפשר לשלוח. להמחשה, לא ייעוץ שכר. Pro במבצע ₪26 (במקום ₪79).",
+        description: "תדריך שכר לישראל: בקשה, יעד ומספר יציאה, עם סולם נגד, ציון מנופים וניסוח שאפשר לשלוח. להמחשה, לא ייעוץ שכר. הצעת השקה: ₪26 (במקום ₪79).",
         ogAlt: "תדריך שכר — Career Tools IL",
-        langLabel: "שפה", allTools: "כל הכלים", crumbsLabel: "פירורי לחם", stepsLabel: "חלקים",
+        langLabel: "שפה", whyLink: "למה אנחנו", allTools: "כל הכלים", crumbsLabel: "פירורי לחם", stepsLabel: "חלקים",
         crumb: "תדריך שכר", share: "שתפו", shareWa: "וואטסאפ", shareLi: "לינקדאין",
         shareCopy: "העתקת קישור", shareCopied: "הקישור הועתק", shareCopiedShort: "הועתק",
         kicker: "תדריך שכר", h1: "בקשה, יעד, ומספר יציאה.",
@@ -426,6 +477,12 @@
         inH: "01 · ההצעה", labCurrent: "שכר נוכחי, ברוטו (₪/חודש)", labOffer: "הצעה, ברוטו (₪/חודש)",
         labYears: "שנות ניסיון רלוונטי", labSen: "בכירות", labRole: "משפחת תפקיד", labCity: "עיר / אזור",
         cityHint: "מכפילי יוקר המחיה הם קירוב, לא מדד רשמי. התדריך מתעדכן תוך כדי הקלדה.",
+        presetAria: "הגדרות מוכנות", preFirst: "הצעה ראשונה", preSenior: "סיניור, עם הוכחה", preBelow: "הצעה מתחת לנוכחי",
+        advSum: "הצעה שנייה ובונוס חד־פעמי", labOfferB: "הצעה ב׳, ברוטו (₪/חודש)", labBonus: "בונוס חתימה, פעם אחת (₪)",
+        advHint: "הצעה ב׳ נמדדת באותו מינוף. הבונוס הוא מזומן פעם אחת. הוא לא נכנס לבקשה החודשית.",
+        noteH: "שורות הסולם. השאירו ריק כדי לשמור על ברירת המחדל.",
+        labN1: "פתיחה", labN2: "ויתור", labN3: "נחיתה", labN4: "עצירה",
+        phN1: "אומרים פעם אחת, ואז שותקים.", phN2: "אם זזים — נפגשים כאן.", phN3: "מתאים אם הכתב תואם.", phN4: "מתחת לזה מודים ועוצרים.",
         senJunior: "ג׳וניור", senMid: "מיד", senSenior: "סיניור", senLead: "ליד / פרינסיפל", senManager: "מנהל/ת",
         roleSoftware: "הנדסת תוכנה / דאטה / פרודקט", roleSales: "מכירות / BizDev", roleMarketing: "שיווק / תוכן / עיצוב",
         roleOps: "תפעול / HR / אדמין", roleFinance: "כספים / משפטים / רגולציה", roleHealth: "בריאות / חינוך", roleService: "שירות / תמיכה / קמעונאות",
@@ -439,11 +496,11 @@
         scrH: "03 · ניסוח", scrWa: "תגובה ראשונה", scrEmail: "מייל", scrFollow: "אחרי שתיקה",
         scrAdv: "סקריפט שיחה, כולל תהליך מתחרה אמיתי", copy: "העתק", copied: "הועתק", locked: "נעול",
         proBlurb: "Pro מוסיף סקריפט לשיחה חיה. הדמו כבר כולל את התדריך, הסולם ושלוש ההודעות למעלה.",
-        sale: "מבצע", proCta: "Pro בקרוב · השאירו מייל",
+        sale: "השקה", proCta: "Pro בקרוב · השאירו מייל",
         sumKicker: "התרחיש המומלץ",
         netNote: "«נטו להמחשה» הוא יחס מדורג על הברוטו. זה לא מס ישראלי, לא ביטוח לאומי, ולא תלוש השכר.",
         copyBrief: "העתיקו תדריך", printBrief: "הדפסה", foot1: "רץ מקומית. מה שמזינים לא נשלח. שמירת הקובץ מספיקה כדי להמשיך לעבוד.",
-        ldName: "מחשבון משא ומתן לשכר", ldOffer: "מחיר מבצע. המחיר המקורי 79 ש״ח."
+        ldName: "מחשבון משא ומתן לשכר", ldOffer: "הצעת השקה. המחיר המקורי 79 ש״ח."
       }
     };
     window.CTIL_I18N = I18N;
@@ -472,6 +529,7 @@
         try { localStorage.setItem("ctil_lang", lang); } catch (e) {}
         document.querySelectorAll("[data-i18n]").forEach(function (el) { var k = el.getAttribute("data-i18n"); if (d[k] != null) el.textContent = d[k]; });
         document.querySelectorAll("[data-i18n-aria]").forEach(function (el) { var k = el.getAttribute("data-i18n-aria"); if (d[k] != null) el.setAttribute("aria-label", d[k]); });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) { var k = el.getAttribute("data-i18n-placeholder"); if (d[k] != null) el.setAttribute("placeholder", d[k]); });
         document.title = d.title;
         setMeta("description", d.description); setMeta("twitter:title", d.title); setMeta("twitter:description", d.description); setMeta("twitter:image:alt", d.ogAlt);
         setProp("og:title", d.title); setProp("og:description", d.description); setProp("og:image:alt", d.ogAlt);
@@ -559,8 +617,15 @@
         years: Number($("years").value) || 0,
         seniority: $("seniority").value,
         role: $("role").value,
-        city: $("city").value
+        city: $("city").value,
+        offerB: Number($("offerB").value) || 0,
+        bonus: Number($("bonus").value) || 0
       };
+    }
+    function noteLine(id, fallback) {
+      var node = $(id);
+      var v = node && node.value.trim();
+      return v || fallback;
     }
     function compute(p) {
       var city = CITY[p.city] || CITY.haifa;
@@ -731,6 +796,28 @@
       body.appendChild(el("p", "why", why));
       body.appendChild(rangeBar(p, s));
       body.appendChild(matrix(sc, key));
+      if (p.offerB > 0) {
+        var pB = { current: p.current, offer: p.offerB, years: p.years, seniority: p.seniority, role: p.role, city: p.city };
+        var sB = scenarios(compute(pB))[pick(total, pB)];
+        var cmp = el("table", "matrix");
+        var ch = el("tr");
+        [he() ? "שתי הצעות" : "Two offers", he() ? "א׳" : "A", he() ? "ב׳" : "B"].forEach(function (name) { ch.appendChild(el("th", null, name)); });
+        cmp.appendChild(ch);
+        [[he() ? "בקשה" : "Ask", s.ask, sB.ask], [he() ? "יעד" : "Target", s.target, sB.target], [he() ? "יציאה" : "Walk-away", s.walk, sB.walk]].forEach(function (row) {
+          var tr = el("tr");
+          tr.appendChild(el("td", null, row[0]));
+          tr.appendChild(el("td", null, nis(row[1])));
+          tr.appendChild(el("td", null, nis(row[2])));
+          cmp.appendChild(tr);
+        });
+        body.appendChild(cmp);
+        body.appendChild(el("p", "why", sB.target > s.target
+          ? (he() ? "היעד גבוה יותר בהצעה ב׳, עם אותו מינוף." : "The target is higher on offer B, with the same leverage.")
+          : (he() ? "היעד גבוה יותר בהצעה א׳, עם אותו מינוף." : "The target is higher on offer A, with the same leverage.")));
+      }
+      if (p.bonus > 0) {
+        body.appendChild(el("p", "why", (he() ? "שנה ראשונה ביעד, כולל בונוס חד־פעמי: " : "First year at the target, including the one-time bonus: ") + nis(s.target * 12 + p.bonus)));
+      }
 
       var net = el("table", "matrix");
       var nr = el("tr");
@@ -751,16 +838,16 @@
       var ladder = el("ol", "ladder");
       var steps = he()
         ? [
-          ["פתיחה", s.ask, "אומרים פעם אחת, ואז שותקים."],
-          ["ויתור", mid, "אם זזים — נפגשים כאן. לא פעמיים באותה פגישה."],
-          ["נחיתה", s.target, "מתאים אם מה שסוכם בכתב תואם את השיחה."],
-          ["עצירה", s.walk, "מתחת לזה מודים ומשאירים את המספר על השולחן."]
+          ["פתיחה", s.ask, noteLine("noteOpen", "אומרים פעם אחת, ואז שותקים.")],
+          ["ויתור", mid, noteLine("noteMid", "אם זזים — נפגשים כאן. לא פעמיים באותה פגישה.")],
+          ["נחיתה", s.target, noteLine("noteLand", "מתאים אם מה שסוכם בכתב תואם את השיחה.")],
+          ["עצירה", s.walk, noteLine("noteStop", "מתחת לזה מודים ומשאירים את המספר על השולחן.")]
         ]
         : [
-          ["Open", s.ask, "Say it once, then wait."],
-          ["Concede", mid, "If they move, meet them here. Not twice in the same meeting."],
-          ["Land", s.target, "Acceptable if the written package matches the talk."],
-          ["Stop", s.walk, "Below this, thank them and leave the number on the table."]
+          ["Open", s.ask, noteLine("noteOpen", "Say it once, then wait.")],
+          ["Concede", mid, noteLine("noteMid", "If they move, meet them here. Not twice in the same meeting.")],
+          ["Land", s.target, noteLine("noteLand", "Acceptable if the written package matches the talk.")],
+          ["Stop", s.walk, noteLine("noteStop", "Below this, thank them and leave the number on the table.")]
         ];
       steps.forEach(function (st) {
         var li = el("li");
@@ -834,9 +921,33 @@
     });
     $("printBrief").addEventListener("click", function () { window.print(); });
     $("payCta").addEventListener("click", function (e) { e.preventDefault(); location.href = "../#lead"; });
-    ["current", "offer", "years", "seniority", "role", "city"].forEach(function (id) {
-      $(id).addEventListener("input", render);
-      $(id).addEventListener("change", render);
+    ["current", "offer", "years", "seniority", "role", "city", "offerB", "bonus", "noteOpen", "noteMid", "noteLand", "noteStop"].forEach(function (id) {
+      var node = $(id);
+      if (!node) return;
+      node.addEventListener("input", render);
+      node.addEventListener("change", render);
+    });
+    var PRESETS = {
+      first: { current: 16000, offer: 18500, years: 2, seniority: "junior", role: "software", city: "tlv", levers: [] },
+      senior: { current: 28000, offer: 32000, years: 7, seniority: "senior", role: "software", city: "tlv", levers: ["impact", "scarce", "writing"] },
+      below: { current: 24000, offer: 22000, years: 5, seniority: "mid", role: "ops", city: "haifa", levers: ["gap"] }
+    };
+    document.querySelectorAll("[data-preset]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var p = PRESETS[btn.getAttribute("data-preset")];
+        if (!p) return;
+        $("current").value = p.current;
+        $("offer").value = p.offer;
+        $("years").value = p.years;
+        $("seniority").value = p.seniority;
+        $("role").value = p.role;
+        $("city").value = p.city;
+        document.querySelectorAll("[data-lev]").forEach(function (box) {
+          box.checked = p.levers.indexOf(box.getAttribute("data-lev")) >= 0;
+        });
+        document.querySelectorAll("[data-preset]").forEach(function (b) { b.classList.toggle("on", b === btn); });
+        render();
+      });
     });
     document.querySelectorAll("[data-lev]").forEach(function (box) { box.addEventListener("change", render); });
     var secs = ["sec-inputs", "sec-levers", "sec-language"];
