@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Career Tools IL | מחשבון שכר + תעריף פרילנס בעברית</title>
+  <meta name="description" content="שני כלים אינטראקטיביים בעברית: מחשבון משא ומתן לשכר ומחשבון תעריף פרילנס. נסו חינם בדפדפן — חבילה מלאה ₪129. RTL, בלי התקנה." />
+  <meta name="theme-color" content="#0b1220" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Career Tools IL" />
+  <link rel="canonical" href="https://idan1188.github.io/shoot/" />
+  <link rel="manifest" href="./site.webmanifest" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="he_IL" />
+  <meta property="og:site_name" content="Career Tools IL" />
+  <meta property="og:title" content="Career Tools IL | מחשבון שכר + תעריף פרילנס" />
+  <meta property="og:description" content="שני כלים אינטראקטיביים בעברית: משא ומתן לשכר ותעריף פרילנס. נסו חינם — חבילה ₪129." />
+  <meta property="og:url" content="https://idan1188.github.io/shoot/" />
+  <meta property="og:image" content="https://idan1188.github.io/shoot/preview.png" />
+  <meta property="og:image:alt" content="Career Tools IL — תצוגה מקדימה" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Career Tools IL | מחשבון שכר + תעריף פרילנס" />
+  <meta name="twitter:description" content="כלים אינטראקטיביים בעברית לשכר ותעריף פרילנס. נסו חינם — חבילה ₪129." />
+  <meta name="twitter:image" content="https://idan1188.github.io/shoot/preview.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "Career Tools IL",
+        "url": "https://idan1188.github.io/shoot/",
+        "inLanguage": "he-IL",
+        "description": "כלים אינטראקטיביים בעברית למשא ומתן לשכר ותעריף פרילנס"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "מחשבון משא ומתן לשכר",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "inLanguage": "he-IL",
+        "url": "https://idan1188.github.io/shoot/salary-negotiator/",
+        "offers": { "@type": "Offer", "price": "79", "priceCurrency": "ILS" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "מחשבון תעריף פרילנס",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "inLanguage": "he-IL",
+        "url": "https://idan1188.github.io/shoot/freelance-rate/",
+        "offers": { "@type": "Offer", "price": "69", "priceCurrency": "ILS" }
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b1220;
+      --surface: #141e2e;
+      --surface2: #1c2a3f;
+      --border: #2a3d56;
+      --text: #e8eef6;
+      --muted: #8fa3b8;
+      --teal: #3dd6c6;
+      --blue: #5b8cff;
+      --orange: #f0a05a;
+      --ok: #6ee7b7;
+      --warn: #fbbf24;
+      --radius: 16px;
+      --shadow: 0 18px 50px rgba(0,0,0,.4);
+      --font: "Heebo", "Segoe UI", "Rubik", "Arial Hebrew", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background:
+        radial-gradient(1100px 560px at 85% -8%, rgba(61,214,198,.14), transparent),
+        radial-gradient(900px 480px at -5% 30%, rgba(91,140,255,.12), transparent),
+        radial-gradient(700px 400px at 50% 100%, rgba(240,160,90,.08), transparent),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    a { color: var(--teal); }
+    .nav {
+      position: sticky; top: 0; z-index: 40;
+      backdrop-filter: blur(14px);
+      background: rgba(11,18,32,.82);
+      border-bottom: 1px solid rgba(42,61,86,.7);
+    }
+    .nav-inner {
+      max-width: 1120px; margin: 0 auto;
+      padding: 14px 20px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      flex-wrap: wrap;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 800; font-size: 1.05rem; text-decoration: none; color: var(--text);
+    }
+    .logo-mark {
+      width: 34px; height: 34px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--teal), var(--blue));
+      display: grid; place-items: center; font-size: .85rem; color: #0b1220; font-weight: 800;
+    }
+    .nav-links { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .nav-links a {
+      text-decoration: none; color: var(--muted); font-size: .9rem;
+      padding: 8px 12px; border-radius: 999px;
+    }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,.04); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border: none; cursor: pointer; text-decoration: none;
+      font-family: inherit; font-weight: 700; font-size: .95rem;
+      border-radius: 12px; padding: 12px 20px;
+      transition: transform .15s, box-shadow .15s, background .15s;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--teal), var(--blue));
+      color: #0b1220;
+      box-shadow: 0 10px 28px rgba(61,214,198,.25);
+    }
+    .btn-primary:hover { box-shadow: 0 14px 34px rgba(61,214,198,.35); }
+    .btn-ghost {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.04); border-color: var(--muted); }
+    .btn-orange {
+      background: linear-gradient(135deg, #f0a05a, #f0b429);
+      color: #1a1208;
+      box-shadow: 0 10px 28px rgba(240,160,90,.28);
+    }
+    .btn-sm { padding: 10px 16px; font-size: .88rem; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+    /* Hero */
+    .hero {
+      padding: 56px 0 36px;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 36px;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding-top: 36px; }
+    }
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(61,214,198,.1);
+      border: 1px solid rgba(61,214,198,.35);
+      color: var(--teal);
+      padding: 6px 14px; border-radius: 999px;
+      font-size: .8rem; font-weight: 600; margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(1.85rem, 4.2vw, 2.75rem);
+      line-height: 1.2; letter-spacing: -.02em; margin-bottom: 14px;
+    }
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--teal), var(--blue), var(--orange));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .lead { color: var(--muted); font-size: 1.08rem; max-width: 36rem; margin-bottom: 24px; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 22px; }
+    .trust {
+      display: flex; flex-wrap: wrap; gap: 14px 22px;
+      color: var(--muted); font-size: .85rem;
+    }
+    .trust span { display: inline-flex; align-items: center; gap: 6px; }
+    .trust i {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--ok); box-shadow: 0 0 8px var(--ok); display: inline-block;
+    }
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      position: relative; overflow: hidden;
+    }
+    .hero-card::before {
+      content: ""; position: absolute; inset: -40% -20% auto auto;
+      width: 220px; height: 220px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(91,140,255,.25), transparent 70%);
+      pointer-events: none;
+    }
+    .price-label { color: var(--muted); font-size: .82rem; margin-bottom: 4px; }
+    .price-big {
+      font-size: 2.6rem; font-weight: 800; color: var(--ok); line-height: 1;
+      margin-bottom: 4px;
+    }
+    .price-big small { font-size: 1rem; font-weight: 500; color: var(--muted); }
+    .was {
+      color: var(--muted); font-size: .9rem; text-decoration: line-through;
+      margin-bottom: 14px;
+    }
+    .bundle-list { list-style: none; margin: 16px 0 20px; }
+    .bundle-list li {
+      padding: 8px 0; border-bottom: 1px solid rgba(42,61,86,.6);
+      padding-right: 1.35em; position: relative; font-size: .95rem;
+    }
+    .bundle-list li::before {
+      content: "✓"; position: absolute; right: 0; color: var(--ok); font-weight: 700;
+    }
+    .cta-note { font-size: .78rem; color: var(--muted); margin-top: 10px; }
+
+    /* Tools */
+    .section { padding: 48px 0; }
+    .section-head {
+      display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between;
+      gap: 12px; margin-bottom: 22px;
+    }
+    .section-head h2 { font-size: clamp(1.35rem, 3vw, 1.7rem); letter-spacing: -.01em; }
+    .section-head p { color: var(--muted); max-width: 34rem; font-size: .95rem; }
+    .tools {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    @media (max-width: 860px) { .tools { grid-template-columns: 1fr; } }
+    .tool {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex; flex-direction: column;
+    }
+    .tool-top {
+      padding: 18px 18px 12px;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+    }
+    .tool-badge {
+      font-size: .72rem; font-weight: 700; padding: 5px 10px; border-radius: 999px;
+      white-space: nowrap;
+    }
+    .badge-teal {
+      background: rgba(61,214,198,.12); color: var(--teal);
+      border: 1px solid rgba(61,214,198,.35);
+    }
+    .badge-orange {
+      background: rgba(240,160,90,.12); color: var(--orange);
+      border: 1px solid rgba(240,160,90,.4);
+    }
+    .tool h3 { font-size: 1.15rem; margin-bottom: 6px; }
+    .tool .desc { color: var(--muted); font-size: .9rem; margin-bottom: 10px; }
+    .features {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px;
+    }
+    .chip {
+      font-size: .72rem; color: var(--muted);
+      background: var(--surface2); border: 1px solid var(--border);
+      padding: 4px 9px; border-radius: 999px;
+    }
+    .tool-actions {
+      display: flex; flex-wrap: wrap; gap: 8px; padding: 0 18px 14px;
+    }
+    .preview-frame {
+      border-top: 1px solid var(--border);
+      background: #0a1018;
+      position: relative;
+      height: 280px;
+    }
+    .preview-frame iframe {
+      width: 100%; height: 100%; border: 0;
+      pointer-events: none;
+      transform: scale(0.55);
+      transform-origin: top right;
+      width: 181.8%;
+      height: 181.8%;
+    }
+    .preview-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(11,18,32,.85) 0%, transparent 45%);
+      display: flex; align-items: end; justify-content: center;
+      padding: 14px; pointer-events: none;
+    }
+    .preview-overlay span {
+      pointer-events: auto;
+    }
+    .preview-overlay a {
+      pointer-events: auto;
+    }
+
+    /* Pricing strip */
+    .pricing {
+      background: linear-gradient(135deg, rgba(61,214,198,.08), rgba(91,140,255,.08));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 24px;
+      align-items: center;
+    }
+    @media (max-width: 760px) { .pricing { grid-template-columns: 1fr; } }
+    .pricing h2 { margin-bottom: 8px; font-size: 1.4rem; }
+    .pricing p { color: var(--muted); margin-bottom: 14px; }
+    .price-cards { display: grid; gap: 10px; }
+    .p-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    }
+    .p-card.featured {
+      border-color: rgba(61,214,198,.5);
+      box-shadow: 0 0 0 1px rgba(61,214,198,.2);
+    }
+    .p-card strong { display: block; font-size: 1rem; }
+    .p-card span { color: var(--muted); font-size: .8rem; }
+    .p-amt { font-weight: 800; font-size: 1.25rem; color: var(--ok); white-space: nowrap; }
+
+    /* FAQ */
+    .faq { max-width: 760px; }
+    details {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+    }
+    summary {
+      cursor: pointer; font-weight: 600; list-style: none;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--teal); font-size: 1.2rem; font-weight: 400; }
+    details[open] summary::after { content: "−"; }
+    details p { color: var(--muted); font-size: .92rem; margin-top: 10px; }
+
+    /* Disclaimer / footer */
+    .disclaimer {
+      background: rgba(251,191,36,.07);
+      border: 1px solid rgba(251,191,36,.3);
+      color: #f5d78a;
+      padding: 14px 16px;
+      border-radius: var(--radius);
+      font-size: .86rem;
+      margin-top: 28px;
+    }
+    .affiliate {
+      margin-top: 16px;
+      font-size: .8rem;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 48px;
+      padding: 28px 0 40px;
+      color: #64748b;
+      font-size: .8rem;
+      text-align: center;
+    }
+    footer .links { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-bottom: 10px; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
+
+    /* Email capture */
+    .lead-box {
+      margin-top: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 20px;
+      align-items: center;
+    }
+    @media (max-width: 760px) { .lead-box { grid-template-columns: 1fr; } }
+    .lead-box h2 { font-size: 1.25rem; margin-bottom: 8px; }
+    .lead-box p { color: var(--muted); font-size: .92rem; margin-bottom: 0; }
+    .lead-form { display: flex; flex-wrap: wrap; gap: 10px; }
+    .lead-form input[type="email"] {
+      flex: 1 1 200px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: .95rem;
+    }
+    .lead-form input:focus { outline: 2px solid rgba(61,214,198,.45); border-color: var(--teal); }
+    .lead-note { font-size: .75rem; color: var(--muted); margin-top: 8px; }
+
+    .lead-success {
+      display: none;
+      margin-top: 10px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(110,231,183,.12);
+      border: 1px solid rgba(110,231,183,.4);
+      color: var(--ok);
+      font-size: .9rem;
+      font-weight: 600;
+    }
+    .lead-success.show { display: block; }
+    .nav-toggle {
+      display: none;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: .85rem;
+      cursor: pointer;
+    }
+    @media (max-width: 720px) {
+      .nav-toggle { display: inline-flex; }
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 10px 12px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="ניווט ראשי">
+    <div class="nav-inner">
+      <a class="logo" href="#top">
+        <span class="logo-mark">CT</span>
+        Career Tools IL
+      </a>
+      <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">תפריט</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#tools">הכלים</a>
+        <a href="#bundle">חבילה</a>
+        <a href="#faq">שאלות</a>
+        <a href="#lead">מייל</a>
+        <a class="btn btn-primary btn-sm" href="#lead">קבלו קישור רכישה למייל</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <div class="wrap">
+      <section class="hero">
+        <div>
+          <div class="pill">כלים אינטראקטיביים בעברית · RTL · בלי התקנה</div>
+          <h1>שני מחשבונים שעוזרים לכם <span>לדבר מספרים</span> — שכר ותעריף פרילנס</h1>
+          <p class="lead">
+            נסו עכשיו בדפדפן: טווח נגד למשא ומתן, מספר יציאה, תעריף שעתי/יומי והצעת מחיר מוכנה להעתקה.
+            הערכות אילוסטרטיביות — לא ייעוץ מס או קריירה.
+          </p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#tools">נסו את הכלים חינם</a>
+            <a class="btn btn-ghost" href="#lead">השאירו מייל לקבלת החבילה · ₪129</a>
+          </div>
+          <div class="trust">
+            <span><i></i> עובד אופליין אחרי הורדה</span>
+            <span><i></i> עברית מלאה</span>
+            <span><i></i> בלי חשבון ובלי מעקב</span>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="חבילת Career Tools">
+          <div class="price-label">חבילת Career Tools IL</div>
+          <div class="price-big">₪129 <small>/ חד־פעמי</small></div>
+          <div class="was">₪79 + ₪69 = ₪148 בנפרד</div>
+          <ul class="bundle-list">
+            <li>מחשבון משא ומתן לשכר (גרסת Pro)</li>
+            <li>מחשבון תעריף פרילנס + ייצוא הצעה</li>
+            <li>עדכוני נוסחאות קלים לשנה</li>
+            <li>הורדה מיידית · קבצי HTML</li>
+          </ul>
+          <a class="btn btn-primary" style="width:100%" href="#lead" id="buy-bundle">
+            קבלו קישור רכישה למייל · ₪129
+          </a>
+          <p class="cta-note">השאירו מייל למטה — נשלח אליכם קישור רכישה לחבילה.</p>
+        </aside>
+      </section>
+
+      <section class="section" id="tools">
+        <div class="section-head">
+          <div>
+            <h2>שני כלים · תצוגה חיה</h2>
+            <p>לחצו לפתיחה במסך מלא, או גללו בתצוגה המקדימה למטה.</p>
+          </div>
+        </div>
+
+        <div class="tools">
+          <!-- Salary Negotiator -->
+          <article class="tool">
+            <div class="tool-top">
+              <div>
+                <h3>מחשבון משא ומתן לשכר</h3>
+                <p class="desc">טווח נגד, מספר יציאה, מנופים והודעות מוכנות לוואטסאפ ומייל.</p>
+                <div class="features">
+                  <span class="chip">שכר ברוטו/נטו</span>
+                  <span class="chip">הצעת נגד</span>
+                  <span class="chip">תסריטי שיחה</span>
+                </div>
+              </div>
+              <span class="tool-badge badge-teal">₪79 · בודד</span>
+            </div>
+            <div class="tool-actions">
+              <a class="btn btn-primary btn-sm" href="./salary-negotiator/" target="_blank" rel="noopener">פתחו את הכלי</a>
+              <a class="btn btn-ghost btn-sm" href="#lead">Pro בקרוב · השאירו מייל בדף הבית</a>
+            </div>
+            <div class="preview-frame" aria-hidden="true">
+              <iframe src="./salary-negotiator/index.html" title="תצוגה מקדימה — משא ומתן לשכר" loading="lazy" tabindex="-1"></iframe>
+              <div class="preview-overlay">
+                <a class="btn btn-ghost btn-sm" href="./salary-negotiator/" target="_blank" rel="noopener">פתחו במסך מלא</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Freelance Rate -->
+          <article class="tool">
+            <div class="tool-top">
+              <div>
+                <h3>מחשבון תעריף פרילנס</h3>
+                <p class="desc">שעתי / יומי, חבילות פרויקט והצעת מחיר מוכנה להעתקה ללקוח.</p>
+                <div class="features">
+                  <span class="chip">ימי חופש + מס</span>
+                  <span class="chip">מחירי חבילה</span>
+                  <span class="chip">העתקת הצעה</span>
+                </div>
+              </div>
+              <span class="tool-badge badge-orange">₪69 · בודד</span>
+            </div>
+            <div class="tool-actions">
+              <a class="btn btn-orange btn-sm" href="./freelance-rate/" target="_blank" rel="noopener">פתחו את הכלי</a>
+              <a class="btn btn-ghost btn-sm" href="#lead">Pro בקרוב · השאירו מייל בדף הבית</a>
+            </div>
+            <div class="preview-frame" aria-hidden="true">
+              <iframe src="./freelance-rate/index.html" title="תצוגה מקדימה — תעריף פרילנס" loading="lazy" tabindex="-1"></iframe>
+              <div class="preview-overlay">
+                <a class="btn btn-ghost btn-sm" href="./freelance-rate/" target="_blank" rel="noopener">פתחו במסך מלא</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="bundle">
+        <div class="pricing">
+          <div>
+            <h2>למה החבילה משתלמת?</h2>
+            <p>
+              שני הכלים מכסים את שני הצדדים של אותה שיחה: כמה לבקש כשכיר, וכמה לגבות כעצמאי.
+              חבילה אחת = קישור תשלום אחד, הורדה מיידית, וגישה לשני המחשבונים בגרסת Pro.
+            </p>
+            <a class="btn btn-primary" href="#lead">קבלו קישור רכישה למייל · ₪129</a>
+            <p class="cta-note" style="margin-top:12px">מחיר החבילה ₪129 · בודדים: שכר ₪79 / פרילנס ₪69 · השאירו מייל לקבלת קישור</p>
+          </div>
+          <div class="price-cards">
+            <div class="p-card">
+              <div>
+                <strong>מחשבון שכר</strong>
+                <span>בודד</span>
+              </div>
+              <div class="p-amt">₪79</div>
+            </div>
+            <div class="p-card">
+              <div>
+                <strong>תעריף פרילנס</strong>
+                <span>בודד</span>
+              </div>
+              <div class="p-amt">₪69</div>
+            </div>
+            <div class="p-card featured">
+              <div>
+                <strong>חבילת שני הכלים</strong>
+                <span>חיסכון ₪19 · מומלץ</span>
+              </div>
+              <div class="p-amt">₪129</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq" id="faq">
+        <div class="section-head">
+          <div>
+            <h2>שאלות נפוצות</h2>
+            <p>תשובות קצרות לפני רכישה או שימוש.</p>
+          </div>
+        </div>
+
+        <details open>
+          <summary>האם זה ייעוץ מס / שכר / משפטי?</summary>
+          <p>לא. הכלים מציגים הערכות אילוסטרטיביות והיוריסטיקות לדיון עצמי. אין תחליף לרו״ח, יועץ מס, או ייעוץ קריירה מקצועי.</p>
+        </details>
+        <details>
+          <summary>מה מקבלים אחרי תשלום?</summary>
+          <p>קישור להורדת קבצי HTML (שני הכלים בגרסת Pro, או הכלי הבודד שנרכש). עובד בדפדפן — בלי התקנה. השאירו מייל בדף הבית ונקשר אתכם לקישור הרכישה.</p>
+        </details>
+        <details>
+          <summary>אפשר לנסות לפני שקונים?</summary>
+          <p>כן. גרסאות הדמו למעלה פתוחות לשימוש. הרכישה משחררת ייצוא מתקדם, הסרת מגבלות soft, ועדכונים קלים.</p>
+        </details>
+        <details>
+          <summary>למי זה מתאים?</summary>
+          <p>שכירים לפני שיחת שכר / הצעת עבודה, ופרילנסרים שצריכים תעריף שעתי או הצעת מחיר מסודרת בעברית.</p>
+        </details>
+        <details>
+          <summary>האם הנתונים נשמרים אצלכם?</summary>
+          <p>לא. החישובים רצים בדפדפן המקומי שלכם. אנחנו לא אוספים את המספרים שאתם מזינים.</p>
+        </details>
+      </section>
+
+
+      <section class="section" id="lead" aria-label="השארת מייל לקישור רכישה">
+        <div class="lead-box">
+          <div>
+            <h2>השאירו מייל לקבלת החבילה</h2>
+            <p>נשמור את המייל אצלכם בדפדפן ונציג אישור. נתקשר אליכם עם קישור הרכישה לחבילת Career Tools IL (₪129). בלי ספאם.</p>
+          </div>
+          <div>
+            <form class="lead-form" id="leadForm" action="#" method="post">
+              <input type="email" name="email" id="leadEmail" required placeholder="האימייל שלכם" autocomplete="email" dir="ltr" />
+              <button class="btn btn-primary" type="submit">שלחו לי קישור</button>
+            </form>
+            <div class="lead-success" id="leadSuccess" role="status">נתקשר אליכם עם קישור הרכישה</div>
+            <p class="lead-note">המייל נשמר מקומית בדפדפן שלכם בלבד — לא נשלח לשרת חיצוני כרגע.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="disclaimer" role="note">
+        <strong>הבהרה:</strong>
+        התוצאות הן הערכות בלבד ואינן מהוות ייעוץ מס, ייעוץ פיננסי, ייעוץ תעסוקתי או התחייבות לתוצאה.
+        בדקו תמיד מול מעסיק, לקוח, רו״ח או גורם מוסמך לפני החלטות כספיות.
+      </div>
+
+      <div class="affiliate" id="disclosure">
+        Career Tools IL · כלים אינטראקטיביים בעברית
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="links">
+        <a href="#tools">הכלים</a>
+        <a href="#bundle">תמחור</a>
+        <a href="#faq">שאלות</a>
+        <a href="#disclosure">גילוי נאות</a>
+        <a href="./salary-negotiator/">משא ומתן לשכר</a>
+        <a href="./freelance-rate/">תעריף פרילנס</a>
+      </div>
+      <p>Career Tools IL · © 2026 · כלים דיגיטליים בעברית · לא ייעוץ מקצועי</p>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var toggle = document.getElementById("navToggle");
+    var links = document.getElementById("navLinks");
+    if (toggle && links) {
+      toggle.addEventListener("click", function () {
+        var open = links.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      links.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          links.classList.remove("open");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+    var form = document.getElementById("leadForm");
+    var emailInput = document.getElementById("leadEmail");
+    var success = document.getElementById("leadSuccess");
+    if (form && emailInput && success) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var email = (emailInput.value || "").trim();
+        if (!email) return;
+        try {
+          var list = [];
+          try { list = JSON.parse(localStorage.getItem("ctil_leads") || "[]"); } catch (err) { list = []; }
+          if (!Array.isArray(list)) list = [];
+          list.push({ email: email, at: new Date().toISOString(), source: "career-tools-il" });
+          localStorage.setItem("ctil_leads", JSON.stringify(list));
+          localStorage.setItem("ctil_last_lead", email);
+        } catch (err2) {}
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(email).catch(function () {});
+        }
+        success.classList.add("show");
+        success.textContent = "נתקשר אליכם עם קישור הרכישה";
+        form.reset();
+      });
+    }
+  })();
+  </script>
+</body>
+</html>

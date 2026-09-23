@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://idan1188.github.io/shoot/sitemap.xml

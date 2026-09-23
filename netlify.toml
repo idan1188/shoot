@@ -1,0 +1,43 @@
+# Netlify static publish — Career Tools IL
+# Drop this folder as the site root (or set Base directory to sites/career-tools-il in monorepo).
+
+[build]
+  publish = "."
+  # No build command — pure static HTML
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
+
+[[headers]]
+  for = "/salary-negotiator/*"
+  [headers.values]
+    Cache-Control = "public, max-age=600"
+
+[[headers]]
+  for = "/freelance-rate/*"
+  [headers.values]
+    Cache-Control = "public, max-age=600"
+
+[[redirects]]
+  from = "/salary"
+  to = "/salary-negotiator/"
+  status = 302
+
+[[redirects]]
+  from = "/rate"
+  to = "/freelance-rate/"
+  status = 302
+
+[[redirects]]
+  from = "/freelance"
+  to = "/freelance-rate/"
+  status = 302

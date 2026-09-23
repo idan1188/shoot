@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>מחשבון משא ומתן לשכר | Career Tools IL</title>
+  <meta name="description" content="כלי אינטראקטיבי בעברית לחישוב טווח נגד, מספר יציאה, מנופי משא ומתן והודעות מוכנות לוואטסאפ ומייל. הערכות אילוסטרטיביות בלבד." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://idan1188.github.io/shoot/salary-negotiator/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="he_IL" />
+  <meta property="og:site_name" content="Career Tools IL" />
+  <meta property="og:title" content="מחשבון משא ומתן לשכר | Career Tools IL" />
+  <meta property="og:description" content="כלי אינטראקטיבי בעברית לחישוב טווח נגד, מספר יציאה, מנופי משא ומתן והודעות מוכנות לוואטסאפ ומייל. הערכות אילוסטרטיביות בלבד." />
+  <meta property="og:url" content="https://idan1188.github.io/shoot/salary-negotiator/" />
+  <meta property="og:image" content="https://idan1188.github.io/shoot/preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="מחשבון משא ומתן לשכר | Career Tools IL" />
+  <meta name="twitter:description" content="כלי אינטראקטיבי בעברית לחישוב טווח נגד, מספר יציאה, מנופי משא ומתן והודעות מוכנות לוואטסאפ ומייל. הערכות אילוסטרטיביות בלבד." />
+  <meta name="twitter:image" content="https://idan1188.github.io/shoot/preview.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "מחשבון משא ומתן לשכר",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "inLanguage": "he-IL",
+    "url": "https://idan1188.github.io/shoot/salary-negotiator/",
+    "offers": { "@type": "Offer", "price": "79", "priceCurrency": "ILS" },
+    "isPartOf": { "@type": "WebSite", "name": "Career Tools IL", "url": "https://idan1188.github.io/shoot/" }
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --surface: #1a222d;
+      --surface2: #243041;
+      --border: #2e3d52;
+      --text: #e8eef6;
+      --muted: #8fa3b8;
+      --accent: #3dd6c6;
+      --accent2: #5b8cff;
+      --warn: #f0b429;
+      --danger: #ff6b7a;
+      --ok: #5eead4;
+      --radius: 14px;
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --font: "Segoe UI", "Heebo", "Rubik", "Arial Hebrew", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(61,214,198,.12), transparent),
+        radial-gradient(900px 500px at 0% 40%, rgba(91,140,255,.10), transparent),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 28px 18px 80px; }
+    header.app-head {
+      display: flex; flex-wrap: wrap; gap: 16px;
+      align-items: flex-start; justify-content: space-between;
+      margin-bottom: 22px;
+    }
+    .brand h1 {
+      margin: 0 0 6px;
+      font-size: clamp(1.45rem, 3.5vw, 1.9rem);
+      letter-spacing: -.02em;
+    }
+    .brand p { margin: 0; color: var(--muted); font-size: .95rem; max-width: 40rem; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(61,214,198,.12); color: var(--accent);
+      border: 1px solid rgba(61,214,198,.35);
+      padding: 6px 12px; border-radius: 999px; font-size: .78rem; font-weight: 600;
+      white-space: nowrap;
+    }
+    .disclaimer {
+      background: rgba(240,180,41,.08);
+      border: 1px solid rgba(240,180,41,.35);
+      color: #f5d78a;
+      padding: 12px 14px;
+      border-radius: var(--radius);
+      font-size: .86rem;
+      margin-bottom: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    @media (max-width: 820px) { .grid { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card h2 {
+      margin: 0 0 14px;
+      font-size: 1.05rem;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .card h2 .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 10px var(--accent);
+    }
+    label {
+      display: block;
+      font-size: .82rem;
+      color: var(--muted);
+      margin-bottom: 5px;
+      margin-top: 12px;
+    }
+    label:first-of-type { margin-top: 0; }
+    input[type="number"], select {
+      width: 100%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 11px 12px;
+      font-size: 1rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    input:focus, select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(61,214,198,.18);
+    }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 520px) { .row2 { grid-template-columns: 1fr; } }
+    .hint { font-size: .75rem; color: var(--muted); margin-top: 4px; }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    @media (max-width: 640px) { .metrics { grid-template-columns: 1fr; } }
+    .metric {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+    }
+    .metric .lbl { font-size: .75rem; color: var(--muted); margin-bottom: 4px; }
+    .metric .val {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--ok);
+      font-variant-numeric: tabular-nums;
+      direction: ltr;
+      unicode-bidi: plaintext;
+    }
+    .metric.walk .val { color: var(--warn); }
+    .metric.range .val { color: var(--accent2); font-size: 1.05rem; }
+    .levers { display: flex; flex-direction: column; gap: 10px; }
+    .lever {
+      background: linear-gradient(135deg, rgba(61,214,198,.06), rgba(91,140,255,.06));
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+    .lever strong { display: block; margin-bottom: 4px; color: var(--accent); font-size: .92rem; }
+    .lever span { font-size: .88rem; color: var(--text); }
+    .lever .formula {
+      margin-top: 6px;
+      font-size: .72rem;
+      color: var(--muted);
+      font-family: ui-monospace, monospace;
+      direction: ltr;
+      text-align: left;
+      unicode-bidi: plaintext;
+    }
+    .scripts { display: flex; flex-direction: column; gap: 12px; }
+    .script-box {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .script-head {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 10px; padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(0,0,0,.15);
+    }
+    .script-head h3 { margin: 0; font-size: .9rem; }
+    .script-body {
+      padding: 12px;
+      white-space: pre-wrap;
+      font-size: .88rem;
+      min-height: 72px;
+      line-height: 1.6;
+    }
+    .script-box.locked .script-body {
+      filter: blur(4px);
+      user-select: none;
+      pointer-events: none;
+      opacity: .55;
+    }
+    .btn {
+      appearance: none; border: none; cursor: pointer;
+      background: var(--accent); color: #06241f;
+      font-weight: 700; font-family: inherit;
+      border-radius: 9px; padding: 8px 12px; font-size: .8rem;
+      transition: transform .12s, opacity .12s, background .12s;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+    .btn.secondary {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn:disabled, .btn.disabled {
+      opacity: .45; cursor: not-allowed; transform: none;
+      background: var(--surface2); color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .btn.copied { background: #34d399; }
+    .tips {
+      margin-top: 18px;
+    }
+    .tips ul { margin: 0; padding: 0 18px 0 0; }
+    .tips li { margin-bottom: 8px; font-size: .9rem; }
+    .tips li em { color: var(--accent); font-style: normal; }
+    footer.moat {
+      margin-top: 28px;
+      text-align: center;
+      padding: 16px;
+      border-top: 1px dashed var(--border);
+      color: var(--muted);
+      font-size: .8rem;
+    }
+    footer.moat .wm {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      letter-spacing: .02em;
+    }
+    .locked-cta {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      align-items: center; justify-content: space-between;
+      padding: 12px; border-top: 1px solid var(--border);
+      background: rgba(91,140,255,.06);
+    }
+    .locked-cta p { margin: 0; font-size: .82rem; color: var(--muted); flex: 1; min-width: 180px; }
+    .live-note {
+      font-size: .75rem; color: var(--muted); margin-top: 8px;
+    }
+    .empty-state {
+      color: var(--muted); font-size: .9rem; padding: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p style="margin:0 0 12px;font-size:.85rem"><a href="../" style="color:inherit;opacity:.75;text-decoration:none">← Career Tools IL · חזרה לדף הבית</a></p>
+    <header class="app-head">
+      <div class="brand">
+        <h1>מחשבון משא ומתן לשכר</h1>
+        <p>הזינו את ההצעה והרקע שלכם — קבלו טווח נגד, מספר יציאה, מנופים מבוססי נוסחה, והודעות מוכנות בעברית. עובד גם אופליין.</p>
+      </div>
+      <span class="badge">🟢 כלי אינטראקטיבי · לא ערכת PDF</span>
+    </header>
+
+    <div class="disclaimer">
+      <strong>הבהרה:</strong> כל המספרים והטווחים כאן הם <u>היוריסטיקות אילוסטרטיביות</u> לתרגול משא ומתן — לא סטטיסטיקת שכר רשמית, לא ייעוץ משפטי/קריירה, ולא הבטחה לתוצאה. התאימו תמיד למחקר שלכם ולמצב האישי.
+    </div>
+
+    <div class="grid">
+      <!-- INPUTS -->
+      <section class="card" id="inputs">
+        <h2><span class="dot"></span> פרטי ההצעה</h2>
+
+        <div class="row2">
+          <div>
+            <label for="current">שכר נוכחי (ברוטו ₪/חודש)</label>
+            <input type="number" id="current" min="0" step="500" value="18000" inputmode="numeric" />
+          </div>
+          <div>
+            <label for="offer">הצעה שהתקבלה (ברוטו ₪/חודש)</label>
+            <input type="number" id="offer" min="0" step="500" value="21000" inputmode="numeric" />
+          </div>
+        </div>
+
+        <div class="row2">
+          <div>
+            <label for="years">שנות ניסיון רלוונטי</label>
+            <input type="number" id="years" min="0" max="40" step="0.5" value="4" inputmode="decimal" />
+          </div>
+          <div>
+            <label for="seniority">בכירות מבוקשת / נוכחית</label>
+            <select id="seniority">
+              <option value="junior">ג׳וניור</option>
+              <option value="mid" selected>מיד</option>
+              <option value="senior">סיניור</option>
+              <option value="lead">ליד / פרינסיפל</option>
+              <option value="manager">מנהל/ת</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="role">משפחת תפקיד</label>
+        <select id="role">
+          <option value="software" selected>הנדסת תוכנה / דאטה / פרודקט</option>
+          <option value="sales">מכירות / BizDev</option>
+          <option value="marketing">שיווק / תוכן / עיצוב</option>
+          <option value="ops">תפעול / HR / אדמין</option>
+          <option value="finance">כספים / משפטים / רגולציה</option>
+          <option value="health">בריאות / חינוך</option>
+          <option value="service">שירות / תמיכה / קמעונאות</option>
+        </select>
+
+        <label for="city">עיר / אזור (מכפיל יוקר מחיה גס)</label>
+        <select id="city">
+          <option value="tlv" selected>תל אביב / גוש דן (×1.15)</option>
+          <option value="sharon">השרון / מרכז (×1.08)</option>
+          <option value="jerusalem">ירושלים (×1.05)</option>
+          <option value="remote">מרחוק / היברידי ארצי (×1.02)</option>
+          <option value="haifa">חיפה / צפון (×1.00)</option>
+          <option value="south">באר שבע / דרום (×0.95)</option>
+        </select>
+        <p class="hint">המכפילים הם קירוב גס ליוקר מחיה יחסי — לא מדד רשמי.</p>
+
+        <p class="live-note">התוצאות מתעדכנות בזמן אמת כשמזינים.</p>
+      </section>
+
+      <!-- RESULTS -->
+      <section class="card" id="results">
+        <h2><span class="dot"></span> תוצאות (היוריסטיקה)</h2>
+
+        <div class="metrics">
+          <div class="metric range">
+            <div class="lbl">טווח נגד מוצע</div>
+            <div class="val" id="counterRange">—</div>
+          </div>
+          <div class="metric walk">
+            <div class="lbl">מספר יציאה (רצפה)</div>
+            <div class="val" id="walkAway">—</div>
+          </div>
+          <div class="metric">
+            <div class="lbl">עוגן פתיחה</div>
+            <div class="val" id="anchor">—</div>
+          </div>
+        </div>
+
+        <h2 style="margin-top:6px"><span class="dot"></span> 3 מנופי משא ומתן</h2>
+        <div class="levers" id="levers">
+          <div class="empty-state">ממלאים קלט…</div>
+        </div>
+      </section>
+    </div>
+
+    <!-- SCRIPTS -->
+    <section class="card tips" style="margin-top:18px">
+      <h2><span class="dot"></span> הודעות מוכנות להעתקה</h2>
+      <div class="scripts">
+        <div class="script-box">
+          <div class="script-head">
+            <h3>וואטסאפ — תגובה ראשונה להצעה</h3>
+            <button type="button" class="btn" data-copy="waMsg">העתק</button>
+          </div>
+          <div class="script-body" id="waMsg"></div>
+        </div>
+
+        <div class="script-box">
+          <div class="script-head">
+            <h3>מייל — נגד רשמי (עברית)</h3>
+            <button type="button" class="btn" data-copy="emailMsg">העתק</button>
+          </div>
+          <div class="script-body" id="emailMsg"></div>
+        </div>
+
+        <div class="script-box">
+          <div class="script-head">
+            <h3>וואטסאפ — דוחף בעדינות אחרי שתיקה</h3>
+            <button type="button" class="btn" data-copy="followMsg">העתק</button>
+          </div>
+          <div class="script-body" id="followMsg"></div>
+        </div>
+
+        <div class="script-box locked" id="advancedBox">
+          <div class="script-head">
+            <h3>🔒 סקריפט מתקדם: שיחת טלפון מול מגייס/מנהל</h3>
+            <button type="button" class="btn disabled" disabled title="דורש רכישה">נעול</button>
+          </div>
+          <div class="script-body" id="advMsg" aria-hidden="true"></div>
+          <div class="locked-cta">
+            <p>גרסת Pro פותחת סקריפט שיחה + תרחישי «יש לי הצעה מתחרה» ו־«סירוב עדין לרצפה».</p>
+            <a class="btn disabled" id="payCta" href="../#lead" aria-disabled="true" tabindex="-1">Pro בקרוב · השאירו מייל בדף הבית</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRO TIPS -->
+    <section class="card tips">
+      <h2><span class="dot"></span> Pro Tips לפי הקלט שלכם</h2>
+      <ul id="proTips"></ul>
+    </section>
+
+    <footer class="moat">
+      <div>מחשבון מקומי · אין שליחת נתונים לשרת · אפשר לשמור את הקובץ ולהריץ מהדיסק</div>
+      <div class="wm">חלק מ־Career Tools IL · Pro בקרוב</div>
+    </footer>
+  </div>
+
+  <script>
+  (function () {
+    "use strict";
+
+    // --- heuristic tables (NOT official salary stats) ---
+    var CITY = {
+      tlv:       { mul: 1.15, label: "תל אביב / גוש דן" },
+      sharon:    { mul: 1.08, label: "השרון / מרכז" },
+      jerusalem: { mul: 1.05, label: "ירושלים" },
+      remote:    { mul: 1.02, label: "מרחוק / היברידי" },
+      haifa:     { mul: 1.00, label: "חיפה / צפון" },
+      south:     { mul: 0.95, label: "באר שבע / דרום" }
+    };
+
+    var SEN = {
+      junior:  { mul: 0.94, stretch: 0.06, label: "ג׳וניור" },
+      mid:     { mul: 1.00, stretch: 0.09, label: "מיד" },
+      senior:  { mul: 1.06, stretch: 0.11, label: "סיניור" },
+      lead:    { mul: 1.10, stretch: 0.13, label: "ליד / פרינסיפל" },
+      manager: { mul: 1.08, stretch: 0.12, label: "מנהל/ת" }
+    };
+
+    // Role: room = how much % room above offer to push; flexWeight = value of non-cash
+    var ROLE = {
+      software:  { room: 1.12, flex: 0.7, label: "תוכנה/דאטה/פרודקט", bonusBias: 0.6 },
+      sales:     { room: 1.10, flex: 0.5, label: "מכירות/BizDev", bonusBias: 1.2 },
+      marketing: { room: 1.08, flex: 0.85, label: "שיווק/עיצוב", bonusBias: 0.5 },
+      ops:       { room: 1.06, flex: 0.9, label: "תפעול/HR", bonusBias: 0.4 },
+      finance:   { room: 1.09, flex: 0.55, label: "כספים/משפטים", bonusBias: 0.5 },
+      health:    { room: 1.05, flex: 0.95, label: "בריאות/חינוך", bonusBias: 0.35 },
+      service:   { room: 1.05, flex: 0.8, label: "שירות/תמיכה", bonusBias: 0.45 }
+    };
+
+    function $(id) { return document.getElementById(id); }
+
+    function nis(n) {
+      if (!isFinite(n)) return "—";
+      return "₪" + Math.round(n).toLocaleString("he-IL");
+    }
+
+    function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+    function read() {
+      var current = Number($("current").value) || 0;
+      var offer = Number($("offer").value) || 0;
+      var years = Number($("years").value) || 0;
+      var seniority = $("seniority").value;
+      var role = $("role").value;
+      var city = $("city").value;
+      return { current: current, offer: offer, years: years, seniority: seniority, role: role, city: city };
+    }
+
+    /**
+     * Core heuristic engine.
+     * All outputs are illustrative — labeled in UI.
+     */
+    function compute(p) {
+      var city = CITY[p.city] || CITY.haifa;
+      var sen = SEN[p.seniority] || SEN.mid;
+      var role = ROLE[p.role] || ROLE.ops;
+
+      var expBoost = clamp(p.years * 0.008, 0, 0.12); // up to +12%
+      var colAdj = (city.mul - 1) * 0.45; // dampened COL into salary push
+
+      // Target stretch above offer
+      var stretch = sen.stretch * role.room / 1.08 + expBoost + colAdj * 0.5;
+      stretch = clamp(stretch, 0.04, 0.22);
+
+      var mid = p.offer > 0 ? p.offer * (1 + stretch) : p.current * (1.08 + expBoost);
+      mid *= (0.97 + sen.mul * 0.03); // tiny seniority polish
+
+      // Ensure mid is meaningfully above offer when offer exists
+      if (p.offer > 0) mid = Math.max(mid, p.offer * 1.04);
+
+      // If offer is below current, push harder toward current+
+      if (p.current > 0 && p.offer > 0 && p.offer < p.current) {
+        mid = Math.max(mid, p.current * (1.04 + expBoost * 0.5));
+      }
+
+      var low = Math.max(p.offer > 0 ? p.offer * 1.02 : mid * 0.94, mid * 0.94);
+      var high = mid * (1.05 + clamp(expBoost, 0, 0.04));
+
+      // Walk-away: soft floor — don't go below ~current*1.02 (if employed) or offer*0.90
+      var floorFromCurrent = p.current > 0 ? p.current * (1.0 + (sen.mul - 1) * 0.3) : 0;
+      var floorFromOffer = p.offer > 0 ? p.offer * 0.90 : 0;
+      // If offer is a big raise, walk-away can sit closer to offer*0.95
+      var raisePct = (p.current > 0 && p.offer > 0) ? (p.offer - p.current) / p.current : 0;
+      var walk;
+      if (raisePct >= 0.15) {
+        walk = Math.max(floorFromCurrent, p.offer * 0.94);
+      } else if (p.offer > 0 && p.current > 0 && p.offer < p.current) {
+        walk = Math.max(p.current * 0.98, p.offer); // protect current when offer underwhelms
+      } else {
+        walk = Math.max(floorFromCurrent, floorFromOffer, p.offer > 0 ? p.offer * 0.92 : p.current * 0.95);
+      }
+      walk = Math.min(walk, low); // walk-away never above counter-low
+
+      var anchor = high; // open near top of range
+
+      return {
+        low: low, mid: mid, high: high, walk: walk, anchor: anchor,
+        stretch: stretch, raisePct: raisePct, city: city, sen: sen, role: role,
+        expBoost: expBoost, colAdj: colAdj
+      };
+    }
+
+    function pickLevers(p, c) {
+      var levers = [];
+      var gap = p.offer - p.current;
+      var gapPct = p.current > 0 ? gap / p.current : 0;
+
+      // Lever candidates with scores
+      var candidates = [];
+
+      // 1) Base salary push
+      var basePts = Math.round((c.mid - p.offer) / 100) * 100;
+      candidates.push({
+        score: 80 + Math.abs(gapPct) * 40,
+        title: "דחיפת בסיס ברוטו",
+        text: "פתחו ב־" + nis(c.anchor) + " ובצעו נחיתה לטווח " + nis(c.low) + "–" + nis(c.high) +
+              ". הפער מההצעה: כ־" + nis(Math.max(0, c.mid - p.offer)) + " לחודש.",
+        formula: "mid = offer × (1 + stretch≈" + (c.stretch * 100).toFixed(1) + "%); stretch←seniority+exp+COL"
+      });
+
+      // 2) Signing / one-time
+      var signing = Math.round(Math.max(p.offer, p.current) * 0.5 / 500) * 500;
+      if (gapPct < 0.12) signing = Math.round(Math.max(p.offer, p.current) * 0.75 / 500) * 500;
+      candidates.push({
+        score: gapPct < 0.10 ? 95 : 70,
+        title: "בונוס חתימה / מענק חד־פעמי",
+        text: "אם הבסיס קשיח — בקשו מענק חתימה בסביבות " + nis(signing) +
+              " (≈" + (gapPct < 0.10 ? "0.75" : "0.5") + "× שכר חודשי ייחוס). מגשר פער בלי לשבור באנד.",
+        formula: "signing ≈ max(offer,current) × " + (gapPct < 0.10 ? "0.75" : "0.5") + " (heuristic)"
+      });
+
+      // 3) Variable / commission (sales bias)
+      var varBonus = Math.round(p.offer * (0.08 + c.role.bonusBias * 0.04) / 100) * 100;
+      candidates.push({
+        score: 55 + c.role.bonusBias * 35,
+        title: "רכיב משתנה / יעד בונוס שנתי",
+        text: "נהלו מו״מ על בונוס־על־יעד שנתי ≈ " + nis(varBonus * 12) +
+              " (כ־" + Math.round((0.08 + c.role.bonusBias * 0.04) * 100) + "% מהבסיס×12). מתאים במיוחד ל־" + c.role.label + ".",
+        formula: "annualVar ≈ offer × 12 × (" + (0.08 + c.role.bonusBias * 0.04).toFixed(2) + ")"
+      });
+
+      // 4) COL / remote / days
+      var wfhDays = c.city.mul >= 1.08 ? 3 : (c.city.mul >= 1.02 ? 2 : 1);
+      var vacDays = Math.round(2 + c.role.flex * 2);
+      candidates.push({
+        score: 50 + c.role.flex * 40 + (c.city.mul - 1) * 80,
+        title: "גמישות · WFH · חופשה",
+        text: "באזור " + c.city.label + " (מכפיל ×" + c.city.mul.toFixed(2) +
+              ") שווי ימי בית גבוה. בקשו " + wfhDays + " ימי WFH/שבוע +" + vacDays +
+              " ימי חופשה מעבר לסטנדרט — שווה אלפי ₪ בשנה בחיסכון נסיעות.",
+        formula: "wfhDays = f(COL); vacExtra ≈ 2 + flex×2"
+      });
+
+      // 5) Title / scope
+      var titleScore = p.years >= 5 && (p.seniority === "junior" || p.seniority === "mid") ? 100 :
+                       p.years >= 8 && p.seniority === "senior" ? 90 : 45;
+      candidates.push({
+        score: titleScore,
+        title: "שדרוג תואר / היקף אחריות",
+        text: "עם ≈" + p.years + " שנות ניסיון ברמת «" + c.sen.label +
+              "» — בקשו התאמת תואר או היקף (תקציב/אנשים/דומיין). תואר משפיע על הסיבוב הבא יותר מ־1–2% שכר.",
+        formula: "trigger if years≥5 && seniority∈{junior,mid} (or years≥8 && senior)"
+      });
+
+      // 6) Learning budget / Keren
+      candidates.push({
+        score: 40 + (p.role === "software" || p.role === "marketing" ? 25 : 10),
+        title: "תקציב למידה / קרן השתלמות מוקדמת",
+        text: "בקשו תקציב הכשרות שנתי ≈ " + nis(Math.round(p.offer * 0.15 / 100) * 100) +
+              " או האצת זכאות לקרן השתלמות. עלות נמוכה למעסיק, ערך גבוה לקריירה.",
+        formula: "learnBudget ≈ offer × 0.15 (monthly equiv heuristic)"
+      });
+
+      candidates.sort(function (a, b) { return b.score - a.score; });
+      return candidates.slice(0, 3);
+    }
+
+    function tipsFor(p, c) {
+      var tips = [];
+      tips.push("המספרים הם <em>היוריסטיקה לתרגול</em> — הצליבו עם 2–3 מקורות שכר / מודעות / ראיונות לפני שליחה.");
+
+      if (p.offer > 0 && p.current > 0 && p.offer < p.current) {
+        tips.push("ההצעה נמוכה מהשכר הנוכחי. אל תתנצלו — בקשו הסבר על הפער, והציבו רצפה קרוב ל־" + nis(c.walk) + ".");
+      } else if (c.raisePct >= 0.2) {
+        tips.push("זו העלאה משמעותית יחסית לנוכחי. שמרו אדיבות: אפשר לבקש שיפור קטן בבסיס או בבונוס בלי לשרוף את הגשר.");
+      } else if (c.raisePct > 0 && c.raisePct < 0.08) {
+        tips.push("העלאה קטנה יחסית (<8%). כאן מנוף «בונוס חתימה» או WFH בדרך כלל עובד טוב יותר מדחיפת באנד קשיח.");
+      }
+
+      if (c.city.mul >= 1.1) {
+        tips.push("באזור יוקר מחיה גבוה (×" + c.city.mul.toFixed(2) + ") — כמתווים כסף לנסיעות/חניה כחלק מהחבילה, לא רק שכר בסיס.");
+      }
+      if (p.years < 2) {
+        tips.push("פחות מ־2 שנות ניסיון: הדגישו למידה מהירה, פרויקטים, והתחייבות לתקופה — לא רק מספרים.");
+      } else if (p.years >= 7) {
+        tips.push("ותק גבוה: דברו במונחי השפעה (הכנסות/חיסכון/סיכון שצומצם), לא רק שנות ניסיון.");
+      }
+      if (p.role === "sales") {
+        tips.push("במכירות: ודאו מה כלול ב־OTE (בסיס מול עמלה) ומה יעד הריאלי — מו״מ על יעד קל יותר ממו״מ על אחוז.");
+      }
+      if (p.role === "software") {
+        tips.push("בתוכנה: שאלו על באנד פנימי / לבל ועל רכיב RSU/אופציות בנפרד מהברוטו החודשי.");
+      }
+      if (p.seniority === "manager" || p.seniority === "lead") {
+        tips.push("ברמת ליד/מנג׳ר: כללו תקציב צוות, סמכות גיוס, ומדדי הצלחה כתובים — זה חלק מהחבילה.");
+      }
+      tips.push("לעולם אל תמציאו «יש לי הצעה מתחרה» אם אין. השתמשו בסקריפט המתקדם (Pro) רק כשיש בסיס אמיתי.");
+      return tips.slice(0, 5);
+    }
+
+    function buildMessages(p, c) {
+      var roleL = c.role.label;
+      var cityL = c.city.label;
+
+      var wa =
+        "שלום, תודה על ההצעה ועל התהליך עד כה — מעריך/ה מאוד.\\n\\n" +
+        "בחנתי את החבילה ביחס להיקף התפקיד (" + roleL + ", " + c.sen.label +
+        ") ולניסיון שלי (≈" + p.years + " שנים). אשמח לבחון יחד התאמה לטווח ברוטו של " +
+        nis(c.low) + "–" + nis(c.high) + " לחודש.\\n\\n" +
+        "פתוח/ה גם לדבר על רכיבים משלימים (בונוס/גמישות) אם הבסיס מוגבל.\\n" +
+        "מתי נוח לשיחה קצרה?";
+
+      var email =
+        "נושא: תודה על ההצעה + בקשה להתאמת חבילה\\n\\n" +
+        "שלום רב,\\n\\n" +
+        "תודה על הצעת ההעסקה ועל ההזדמנות להצטרף. התרשמתי מהתפקיד ומהצוות.\\n\\n" +
+        "לאחר בחינה זהירה של ההיקף, האחריות, והרקע שלי (" + p.years +
+        " שנות ניסיון רלוונטי, רמת " + c.sen.label + ", אזור " + cityL +
+        "), אשמח לשקול יחד טווח שכר ברוטו חודשי של " + nis(c.low) + " עד " + nis(c.high) +
+        ". מספר היעד שלי לדיון הוא בסביבות " + nis(c.mid) + ".\\n\\n" +
+        "אם קיימת מגבלה על הבסיס, אשמח לבחון חלופות כגון בונוס חתימה, רכיב משתנה על יעדים, או גמישות היברידית — כדי להגיע להסכמה שמתאימה לשני הצדדים.\\n\\n" +
+        "זמין/ה לשיחה בהקדם.\\n" +
+        "בברכה";
+
+      var follow =
+        "היי, רק רציתי לוודא שקיבלתם את ההודעה שלי לגבי ההצעה 🙂\\n" +
+        "עדיין מאוד מתעניין/ת בתפקיד. אם יש עדכון לגבי הטווח (" +
+        nis(c.low) + "–" + nis(c.high) + ") או לחלופין רכיבים משלימים — אשמח לשמוע.\\n" +
+        "תודה!";
+
+      // Advanced (shown blurred) — competing-offer / phone framework
+      var adv =
+        "[שיחת טלפון · שלב אחרי שלב]\\n\\n" +
+        "1) פתיחה: תודה + התלהבות אמיתית מהתפקיד.\\n" +
+        "2) עוגן: «על בסיס ההיקף, חשבתי על " + nis(c.anchor) + " כנקודת פתיחה.»\\n" +
+        "3) שתיקה 3–5 שניות אחרי המספר.\\n" +
+        "4) אם דוחפים בחזרה: «מבין/ה. הרצפה שלי לדיון היא " + nis(c.walk) +
+        ". איך מתקרבים?»\\n" +
+        "5) רק אם יש הצעה מתחרה אמיתית: «יש לי תהליך נוסף בטווח דומה; מעדיף/ה אתכם אם נסגור על " +
+        nis(c.mid) + ".»\\n" +
+        "6) סיכום כתוב באימייל בתוך שעתיים.";
+
+      return { wa: wa, email: email, follow: follow, adv: adv };
+    }
+
+    function render() {
+      var p = read();
+      if (p.offer <= 0 && p.current <= 0) {
+        $("counterRange").textContent = "—";
+        $("walkAway").textContent = "—";
+        $("anchor").textContent = "—";
+        $("levers").innerHTML = '<div class="empty-state">הזינו שכר נוכחי או הצעה כדי לחשב.</div>';
+        $("waMsg").textContent = "";
+        $("emailMsg").textContent = "";
+        $("followMsg").textContent = "";
+        $("advMsg").textContent = "";
+        $("proTips").innerHTML = "<li>הזינו לפחות שכר נוכחי או הצעה שהתקבלה.</li>";
+        return;
+      }
+      var c = compute(p);
+
+      $("counterRange").textContent = nis(c.low) + " – " + nis(c.high);
+      $("walkAway").textContent = nis(c.walk);
+      $("anchor").textContent = nis(c.anchor);
+
+      var levers = pickLevers(p, c);
+      $("levers").innerHTML = levers.map(function (L) {
+        return '<div class="lever"><strong>' + L.title + "</strong><span>" + L.text +
+               '</span><div class="formula">' + L.formula + "</div></div>";
+      }).join("");
+
+      var msgs = buildMessages(p, c);
+      $("waMsg").textContent = msgs.wa.replace(/\\n/g, "\n");
+      $("emailMsg").textContent = msgs.email.replace(/\\n/g, "\n");
+      $("followMsg").textContent = msgs.follow.replace(/\\n/g, "\n");
+      $("advMsg").textContent = msgs.adv.replace(/\\n/g, "\n");
+
+      var tips = tipsFor(p, c);
+      $("proTips").innerHTML = tips.map(function (t) { return "<li>" + t + "</li>"; }).join("");
+    }
+
+    // Copy buttons
+    document.querySelectorAll("[data-copy]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var id = btn.getAttribute("data-copy");
+        var text = $(id).textContent;
+        function ok() {
+          var prev = btn.textContent;
+          btn.textContent = "הועתק ✓";
+          btn.classList.add("copied");
+          setTimeout(function () {
+            btn.textContent = prev;
+            btn.classList.remove("copied");
+          }, 1600);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(ok).catch(function () {
+            fallbackCopy(text); ok();
+          });
+        } else {
+          fallbackCopy(text); ok();
+        }
+      });
+    });
+
+    function fallbackCopy(text) {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
+    // Prevent navigating to placeholder payment link
+    $("payCta").addEventListener("click", function (e) {
+      e.preventDefault();
+      window.location.href = "../#lead";
+    });
+
+    ["current", "offer", "years", "seniority", "role", "city"].forEach(function (id) {
+      $(id).addEventListener("input", render);
+      $(id).addEventListener("change", render);
+    });
+
+    render();
+  })();
+  </script>
+</body>
+</html>

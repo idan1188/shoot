@@ -1,0 +1,20 @@
+{
+  "name": "Career Tools IL",
+  "short_name": "Career Tools",
+  "description": "כלים אינטראקטיביים בעברית למשא ומתן לשכר ותעריף פרילנס",
+  "lang": "he-IL",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b1220",
+  "theme_color": "#0b1220",
+  "icons": [
+    {
+      "src": "./preview.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
