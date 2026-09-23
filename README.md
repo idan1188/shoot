@@ -1,6 +1,6 @@
 # Career Tools IL
 
-Browser tools for salary talks and freelance quotes, for Israel. English is the default; Hebrew is available from the EN | HE toggle (saved in `localStorage` as `ctil_lang`). The salary brief gives an ask, a target, a walk-away, a counter ladder, and a leverage score. The freelance quote gives a break-even rate, a commercial rate with margin, utilization sensitivity, and an editable proposal. Illustrative estimates, not tax or career advice.
+Browser tools for salary talks and freelance quotes, for Israel. English is the default; Hebrew is available from the EN | HE toggle (saved in `localStorage` as `ctil_lang`). The salary brief gives an ask, a target, a walk-away, a counter ladder, and a leverage score. The freelance quote gives a break-even rate, a commercial rate with margin, utilization sensitivity, and an editable proposal. Illustrative estimates, not tax or career advice. Scroll progress, the hero rules, and section reveals use CSS scroll timelines where the browser supports them, with a small script otherwise. `prefers-reduced-motion: reduce` keeps the pages static.
 
 Sale prices, with the original struck through on the page: bundle ₪43 (was ₪129), salary tool ₪26 (was ₪79), freelance tool ₪23 (was ₪69). Bought separately on sale that is ₪49 (was ₪148).
 

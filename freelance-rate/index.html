@@ -43,6 +43,9 @@
         document.documentElement.classList.add("i18n-pending");
       }
     } catch (e) {}
+    try {
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("motion");
+    } catch (e2) {}
   })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -157,6 +160,44 @@
     .price-now { font-weight: 600; }
     .fine { color: var(--faint); font-size: .72rem; margin: 8px 0 0; }
     footer.moat { color: var(--faint); font-size: .75rem; }
+    :root { --p: 0; --hero: 0.2; }
+    @property --p { syntax: "<number>"; inherits: true; initial-value: 0; }
+    .scroll-rail { position: fixed; top: 0; bottom: 0; inset-inline-start: 0; width: 2px; z-index: 60; pointer-events: none; transform-origin: top center; transform: scaleY(var(--p)); background: linear-gradient(180deg, transparent, #c6a56d 28%, #e4d2ae); }
+    .logo-mark { filter: drop-shadow(0 0 calc(var(--p) * 12px) rgba(198,165,109,.7)); }
+    .head { position: relative; }
+    .hero-field { position: absolute; z-index: 0; pointer-events: none; width: min(520px, 70%); height: 150px; inset-inline-end: 0; top: 0; opacity: .85; transform: translate3d(0, calc(var(--hero) * -18px), 0); }
+    .head > :not(.hero-field) { position: relative; z-index: 1; }
+    .hero-field path { fill: none; stroke: #c6a56d; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--hero)); }
+    .step-meter { height: 2px; background: #23272e; border-radius: 2px; margin: -4px 0 14px; overflow: hidden; }
+    .step-meter span { display: block; height: 2px; width: 33%; background: linear-gradient(90deg, #8a734a, #e4d2ae); transition: width .4s ease; }
+    html.motion .reveal { opacity: 0; transform: translateY(14px); transition: opacity .65s ease, transform .65s cubic-bezier(.2,.7,.2,1); }
+    html.motion .reveal.in { opacity: 1; transform: none; }
+    .summary { transition: border-color .35s ease, box-shadow .35s ease; }
+    .summary.is-pinned { border-color: #5c4e36; box-shadow: 0 16px 40px rgba(0,0,0,.32); }
+    @keyframes bandy { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+    @keyframes nin { from { opacity: .15; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+    html.motion .summary.seen .sens-bar { transform-origin: bottom center; animation: bandy .65s ease both; }
+    html.motion .summary.seen .stat .n { animation: nin .45s ease both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+    @keyframes drift { from { transform: translateY(8px); } to { transform: translateY(-16px); } }
+    @keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0.05; } }
+    @keyframes rail { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+    @keyframes pshift { from { --p: 0; } to { --p: 1; } }
+    @supports (animation-timeline: scroll()) {
+      html.motion .scroll-rail { animation: rail linear both; animation-timeline: scroll(root); }
+      html.motion { animation: pshift linear both; animation-timeline: scroll(root); }
+    }
+    @supports (animation-timeline: view()) {
+      html.motion .hero-field { transform: none; animation: drift linear both; animation-timeline: view(); animation-range: contain 0% contain 100%; }
+      html.motion .hero-field path { stroke-dashoffset: 1; animation: draw linear both; animation-timeline: view(); animation-range: entry 0% cover 50%; }
+      html.motion .reveal { opacity: 1; transform: none; transition: none; animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 65%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .scroll-rail { display: none; }
+      .hero-field, .logo-mark, .reveal, .summary, .sens-bar, .stat .n { animation: none !important; transition: none !important; transform: none !important; filter: none !important; opacity: 1 !important; }
+      .hero-field path { stroke-dashoffset: 0 !important; }
+    }
     @media print {
       .topbar, .share, .steps, .no-print, .locked { display: none !important; }
       body, .card, .summary, .stat, .pkg { background: #fff; color: #111; }
@@ -164,6 +205,7 @@
   </style>
 </head>
 <body>
+  <div class="scroll-rail" aria-hidden="true"></div>
   <header class="topbar">
     <div class="topbar-inner">
       <a class="logo" href="../">
@@ -193,6 +235,11 @@
       <span data-share-status role="status" hidden data-i18n="shareCopied">Link copied</span>
     </div>
     <header class="head">
+      <svg class="hero-field" viewBox="0 0 520 160" aria-hidden="true">
+        <path pathLength="1" d="M8 36H280" stroke-width="1.5"/>
+        <path pathLength="1" d="M40 78H480" stroke-width="1.1" opacity=".6"/>
+        <path pathLength="1" d="M8 122H220" stroke-width="1.4"/>
+      </svg>
       <p class="kicker" data-i18n="kicker">Freelance quote</p>
       <h1 data-i18n="h1">Price the work, not the hour you hope to bill.</h1>
       <p data-i18n="sub">A break-even rate, a quote with margin, utilization sensitivity, and a proposal you can edit before you send it. Rough Israeli tax uplifts — not advice from an accountant.</p>
@@ -202,9 +249,10 @@
       <a href="#sec-capacity" data-step="sec-capacity"><b>02</b> <span data-i18n="step2">Capacity</span></a>
       <a href="#sec-proposal" data-step="sec-proposal"><b>03</b> <span data-i18n="step3">Proposal</span></a>
     </nav>
+    <div class="step-meter no-print" aria-hidden="true"><span id="stepMeter"></span></div>
     <div class="app">
       <div>
-        <section class="card" id="sec-target">
+        <section class="card reveal" id="sec-target">
           <h2 data-i18n="inH">01 · What has to be left</h2>
           <label for="net" data-i18n="labNet">Monthly net you want (₪)</label>
           <input type="number" id="net" min="0" step="500" value="12000" inputmode="numeric" />
@@ -225,7 +273,7 @@
           </div>
           <p class="hint" id="taxHint"></p>
         </section>
-        <section class="card" id="sec-capacity">
+        <section class="card reveal" id="sec-capacity">
           <h2 data-i18n="capH">02 · Hours you can actually bill</h2>
           <div class="row2">
             <div>
@@ -261,7 +309,7 @@
         <p class="fine" data-i18n="marginNote">Margin is the quote package versus hours at the break-even rate. The day rate is eight quote-hours with a small efficiency discount.</p>
       </aside>
     </div>
-    <section class="card" id="sec-proposal" style="margin-top:4px">
+    <section class="card reveal" id="sec-proposal" style="margin-top:4px">
       <div class="editor-head">
         <h2 data-i18n="propH">03 · Proposal</h2>
         <div style="display:flex;gap:8px;align-items:center">
@@ -569,6 +617,7 @@
       });
       $("advBody").textContent = advancedText(p, m);
       if (!proposalDirty) $("proposal").value = proposalText(p, m);
+      if (window.ctilAfterRender) window.ctilAfterRender($("summary"));
     }
     document.querySelectorAll("#taxToggles .tog").forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -607,6 +656,9 @@
           document.querySelectorAll(".steps a").forEach(function (a) {
             a.classList.toggle("on", a.getAttribute("data-step") === en.target.id);
           });
+          var meter = document.getElementById("stepMeter");
+          var widths = { "sec-target": "34%", "sec-capacity": "67%", "sec-proposal": "100%" };
+          if (meter && widths[en.target.id]) meter.style.width = widths[en.target.id];
         });
       }, { rootMargin: "-45% 0px -45% 0px", threshold: 0.01 });
       ["sec-target", "sec-capacity", "sec-proposal"].forEach(function (id) { var n = $(id); if (n) io.observe(n); });
@@ -615,6 +667,66 @@
     render();
   })();
   </script>
-  <noscript><style>html.i18n-pending body { visibility: visible; }</style></noscript>
+  <script>
+  (function () {
+    var root = document.documentElement;
+    var reduce = false;
+    try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+    window.ctilAfterRender = function (node) {
+      if (!node || !node.classList.contains("seen")) return;
+      node.querySelectorAll(".range-band, .score-fill, .sens-bar, .stat .n").forEach(function (el) { el.style.animation = "none"; });
+    };
+    var summary = document.getElementById("summary");
+    function markSeen() {
+      if (!summary) return;
+      var top = summary.getBoundingClientRect().top;
+      if (top < window.innerHeight * 0.92) summary.classList.add("seen");
+      summary.classList.toggle("is-pinned", top <= 72 && window.scrollY > 24);
+    }
+    if (reduce || !root.classList.contains("motion")) {
+      root.style.setProperty("--p", "1");
+      root.style.setProperty("--hero", "1");
+      document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+      if (summary) summary.classList.add("seen");
+      return;
+    }
+    var viewOk = false, scrollOk = false;
+    try { viewOk = CSS.supports("animation-timeline: view()"); } catch (e2) {}
+    try { scrollOk = CSS.supports("animation-timeline: scroll()"); } catch (e3) {}
+    var ticking = false;
+    function frame() {
+      ticking = false;
+      var max = root.scrollHeight - window.innerHeight;
+      var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      if (!scrollOk) root.style.setProperty("--p", p.toFixed(4));
+      if (!viewOk) {
+        var head = document.querySelector(".head");
+        if (head) {
+          var rect = head.getBoundingClientRect();
+          var hp = (window.innerHeight * 0.25 - rect.top) / Math.max(1, rect.height + 180);
+          root.style.setProperty("--hero", Math.min(1, Math.max(0.15, hp)).toFixed(4));
+        }
+      }
+      markSeen();
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    frame();
+    if (!viewOk && "IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          en.target.classList.add("in");
+          io.unobserve(en.target);
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+      document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+    } else if (!viewOk) {
+      document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+    }
+  })();
+  </script>
+  <noscript><style>html.i18n-pending body { visibility: visible; } .reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </body>
 </html>
