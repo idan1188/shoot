@@ -38,7 +38,9 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
-          # Creates the Pages site (source: GitHub Actions) when it does not exist yet.
+          # Best-effort create. The default GITHUB_TOKEN cannot enable Pages
+          # (needs administration:write). An admin sets Source to GitHub Actions once:
+          # https://github.com/idan1188/shoot/settings/pages
           enablement: true
 
       - name: Upload artifact

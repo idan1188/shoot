@@ -21,7 +21,15 @@ Public CTAs point at `#lead`. Tool Pro buttons stay disabled («Pro בקרוב»
 
 ## Deploy
 
-Pushes to `main` run `.github/workflows/pages.yml` (no build step). Pages source is **GitHub Actions**.
+Pushes to `main` run [`.github/workflows/pages.yml`](.github/workflows/pages.yml) (no build step). Pages source must be **GitHub Actions**.
+
+The cloud token used to push this repo cannot turn Pages on (`administration: write` is required). One-time setup, as the repo owner:
+
+1. Open [Settings → Pages](https://github.com/idan1188/shoot/settings/pages).
+2. Under **Build and deployment**, set **Source** to **GitHub Actions** and save.
+3. Re-run [Deploy GitHub Pages](https://github.com/idan1188/shoot/actions/workflows/pages.yml).
+
+After that, every push to `main` publishes the site.
 
 Canonical and sitemap URLs use `https://idan1188.github.io/shoot/`. In-site links are relative (`./salary-negotiator/`, `../#lead`) so they work on this project site. Short paths such as `/salary` exist only in `netlify.toml` and do not redirect on GitHub Pages.
 
