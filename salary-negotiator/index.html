@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Salary brief: ask, target, walk-away | Career Tools IL</title>
-  <meta name="description" content="A salary brief for Israel: ask, target, and walk-away, with a counter ladder, leverage score, and language you can send. Illustrative, not pay advice. Launch offer: ₪26 (was ₪79)." />
+  <title>Negotiation command center: counters, messages, offer battle | Career Tools IL</title>
+  <meta name="description" content="Negotiation command center for Israel: ask, target, walk-away, simulated employer counters, a message pack, and an offer battle. Illustrative, not pay advice. Launch offer: ₪26 (was ₪79)." />
   <meta name="theme-color" content="#0c0e12" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://idan1188.github.io/shoot/salary-negotiator/" />
@@ -160,6 +160,27 @@
     input[type="range"] { width: 100%; accent-color: #c6a56d; margin-top: 8px; }
     .aid-block { margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--line); }
     .aid-block h3 { font-size: .9rem; margin-bottom: 4px; }
+    .cc { border-color: #4a4336; background: linear-gradient(180deg, #19160f 0%, var(--surface) 120px); }
+    .cc > .kicker { margin-bottom: 4px; }
+    .cc-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+    .cc-tabs button { background: var(--bg); border: 1px solid var(--line); color: var(--muted); border-radius: 999px; padding: 6px 11px; font: inherit; font-size: .75rem; font-weight: 600; cursor: pointer; }
+    .cc-tabs button[aria-selected="true"], .cc-tabs button:hover { color: var(--text); border-color: #4a4336; background: #1c1914; }
+    .counter-cards, .battle-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+    .offer-card { border: 1px solid var(--line); border-radius: 8px; padding: 10px; margin: 0; background: var(--bg); min-width: 0; }
+    .offer-card legend { padding: 0 4px; color: var(--brass-2); font-size: .75rem; font-weight: 600; }
+    .offer-card label { margin-top: 8px; }
+    .bi { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+    .gap-pill { display: inline-block; border-radius: 999px; padding: 2px 8px; font-size: .72rem; border: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+    .gap-pill.bad { color: #e7c2b4; border-color: #6a4338; }
+    .gap-pill.ok { color: var(--brass-2); border-color: #4a4336; }
+    .cc-acc { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 10px; }
+    .cc-acc summary { cursor: pointer; font-weight: 600; font-size: .86rem; }
+    .vault-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 8px; }
+    .vault-row input[type="text"] { flex: 1; min-width: 160px; }
+    .vault-item { display: flex; justify-content: space-between; gap: 8px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: .84rem; }
+    .vault-item span { color: var(--muted); font-size: .72rem; }
+    input[type="date"], .offer-card select { width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 7px; padding: 10px 12px; font: inherit; font-size: .95rem; }
+    @media (max-width: 800px) { .counter-cards, .battle-grid, .bi { grid-template-columns: 1fr; } }
     textarea#redLines { min-height: 72px; }
     .btn { appearance: none; border: 1px solid transparent; background: var(--brass); color: var(--ink); font: inherit; font-weight: 600; font-size: .78rem; border-radius: 7px; padding: 8px 12px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
     .btn:hover { background: var(--brass-2); }
@@ -271,14 +292,14 @@
         <path pathLength="1" d="M8 122H220" stroke-width="1.4"/>
       </svg>
       <div>
-        <p class="kicker" data-i18n="kicker">Salary brief</p>
-        <h1 data-i18n="h1">Ask, target, and walk-away.</h1>
-        <p data-i18n="sub">Three cases, a counter ladder, and language for the conversation. Rounded to ₪100. A heuristic for practice — not a market survey and not pay advice.</p>
+        <p class="kicker" data-i18n="kicker">Negotiation Command Center</p>
+        <h1 data-i18n="h1">Ask, target, and walk-away — then the reply.</h1>
+        <p data-i18n="sub">One desk for the call: their likely counters, three messages, an offer battle, and a brief you can save. The ask, target, and walk-away still round to ₪100. A heuristic for practice — not a market survey and not pay advice.</p>
       </div>
     </header>
     <nav class="steps no-print" aria-label="Sections" data-i18n-aria="stepsLabel">
       <a href="#sec-inputs" data-step="sec-inputs" class="on"><span>01</span> <span data-i18n="step1">Inputs</span></a>
-      <a href="#sec-aids" data-step="sec-aids"><span>02</span> <span data-i18n="step2">Decision aids</span></a>
+      <a href="#sec-command" data-step="sec-command"><span>02</span> <span data-i18n="step2">Command Center</span></a>
       <a href="#sec-language" data-step="sec-language"><span>03</span> <span data-i18n="step3">Language</span></a>
     </nav>
     <div class="step-meter no-print" aria-hidden="true"><span id="stepMeter"></span></div>
@@ -350,8 +371,76 @@
           <label class="check"><input type="checkbox" data-lev="writing" /><span data-i18n="levWriting">You will confirm the number in writing the same day</span></label>
         </section>
 
-        <section class="card reveal" id="sec-aids">
-          <h2 data-i18n="aidH">02 · Decision aids</h2>
+        <section class="card reveal cc" id="sec-command">
+          <p class="kicker" data-i18n="ccKicker">Command Center</p>
+          <h2 data-i18n="ccH">The desk for the call</h2>
+          <p class="hint" style="margin-top:0" data-i18n="ccIntro">The numbers above stay the source. This desk rehearses the employer’s reply, writes the three messages, ranks up to three offers, and keeps named scenarios in this browser.</p>
+          <div class="cc-tabs no-print" role="tablist" aria-label="Command Center" data-i18n-aria="ccTabs">
+            <button type="button" role="tab" data-cctab="sim" aria-selected="true" data-i18n="tabSim">Counters</button>
+            <button type="button" role="tab" data-cctab="pack" aria-selected="false" data-i18n="tabPack">Messages</button>
+            <button type="button" role="tab" data-cctab="battle" aria-selected="false" data-i18n="tabBattle">Battle board</button>
+            <button type="button" role="tab" data-cctab="vault" aria-selected="false" data-i18n="tabVault">Session vault</button>
+          </div>
+          <div data-ccpanel="sim">
+            <p class="hint" data-i18n="simHint">Low, mid, and high are simulated from your ask, target, and walk-away. The gap is that counter minus the walk-away. Each card has the next line in English and Hebrew.</p>
+            <div id="ccSim"></div>
+          </div>
+          <div data-ccpanel="pack" hidden>
+            <p class="hint" data-i18n="packHint">Three messages from the live numbers. The counter note uses a number you typed under accessories, or the middle simulated counter.</p>
+            <div id="ccPack"></div>
+          </div>
+          <div data-ccpanel="battle" hidden>
+            <p class="hint" data-i18n="battleHint">Compare up to three offers. Score = yearly cash in thousands (base × 12 + signing bonus + equity per year) + commute points + a small start-date point. A base under the walk-away loses 40 points.</p>
+            <div class="battle-grid">
+              <fieldset class="offer-card"><legend data-i18n="off1">Offer 1</legend>
+                <label for="b1Name" data-i18n="labBName">Name</label><input type="text" id="b1Name" data-i18n-placeholder="phOffer" placeholder="Company or role" />
+                <label for="b1Base" data-i18n="labBBase">Base gross (₪/month)</label><input type="number" id="b1Base" min="0" step="500" inputmode="numeric" />
+                <label for="b1Bonus" data-i18n="labBBonus">Signing bonus, once (₪)</label><input type="number" id="b1Bonus" min="0" step="1000" value="0" inputmode="numeric" />
+                <label for="b1Eq" data-i18n="labBEq">Equity / RSU per year (₪)</label><input type="number" id="b1Eq" min="0" step="1000" value="0" inputmode="numeric" />
+                <label for="b1EqNote" data-i18n="labBEqNote">Equity note</label><input type="text" id="b1EqNote" data-i18n-placeholder="phEq" placeholder="Vesting, refresh, or “none”" />
+                <label for="b1Mode" data-i18n="labBMode">Commute / remote</label>
+                <select id="b1Mode"><option value="remote" data-i18n="modeRemote">Remote</option><option value="hybrid" selected data-i18n="modeHybrid">Hybrid</option><option value="short" data-i18n="modeShort">Office, under 45 min</option><option value="long" data-i18n="modeLong">Office, 45 min or more</option></select>
+                <label for="b1Start" data-i18n="labBStart">Start date</label><input type="date" id="b1Start" />
+              </fieldset>
+              <fieldset class="offer-card"><legend data-i18n="off2">Offer 2</legend>
+                <label for="b2Name" data-i18n="labBName">Name</label><input type="text" id="b2Name" data-i18n-placeholder="phOffer" placeholder="Company or role" />
+                <label for="b2Base" data-i18n="labBBase">Base gross (₪/month)</label><input type="number" id="b2Base" min="0" step="500" inputmode="numeric" />
+                <label for="b2Bonus" data-i18n="labBBonus">Signing bonus, once (₪)</label><input type="number" id="b2Bonus" min="0" step="1000" value="0" inputmode="numeric" />
+                <label for="b2Eq" data-i18n="labBEq">Equity / RSU per year (₪)</label><input type="number" id="b2Eq" min="0" step="1000" value="0" inputmode="numeric" />
+                <label for="b2EqNote" data-i18n="labBEqNote">Equity note</label><input type="text" id="b2EqNote" data-i18n-placeholder="phEq" placeholder="Vesting, refresh, or “none”" />
+                <label for="b2Mode" data-i18n="labBMode">Commute / remote</label>
+                <select id="b2Mode"><option value="remote" data-i18n="modeRemote">Remote</option><option value="hybrid" selected data-i18n="modeHybrid">Hybrid</option><option value="short" data-i18n="modeShort">Office, under 45 min</option><option value="long" data-i18n="modeLong">Office, 45 min or more</option></select>
+                <label for="b2Start" data-i18n="labBStart">Start date</label><input type="date" id="b2Start" />
+              </fieldset>
+              <fieldset class="offer-card"><legend data-i18n="off3">Offer 3</legend>
+                <label for="b3Name" data-i18n="labBName">Name</label><input type="text" id="b3Name" data-i18n-placeholder="phOffer" placeholder="Company or role" />
+                <label for="b3Base" data-i18n="labBBase">Base gross (₪/month)</label><input type="number" id="b3Base" min="0" step="500" inputmode="numeric" />
+                <label for="b3Bonus" data-i18n="labBBonus">Signing bonus, once (₪)</label><input type="number" id="b3Bonus" min="0" step="1000" value="0" inputmode="numeric" />
+                <label for="b3Eq" data-i18n="labBEq">Equity / RSU per year (₪)</label><input type="number" id="b3Eq" min="0" step="1000" value="0" inputmode="numeric" />
+                <label for="b3EqNote" data-i18n="labBEqNote">Equity note</label><input type="text" id="b3EqNote" data-i18n-placeholder="phEq" placeholder="Vesting, refresh, or “none”" />
+                <label for="b3Mode" data-i18n="labBMode">Commute / remote</label>
+                <select id="b3Mode"><option value="remote" data-i18n="modeRemote">Remote</option><option value="hybrid" selected data-i18n="modeHybrid">Hybrid</option><option value="short" data-i18n="modeShort">Office, under 45 min</option><option value="long" data-i18n="modeLong">Office, 45 min or more</option></select>
+                <label for="b3Start" data-i18n="labBStart">Start date</label><input type="date" id="b3Start" />
+              </fieldset>
+            </div>
+            <div class="sum-actions no-print">
+              <button type="button" class="btn secondary" id="battleFill" data-i18n="battleFill">Use the typed offer as offer 1</button>
+              <button type="button" class="btn secondary" id="battlePrint" data-i18n="battlePrint">Printable summary</button>
+            </div>
+            <div id="battleOut"></div>
+          </div>
+          <div data-ccpanel="vault" hidden>
+            <p class="hint" data-i18n="vaultHint">Named scenarios stay in this browser only. The HTML brief pack is one print-friendly file: numbers, counters, messages, and the battle board.</p>
+            <div class="vault-row no-print">
+              <input type="text" id="vaultName" data-i18n-placeholder="phVault" placeholder="Scenario name" />
+              <button type="button" class="btn" id="vaultSave" data-i18n="vaultSave">Save scenario</button>
+              <button type="button" class="btn secondary" id="vaultExport" data-i18n="vaultExport">Export HTML brief pack</button>
+            </div>
+            <p class="hint" id="vaultStatus" role="status"></p>
+            <div id="vaultList"></div>
+          </div>
+          <details class="cc-acc" id="sec-aids">
+            <summary data-i18n="accSum">Accessories already on this brief</summary>
           <div class="aid-block" style="margin-top:0;padding-top:0;border-top:0">
             <h3 data-i18n="cntH">If they counter at</h3>
             <label for="counter" data-i18n="labCounter">Their counter, gross (₪/month)</label>
@@ -398,6 +487,7 @@
             <label for="redLines" data-i18n="labRed">Red lines</label>
             <textarea id="redLines" rows="3" data-i18n-placeholder="phRed" placeholder="The number, the title, or the clause you will not trade."></textarea>
           </div>
+          </details>
         </section>
 
         <section class="card reveal" id="sec-language">
@@ -484,15 +574,30 @@
   (function () {
     var I18N = {
       en: {
-        title: "Salary brief: ask, target, walk-away | Career Tools IL",
-        description: "A salary brief for Israel: ask, target, and walk-away, with a counter ladder, leverage score, and language you can send. Illustrative, not pay advice. Launch offer: ₪26 (was ₪79).",
+        title: "Negotiation command center: counters, messages, offer battle | Career Tools IL",
+        description: "Negotiation command center for Israel: ask, target, walk-away, simulated employer counters, a message pack, and an offer battle. Illustrative, not pay advice. Launch offer: ₪26 (was ₪79).",
         ogAlt: "Career Tools IL salary brief",
         langLabel: "Language", whyLink: "Why us", whyFit: "Why these tools", allTools: "All tools", crumbsLabel: "Breadcrumb", stepsLabel: "Sections",
         crumb: "Salary brief", share: "Share", shareWa: "WhatsApp", shareLi: "LinkedIn",
         shareCopy: "Copy link", shareCopied: "Link copied", shareCopiedShort: "Copied",
-        kicker: "Salary brief", h1: "Ask, target, and walk-away.",
-        sub: "Three cases, a counter ladder, and language for the conversation. Rounded to ₪100. A heuristic for practice — not a market survey and not pay advice.",
-        step1: "Inputs", step2: "Decision aids", step3: "Language",
+        kicker: "Negotiation Command Center", h1: "Ask, target, and walk-away — then the reply.",
+        sub: "One desk for the call: their likely counters, three messages, an offer battle, and a brief you can save. The ask, target, and walk-away still round to ₪100. A heuristic for practice — not a market survey and not pay advice.",
+        step1: "Inputs", step2: "Command Center", step3: "Language",
+        ccKicker: "Command Center", ccH: "The desk for the call", ccTabs: "Command Center",
+        ccIntro: "The numbers above stay the source. This desk rehearses the employer’s reply, writes the three messages, ranks up to three offers, and keeps named scenarios in this browser.",
+        tabSim: "Counters", tabPack: "Messages", tabBattle: "Battle board", tabVault: "Session vault",
+        simHint: "Low, mid, and high are simulated from your ask, target, and walk-away. The gap is that counter minus the walk-away. Each card has the next line in English and Hebrew.",
+        packHint: "Three messages from the live numbers. The counter note uses a number you typed under accessories, or the middle simulated counter.",
+        battleHint: "Compare up to three offers. Score = yearly cash in thousands (base × 12 + signing bonus + equity per year) + commute points + a small start-date point. A base under the walk-away loses 40 points.",
+        off1: "Offer 1", off2: "Offer 2", off3: "Offer 3",
+        labBName: "Name", labBBase: "Base gross (₪/month)", labBBonus: "Signing bonus, once (₪)",
+        labBEq: "Equity / RSU per year (₪)", labBEqNote: "Equity note", labBMode: "Commute / remote", labBStart: "Start date",
+        phOffer: "Company or role", phEq: "Vesting, refresh, or “none”",
+        modeRemote: "Remote", modeHybrid: "Hybrid", modeShort: "Office, under 45 min", modeLong: "Office, 45 min or more",
+        battleFill: "Use the typed offer as offer 1", battlePrint: "Printable summary",
+        vaultHint: "Named scenarios stay in this browser only. The HTML brief pack is one print-friendly file: numbers, counters, messages, and the battle board.",
+        phVault: "Scenario name", vaultSave: "Save scenario", vaultExport: "Export HTML brief pack",
+        accSum: "Accessories already on this brief",
         inH: "01 · The offer", labCurrent: "Current gross (₪/month)", labOffer: "Offer, gross (₪/month)",
         labYears: "Relevant years", labSen: "Seniority", labRole: "Role family", labCity: "City / area",
         cityHint: "Cost-of-living factors are a rough proxy, not an official index. The brief updates as you type.",
@@ -541,15 +646,30 @@
         ldName: "Salary negotiation calculator", ldOffer: "Launch offer. Original price 79 ILS."
       },
       he: {
-        title: "תדריך שכר: בקשה, יעד, יציאה | Career Tools IL",
-        description: "תדריך שכר לישראל: בקשה, יעד ומספר יציאה, עם סולם נגד, ציון מנופים וניסוח שאפשר לשלוח. להמחשה, לא ייעוץ שכר. הצעת השקה: ₪26 (במקום ₪79).",
+        title: "מרכז פיקוד: נגדים, הודעות, לוח קרב | Career Tools IL",
+        description: "מרכז פיקוד למשא ומתן בישראל: בקשה, יעד, יציאה, נגדי מעסיק, חבילת הודעות ולוח קרב. להמחשה, לא ייעוץ שכר. הצעת השקה: ₪26 (במקום ₪79).",
         ogAlt: "תדריך שכר — Career Tools IL",
         langLabel: "שפה", whyLink: "למה אנחנו", whyFit: "למה הכלים", allTools: "כל הכלים", crumbsLabel: "פירורי לחם", stepsLabel: "חלקים",
         crumb: "תדריך שכר", share: "שתפו", shareWa: "וואטסאפ", shareLi: "לינקדאין",
         shareCopy: "העתקת קישור", shareCopied: "הקישור הועתק", shareCopiedShort: "הועתק",
-        kicker: "תדריך שכר", h1: "בקשה, יעד, ומספר יציאה.",
-        sub: "שלושה תרחישים, סולם נגד, וניסוח לשיחה. מעוגל ל־₪100. היוריסטיקה לתרגול — לא סקר שוק ולא ייעוץ שכר.",
-        step1: "קלט", step2: "עזרי החלטה", step3: "ניסוח",
+        kicker: "מרכז פיקוד למשא ומתן", h1: "בקשה, יעד ומספר יציאה — ואז התשובה.",
+        sub: "שולחן אחד לשיחה: הנגדים הצפויים, שלוש הודעות, קרב הצעות, ותדריך שאפשר לשמור. הבקשה, היעד והיציאה עדיין מעוגלים ל־₪100. היוריסטיקה לתרגול — לא סקר שוק ולא ייעוץ שכר.",
+        step1: "קלט", step2: "מרכז פיקוד", step3: "ניסוח",
+        ccKicker: "מרכז פיקוד", ccH: "השולחן לשיחה", ccTabs: "מרכז פיקוד",
+        ccIntro: "המספרים למעלה נשארים המקור. השולחן הזה מתרגל את תשובת המעסיק, כותב שלוש הודעות, מדרג עד שלוש הצעות, ושומר תרחישים בשם בדפדפן הזה.",
+        tabSim: "נגדים", tabPack: "הודעות", tabBattle: "לוח קרב", tabVault: "כספת תרחישים",
+        simHint: "נמוך, אמצע וגבוה נגזרים מהבקשה, מהיעד ומנקודת היציאה. הפער הוא הנגד פחות נקודת היציאה. בכל כרטיס יש את השורה הבאה באנגלית ובעברית.",
+        packHint: "שלוש הודעות מהמספרים החיים. הערת הנגד משתמשת במספר שהקלדתם באביזרים, או בנגד האמצעי המדומה.",
+        battleHint: "השוואה של עד שלוש הצעות. ציון = מזומן שנתי באלפים (בסיס × 12 + בונוס חתימה + אקוויטי לשנה) + נקודות נסיעה + נקודה קטנה לתאריך התחלה. בסיס מתחת ליציאה מוריד 40 נקודות.",
+        off1: "הצעה 1", off2: "הצעה 2", off3: "הצעה 3",
+        labBName: "שם", labBBase: "בסיס ברוטו (₪/חודש)", labBBonus: "בונוס חתימה, חד־פעמי (₪)",
+        labBEq: "אקוויטי / RSU לשנה (₪)", labBEqNote: "הערת אקוויטי", labBMode: "נסיעה / מרחוק", labBStart: "תאריך התחלה",
+        phOffer: "חברה או תפקיד", phEq: "הבשלה, ריענון, או «אין»",
+        modeRemote: "מרחוק", modeHybrid: "היברידי", modeShort: "משרד, פחות מ־45 דק׳", modeLong: "משרד, 45 דק׳ ומעלה",
+        battleFill: "ההצעה שהוקלדה כהצעה 1", battlePrint: "סיכום להדפסה",
+        vaultHint: "תרחישים בשם נשארים רק בדפדפן הזה. חבילת התדריך היא קובץ HTML אחד להדפסה: מספרים, נגדים, הודעות ולוח הקרב.",
+        phVault: "שם התרחיש", vaultSave: "שמירת תרחיש", vaultExport: "ייצוא חבילת תדריך HTML",
+        accSum: "אביזרים שכבר בתדריך",
         inH: "01 · ההצעה", labCurrent: "שכר נוכחי, ברוטו (₪/חודש)", labOffer: "הצעה, ברוטו (₪/חודש)",
         labYears: "שנות ניסיון רלוונטי", labSen: "בכירות", labRole: "משפחת תפקיד", labCity: "עיר / אזור",
         cityHint: "מכפילי יוקר המחיה הם קירוב, לא מדד רשמי. התדריך מתעדכן תוך כדי הקלדה.",
@@ -683,6 +803,357 @@
     };
     var WEIGHT = { compete: 22, impact: 18, scarce: 16, scope: 14, gap: 16, writing: 14 };
     var lastBrief = "";
+
+    var ccCopyBank = {};
+    var lastCcText = "";
+    var lastDesk = null;
+    var VAULT_KEY = "ctil_salary_vault_v1";
+    var MODE = {
+      remote: { pts: 14, en: "Remote", he: "מרחוק" },
+      hybrid: { pts: 8, en: "Hybrid", he: "היברידי" },
+      short: { pts: 4, en: "Office, under 45 min", he: "משרד, פחות מ־45 דק׳" },
+      long: { pts: 0, en: "Office, 45 min or more", he: "משרד, 45 דק׳ ומעלה" }
+    };
+
+    function nisLang(n, heb) {
+      if (!isFinite(n)) return "—";
+      return new Intl.NumberFormat(heb ? "he-IL" : "en-IL", { style: "currency", currency: "ILS", maximumFractionDigits: 0 }).format(Math.round(n));
+    }
+    function esc(s) {
+      return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+        return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" })[c];
+      });
+    }
+    function employerBands(s) {
+      var span = Math.max(100, s.target - s.walk);
+      var low = round100(Math.max(0, s.walk - span * 0.22));
+      var mid = round100(s.walk + Math.max(0, s.target - s.walk) * 0.55);
+      var high = round100(s.target + Math.max(0, s.ask - s.target) * 0.45);
+      if (mid < low) mid = low;
+      if (high < mid) high = mid;
+      if (s.ask > 0 && high > s.ask) high = round100(s.ask);
+      return [
+        { key: "low", n: low, en: "Low counter", he: "נגד נמוך" },
+        { key: "mid", n: mid, en: "Mid counter", he: "נגד אמצעי" },
+        { key: "high", n: high, en: "High counter", he: "נגד גבוה" }
+      ];
+    }
+    function gapWords(gap, heb) {
+      var abs = nisLang(Math.abs(gap), heb);
+      if (gap < 0) return heb ? (abs + " מתחת ליציאה") : (abs + " under the walk-away");
+      if (gap === 0) return heb ? "על נקודת היציאה" : "on the walk-away";
+      return heb ? (abs + " מעל היציאה") : (abs + " above the walk-away");
+    }
+    function replyPair(n, s) {
+      var gap = n - s.walk;
+      var en, heTxt;
+      if (n >= s.ask) {
+        en = "Their " + nisLang(n, false) + " meets the ask (" + gapWords(gap, false) + "). If the writing matches today, accept and stop talking.";
+        heTxt = "הנגד " + nisLang(n, true) + " פוגש את הבקשה (" + gapWords(gap, true) + "). אם הכתב תואם היום — מקבלים ומפסיקים לדבר.";
+      } else if (n >= s.target) {
+        en = "Their " + nisLang(n, false) + " is inside the landing zone (" + gapWords(gap, false) + "). Confirm " + nisLang(n, false) + " in writing. Do not reopen the ask.";
+        heTxt = "הנגד " + nisLang(n, true) + " בתוך אזור הנחיתה (" + gapWords(gap, true) + "). מאשרים " + nisLang(n, true) + " בכתב. לא פותחים מחדש את הבקשה.";
+      } else if (n >= s.walk) {
+        en = "Their " + nisLang(n, false) + " clears the walk-away (" + gapWords(gap, false) + ") and misses the target " + nisLang(s.target, false) + ". One reply: \"I can land at " + nisLang(s.target, false) + ".\" Then wait. Do not drop to " + nisLang(s.walk, false) + " yet.";
+        heTxt = "הנגד " + nisLang(n, true) + " עובר את היציאה (" + gapWords(gap, true) + ") ומפספס את היעד " + nisLang(s.target, true) + ". תשובה אחת: «אפשר לנחות על " + nisLang(s.target, true) + ".» ואז שתיקה. לא יורדים ל־" + nisLang(s.walk, true) + " עדיין.";
+      } else {
+        en = "Their " + nisLang(n, false) + " is " + gapWords(gap, false) + ". Thank them. The floor is " + nisLang(s.walk, false) + ". Stop. Do not accept this number.";
+        heTxt = "הנגד " + nisLang(n, true) + " " + gapWords(gap, true) + ". מודים. הרצפה היא " + nisLang(s.walk, true) + ". עוצרים. לא מקבלים את המספר הזה.";
+      }
+      return { gap: gap, en: en, he: heTxt };
+    }
+    function packMessages(s, replyTo) {
+      return [
+        {
+          enTitle: "Ask", heTitle: "בקשה",
+          en: "Hello — thank you for the offer.\nI would open at " + nisLang(s.ask, false) + " gross per month. I can land at " + nisLang(s.target, false) + ". Below " + nisLang(s.walk, false) + " I stop.\nI will confirm the number in writing the same day.",
+          he: "שלום, תודה על ההצעה.\nאפתח ב־" + nisLang(s.ask, true) + " ברוטו לחודש. אפשר לנחות על " + nisLang(s.target, true) + ". מתחת ל־" + nisLang(s.walk, true) + " אני עוצר.\nאאשר את המספר בכתב באותו היום."
+        },
+        {
+          enTitle: "Counter", heTitle: "נגד",
+          en: "Thank you for " + nisLang(replyTo, false) + ".\nI can move once, to " + nisLang(s.target, false) + ". That is the number I will put in writing.\nI will not go under " + nisLang(s.walk, false) + ".",
+          he: "תודה על " + nisLang(replyTo, true) + ".\nאפשר לזוז פעם אחת, אל " + nisLang(s.target, true) + ". זה המספר שאכניס לכתב.\nלא ארד מתחת ל־" + nisLang(s.walk, true) + "."
+        },
+        {
+          enTitle: "Accept or walk", heTitle: "קבלה או יציאה",
+          en: "If you confirm " + nisLang(s.target, false) + " gross per month in writing today, I accept.\nIf the number is under " + nisLang(s.walk, false) + ", I will thank you and walk away.\nPlease send the written recap the same day.",
+          he: "אם תאשר " + nisLang(s.target, true) + " ברוטו לחודש בכתב היום — אני מקבל.\nאם המספר מתחת ל־" + nisLang(s.walk, true) + ", אודה ואצא.\nאבקש סיכום כתוב באותו היום."
+        }
+      ];
+    }
+    function readOffers() {
+      var out = [];
+      for (var i = 1; i <= 3; i++) {
+        out.push({
+          i: i,
+          name: ($("b" + i + "Name") && $("b" + i + "Name").value.trim()) || "",
+          base: Number($("b" + i + "Base") && $("b" + i + "Base").value) || 0,
+          bonus: Number($("b" + i + "Bonus") && $("b" + i + "Bonus").value) || 0,
+          eq: Number($("b" + i + "Eq") && $("b" + i + "Eq").value) || 0,
+          eqNote: ($("b" + i + "EqNote") && $("b" + i + "EqNote").value.trim()) || "",
+          mode: ($("b" + i + "Mode") && $("b" + i + "Mode").value) || "hybrid",
+          start: ($("b" + i + "Start") && $("b" + i + "Start").value) || ""
+        });
+      }
+      return out;
+    }
+    function scoreOffer(o, walk) {
+      var mode = MODE[o.mode] || MODE.hybrid;
+      var annual = o.base * 12 + o.bonus + o.eq;
+      var startPts = 0;
+      if (o.start) {
+        var days = (new Date(o.start + "T12:00:00").getTime() - Date.now()) / 86400000;
+        if (isFinite(days)) {
+          if (days <= 21) startPts = 6;
+          else if (days <= 45) startPts = 4;
+          else if (days <= 90) startPts = 2;
+        }
+      }
+      var penalty = (walk > 0 && o.base > 0 && o.base < walk) ? 40 : 0;
+      var score = annual / 1000 + mode.pts + startPts - penalty;
+      return { annual: annual, startPts: startPts, penalty: penalty, mode: mode, score: Math.round(score * 10) / 10, gap: o.base - walk };
+    }
+    function copyBtn(id) {
+      var b = el("button", "btn");
+      b.type = "button";
+      b.setAttribute("data-ccopy", id);
+      b.textContent = he() ? "העתקה" : "Copy";
+      return b;
+    }
+    function biBlock(enText, heText, enId, heId) {
+      var wrap = el("div", "bi");
+      function col(label, text, id) {
+        var box = el("div", "script");
+        var head = el("header");
+        head.appendChild(el("h3", null, label));
+        head.appendChild(copyBtn(id));
+        box.appendChild(head);
+        box.appendChild(el("pre", null, text));
+        ccCopyBank[id] = text;
+        return box;
+      }
+      wrap.appendChild(col("EN", enText, enId));
+      wrap.appendChild(col("HE", heText, heId));
+      return wrap;
+    }
+    function readVault() {
+      try {
+        var raw = localStorage.getItem(VAULT_KEY);
+        var data = raw ? JSON.parse(raw) : { items: [] };
+        if (!data || !Array.isArray(data.items)) return { items: [] };
+        return data;
+      } catch (e) { return { items: [] }; }
+    }
+    function writeVault(data) {
+      try { localStorage.setItem(VAULT_KEY, JSON.stringify(data)); } catch (e) {}
+    }
+    function paintVault() {
+      var host = $("vaultList");
+      if (!host) return;
+      host.textContent = "";
+      var items = readVault().items;
+      if (!items.length) {
+        host.appendChild(el("p", "hint", he() ? "אין תרחישים שמורים." : "No saved scenarios yet."));
+        return;
+      }
+      items.forEach(function (it) {
+        var row = el("div", "vault-item");
+        var label = el("div");
+        label.appendChild(document.createTextNode(it.name));
+        label.appendChild(el("span", null, "  " + String(it.at || "").slice(0, 16).replace("T", " ")));
+        row.appendChild(label);
+        var actions = el("div", "sum-actions");
+        var load = el("button", "btn");
+        load.type = "button";
+        load.setAttribute("data-vault-load", it.id);
+        load.textContent = he() ? "טעינה" : "Load";
+        var del = el("button", "btn secondary");
+        del.type = "button";
+        del.setAttribute("data-vault-del", it.id);
+        del.textContent = he() ? "מחיקה" : "Delete";
+        actions.appendChild(load);
+        actions.appendChild(del);
+        row.appendChild(actions);
+        host.appendChild(row);
+      });
+    }
+    function paintCommand(p, s) {
+      var sim = $("ccSim");
+      var packHost = $("ccPack");
+      var bout = $("battleOut");
+      if (sim) sim.textContent = "";
+      if (packHost) packHost.textContent = "";
+      if (bout) bout.textContent = "";
+      ccCopyBank = {};
+      paintVault();
+      if (!s) {
+        var empty = he() ? "הזינו שכר או הצעה כדי לפתוח את מרכז הפיקוד." : "Enter pay or an offer to open the command center.";
+        if (sim) sim.appendChild(el("p", "empty", empty));
+        if (packHost) packHost.appendChild(el("p", "empty", empty));
+        if (bout) bout.appendChild(el("p", "hint", empty));
+        lastCcText = "";
+        lastDesk = null;
+        return null;
+      }
+      var bands = employerBands(s);
+      var cards = el("div", "counter-cards");
+      var lines = [];
+      var counters = bands.map(function (b, idx) {
+        var reply = replyPair(b.n, s);
+        var card = el("div", "stat");
+        card.appendChild(el("div", "k", he() ? b.he : b.en));
+        card.appendChild(el("div", "n", nis(b.n)));
+        var pill = el("span", "gap-pill " + (reply.gap < 0 ? "bad" : "ok"));
+        pill.textContent = gapWords(reply.gap, he());
+        card.appendChild(pill);
+        cards.appendChild(card);
+        if (sim) {
+          /* cards collected, replies below */
+        }
+        lines.push((he() ? b.he : b.en) + " " + nis(b.n) + " · " + gapWords(reply.gap, he()));
+        return { en: b.en, he: b.he, n: b.n, amount: nisLang(b.n, false) + " / " + nisLang(b.n, true), gapEn: gapWords(reply.gap, false), gapHe: gapWords(reply.gap, true), replyEn: reply.en, replyHe: reply.he, id: b.key, idx: idx };
+      });
+      if (sim) {
+        sim.appendChild(cards);
+        counters.forEach(function (c) {
+          var block = el("div", "aid-block");
+          block.appendChild(el("h3", null, (he() ? c.he : c.en) + " · " + nis(c.n)));
+          block.appendChild(biBlock(c.replyEn, c.replyHe, "sim-" + c.id + "-en", "sim-" + c.id + "-he"));
+          sim.appendChild(block);
+        });
+      }
+      var typed = Number($("counter") && $("counter").value) || 0;
+      var mid = bands[1].n;
+      var replyTo = typed > 0 ? typed : mid;
+      var msgs = packMessages(s, replyTo);
+      if (packHost) {
+        packHost.appendChild(el("p", "why", he()
+          ? "ההודעה האמצעית מגיבה ל־" + nis(replyTo) + (typed > 0 ? " (הנגד שהקלדתם)." : " (הנגד האמצעי המדומה).")
+          : "The middle message answers " + nis(replyTo) + (typed > 0 ? " (the counter you typed)." : " (the simulated mid counter).")));
+        msgs.forEach(function (m, i) {
+          var block = el("div", "aid-block");
+          block.appendChild(el("h3", null, he() ? m.heTitle : m.enTitle));
+          block.appendChild(biBlock(m.en, m.he, "pack-" + i + "-en", "pack-" + i + "-he"));
+          packHost.appendChild(block);
+        });
+      }
+      var walk = s.walk;
+      var scored = readOffers().map(function (o) {
+        var sc = o.base > 0 ? scoreOffer(o, walk) : null;
+        return { o: o, sc: sc };
+      });
+      var ranked = scored.filter(function (row) { return row.sc; }).slice().sort(function (a, b) {
+        if (b.sc.score !== a.sc.score) return b.sc.score - a.sc.score;
+        return b.sc.annual - a.sc.annual;
+      });
+      var winner = ranked[0] || null;
+      var recEn = "Add at least one base salary to rank the board.";
+      var recHe = "הוסיפו לפחות שכר בסיס אחד כדי לדרג את הלוח.";
+      if (winner) {
+        var label = winner.o.name || ((he() ? "הצעה " : "Offer ") + winner.o.i);
+        var labelEn = winner.o.name || ("Offer " + winner.o.i);
+        var labelHe = winner.o.name || ("הצעה " + winner.o.i);
+        if (winner.sc.penalty) {
+          recEn = labelEn + " scores highest (" + winner.sc.score + ") and its base is still under the walk-away. Do not accept it as written.";
+          recHe = labelHe + " עם הציון הגבוה (" + winner.sc.score + "), והבסיס עדיין מתחת ליציאה. לא מקבלים את זה ככתבו.";
+        } else {
+          recEn = "Take " + labelEn + " into the call. Score " + winner.sc.score + ". Yearly cash " + nisLang(winner.sc.annual, false) + ". " + winner.sc.mode.en + ".";
+          recHe = "נכנסים לשיחה עם " + labelHe + ". ציון " + winner.sc.score + ". מזומן שנתי " + nisLang(winner.sc.annual, true) + ". " + winner.sc.mode.he + ".";
+        }
+        if (!winner.o.name) label = labelEn;
+      }
+      if (bout) {
+        if (!ranked.length) bout.appendChild(el("p", "hint", he() ? recHe : recEn));
+        else {
+          var table = el("table", "matrix");
+          var head = el("tr");
+          [he() ? "הצעה" : "Offer", he() ? "בסיס" : "Base", he() ? "מזומן שנתי" : "Yearly cash", he() ? "מול יציאה" : "Vs walk-away", he() ? "ציון" : "Score"].forEach(function (h) { head.appendChild(el("th", null, h)); });
+          table.appendChild(head);
+          ranked.forEach(function (row, idx) {
+            var tr = el("tr");
+            var name = row.o.name || ((he() ? "הצעה " : "Offer ") + row.o.i);
+            var cells = [name, nis(row.o.base), nis(row.sc.annual), gapWords(row.sc.gap, he()), String(row.sc.score)];
+            cells.forEach(function (cell) { tr.appendChild(el("td", idx === 0 ? "rec" : "", cell)); });
+            table.appendChild(tr);
+            var note = [];
+            if (row.o.bonus) note.push((he() ? "בונוס " : "Bonus ") + nis(row.o.bonus));
+            if (row.o.eq || row.o.eqNote) note.push((he() ? "אקוויטי " : "Equity ") + (row.o.eq ? nis(row.o.eq) + (he() ? "/שנה" : "/year") : "") + (row.o.eqNote ? " — " + row.o.eqNote : ""));
+            note.push(he() ? row.sc.mode.he : row.sc.mode.en);
+            if (row.o.start) note.push((he() ? "התחלה " : "Start ") + row.o.start);
+            var tr2 = el("tr");
+            var td = el("td", null, note.join(" · "));
+            td.colSpan = 5;
+            tr2.appendChild(td);
+            table.appendChild(tr2);
+          });
+          bout.appendChild(table);
+          bout.appendChild(el("p", "why", he() ? recHe : recEn));
+        }
+      }
+      lastCcText = [
+        he() ? "מרכז פיקוד" : "Command center",
+        lines.join("\n"),
+        "",
+        (he() ? "הודעת בקשה" : "Ask message") + "\n" + (he() ? msgs[0].he : msgs[0].en),
+        "",
+        (he() ? "הודעת נגד" : "Counter message") + "\n" + (he() ? msgs[1].he : msgs[1].en),
+        "",
+        (he() ? "קבלה או יציאה" : "Accept or walk") + "\n" + (he() ? msgs[2].he : msgs[2].en),
+        "",
+        he() ? recHe : recEn
+      ].join("\n");
+      lastDesk = {
+        ask: s.ask, target: s.target, walk: s.walk,
+        counters: counters, messages: msgs, scored: scored, ranked: ranked,
+        recEn: recEn, recHe: recHe, replyTo: replyTo
+      };
+      return lastDesk;
+    }
+    function briefHtml() {
+      if (!lastDesk) return "";
+      var d = lastDesk;
+      function pre(t) { return "<pre>" + esc(t) + "</pre>"; }
+      var counters = d.counters.map(function (c) {
+        return "<h2>" + esc(c.en) + " · " + esc(c.he) + " — " + esc(nisLang(c.n, false)) + "</h2><p>" + esc(c.gapEn) + "<br>" + esc(c.gapHe) + "</p>" + pre(c.replyEn) + pre(c.replyHe);
+      }).join("");
+      var messages = d.messages.map(function (m) {
+        return "<h2>" + esc(m.enTitle) + " · " + esc(m.heTitle) + "</h2>" + pre(m.en) + pre(m.he);
+      }).join("");
+      var rows = d.ranked.map(function (row) {
+        var name = row.o.name || ("Offer " + row.o.i);
+        var note = [row.sc.mode.en + " / " + row.sc.mode.he];
+        if (row.o.eqNote) note.push(row.o.eqNote);
+        if (row.o.start) note.push(row.o.start);
+        return "<tr><td>" + esc(name) + "</td><td>" + esc(nisLang(row.o.base, false)) + "</td><td>" + esc(nisLang(row.o.bonus, false)) + "</td><td>" + esc(nisLang(row.o.eq, false)) + "</td><td>" + esc(String(row.sc.score)) + "</td><td>" + esc(note.join(" · ")) + "</td></tr>";
+      }).join("");
+      var red = ($("redLines") && $("redLines").value.trim()) || "";
+      return "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Career Tools IL — brief pack</title><style>body{font-family:Georgia,'Times New Roman',serif;color:#16130e;margin:28px auto;max-width:820px;line-height:1.45}h1{font-size:22px;font-weight:600}h2{font-size:15px;margin:22px 0 6px}p,td,th{font-size:13px}table{border-collapse:collapse;width:100%;margin-top:8px}td,th{border-bottom:1px solid #ccc;padding:6px 8px;text-align:start;vertical-align:top}pre{white-space:pre-wrap;font-family:Georgia,serif;background:#f6f3ee;padding:10px;margin:6px 0} .muted{color:#5c564c;font-size:12px}@media print{body{margin:12px}pre{background:#fff;border:1px solid #ddd}}</style></head><body><p class=\"muted\">Career Tools IL · Negotiation brief pack · " + esc(new Date().toISOString().slice(0, 10)) + "</p><h1>Ask " + esc(nisLang(d.ask, false)) + " · Target " + esc(nisLang(d.target, false)) + " · Walk-away " + esc(nisLang(d.walk, false)) + "</h1><p class=\"muted\">בקשה " + esc(nisLang(d.ask, true)) + " · יעד " + esc(nisLang(d.target, true)) + " · יציאה " + esc(nisLang(d.walk, true)) + "</p><h2>Employer counters · נגדי מעסיק</h2>" + counters + "<h2>Message pack · חבילת הודעות</h2>" + messages + "<h2>Offer battle · לוח קרב</h2><table><thead><tr><th>Offer</th><th>Base</th><th>Bonus</th><th>Equity / year</th><th>Score</th><th>Note</th></tr></thead><tbody>" + (rows || "<tr><td colspan=\"6\">—</td></tr>") + "</tbody></table><p>" + esc(d.recEn) + "</p><p>" + esc(d.recHe) + "</p>" + (red ? "<h2>Red lines · קווים אדומים</h2><p>" + esc(red) + "</p>" : "") + "<p class=\"muted\">Illustrative practice brief. Not pay, tax, or career advice.</p></body></html>";
+    }
+    function downloadBrief(openPrint) {
+      var html = briefHtml();
+      var status = $("vaultStatus");
+      if (!html) {
+        if (status) status.textContent = he() ? "אין מספרים לייצוא. הזינו שכר או הצעה." : "Enter pay or an offer before exporting.";
+        return;
+      }
+      var blob = new Blob([html], { type: "text/html;charset=utf-8" });
+      var url = URL.createObjectURL(blob);
+      if (openPrint) {
+        var w = window.open(url, "_blank");
+        if (w) {
+          w.addEventListener("load", function () { try { w.focus(); w.print(); } catch (e) {} });
+        }
+      }
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = "career-tools-il-brief-pack.html";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 2500);
+      if (status) status.textContent = he() ? "חבילת התדריך ירדה. אפשר להדפיס אותה מהדפדפן." : "Brief pack downloaded. Print it from the browser.";
+    }
+
 
     function $(id) { return document.getElementById(id); }
     function he() { return document.documentElement.lang === "he"; }
@@ -878,6 +1349,8 @@
         $("waMsg").textContent = ""; $("emailMsg").textContent = ""; $("followMsg").textContent = ""; $("advMsg").textContent = "";
         if ($("page2Msg")) $("page2Msg").textContent = "";
         lastBrief = "";
+        lastCcText = "";
+        paintCommand(null, null);
         saveSal();
         return;
       }
@@ -1017,6 +1490,7 @@
           : "Page 2 — expanded export\nCall: open " + nis(s.ask) + " · land " + nis(s.target) + " · stop " + nis(s.walk) + "\nBenefits after base has landed: pension, vacation days, hybrid, title.\nWriting: recap email within two hours, with the number and the scope.";
       }
       paintAids(p, s, total, names);
+      paintCommand(p, s);
       var ladderTxt = steps.map(function (st) { return st[0] + "  " + nis(st[1]) + " — " + st[2]; }).join("\n");
       var dayBits = [];
       document.querySelectorAll("[data-day]").forEach(function (box) {
@@ -1043,6 +1517,7 @@
         dayBits.length ? ((he() ? "יום השיחה" : "Day-of") + "\n" + dayBits.join("\n")) : "",
         red ? ((he() ? "קווים אדומים: " : "Red lines: ") + red) : "",
         counterNow > 0 ? counterGuide(counterNow, s) : "",
+        lastCcText,
         he() ? "הערכה לתרגול, לא ייעוץ שכר." : "A practice estimate, not pay advice."
       ].filter(function (line) { return line !== ""; }).join("\n");
       saveSal();
@@ -1162,7 +1637,7 @@
     function goLead(e) { e.preventDefault(); location.href = "../#lead"; }
     $("payCta").addEventListener("click", goLead);
     if ($("payCta2")) $("payCta2").addEventListener("click", goLead);
-    ["current", "offer", "years", "seniority", "role", "city", "offerB", "bonus", "bonusB", "counter", "coA", "roleA", "coB", "roleB", "noteOpen", "noteMid", "noteLand", "noteStop", "redLines"].forEach(function (id) {
+    ["current", "offer", "years", "seniority", "role", "city", "offerB", "bonus", "bonusB", "counter", "coA", "roleA", "coB", "roleB", "noteOpen", "noteMid", "noteLand", "noteStop", "redLines", "b1Name", "b1Base", "b1Bonus", "b1Eq", "b1EqNote", "b1Mode", "b1Start", "b2Name", "b2Base", "b2Bonus", "b2Eq", "b2EqNote", "b2Mode", "b2Start", "b3Name", "b3Base", "b3Bonus", "b3Eq", "b3EqNote", "b3Mode", "b3Start"].forEach(function (id) {
       var node = $(id);
       if (!node) return;
       node.addEventListener("input", render);
@@ -1200,21 +1675,19 @@
     }
     var SAL_KEY = "ctil_salary_v1";
     var restoring = false;
-    var SAL_FIELDS = ["current", "offer", "years", "seniority", "role", "city", "offerB", "bonus", "bonusB", "counter", "coA", "roleA", "coB", "roleB", "noteOpen", "noteMid", "noteLand", "noteStop", "redLines"];
+    var SAL_FIELDS = ["current", "offer", "years", "seniority", "role", "city", "offerB", "bonus", "bonusB", "counter", "coA", "roleA", "coB", "roleB", "noteOpen", "noteMid", "noteLand", "noteStop", "redLines", "b1Name", "b1Base", "b1Bonus", "b1Eq", "b1EqNote", "b1Mode", "b1Start", "b2Name", "b2Base", "b2Bonus", "b2Eq", "b2EqNote", "b2Mode", "b2Start", "b3Name", "b3Base", "b3Bonus", "b3Eq", "b3EqNote", "b3Mode", "b3Start"];
     function saveSal() {
       if (restoring) return;
+      try { localStorage.setItem(SAL_KEY, JSON.stringify(snapshot())); } catch (e) {}
+    }
+    function snapshot() {
       var data = { levers: [], day: [] };
       SAL_FIELDS.forEach(function (id) { var n = $(id); if (n) data[id] = n.value; });
       document.querySelectorAll("[data-lev]").forEach(function (b) { if (b.checked) data.levers.push(b.getAttribute("data-lev")); });
       document.querySelectorAll("[data-day]").forEach(function (b) { if (b.checked) data.day.push(b.getAttribute("data-day")); });
-      try { localStorage.setItem(SAL_KEY, JSON.stringify(data)); } catch (e) {}
+      return data;
     }
-    function loadSal() {
-      var raw = null;
-      try { raw = localStorage.getItem(SAL_KEY); } catch (e) { return; }
-      if (!raw) return;
-      var data;
-      try { data = JSON.parse(raw); } catch (e2) { return; }
+    function applySnapshot(data) {
       if (!data || typeof data !== "object") return;
       restoring = true;
       SAL_FIELDS.forEach(function (id) {
@@ -1233,8 +1706,16 @@
       }
       restoring = false;
     }
-    var secs = ["sec-inputs", "sec-levers", "sec-aids", "sec-language"];
-    var stepOf = { "sec-inputs": "sec-inputs", "sec-levers": "sec-inputs", "sec-aids": "sec-aids", "sec-language": "sec-language" };
+    function loadSal() {
+      var raw = null;
+      try { raw = localStorage.getItem(SAL_KEY); } catch (e) { return; }
+      if (!raw) return;
+      var data;
+      try { data = JSON.parse(raw); } catch (e2) { return; }
+      applySnapshot(data);
+    }
+    var secs = ["sec-inputs", "sec-levers", "sec-command", "sec-language"];
+    var stepOf = { "sec-inputs": "sec-inputs", "sec-levers": "sec-inputs", "sec-command": "sec-command", "sec-language": "sec-language" };
     if ("IntersectionObserver" in window) {
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
@@ -1244,12 +1725,69 @@
             a.classList.toggle("on", a.getAttribute("data-step") === step);
           });
           var meter = document.getElementById("stepMeter");
-          var widths = { "sec-inputs": "34%", "sec-levers": "34%", "sec-aids": "67%", "sec-language": "100%" };
+          var widths = { "sec-inputs": "34%", "sec-levers": "34%", "sec-command": "67%", "sec-language": "100%" };
           if (meter && widths[en.target.id]) meter.style.width = widths[en.target.id];
         });
       }, { rootMargin: "-45% 0px -45% 0px", threshold: 0.01 });
       secs.forEach(function (id) { var n = $(id); if (n) io.observe(n); });
     }
+
+    document.querySelectorAll("[data-cctab]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var id = btn.getAttribute("data-cctab");
+        document.querySelectorAll("[data-cctab]").forEach(function (b) {
+          b.setAttribute("aria-selected", b === btn ? "true" : "false");
+        });
+        document.querySelectorAll("[data-ccpanel]").forEach(function (panel) {
+          panel.hidden = panel.getAttribute("data-ccpanel") !== id;
+        });
+      });
+    });
+    function copyCc(btn, text) {
+      var pack = window.CTIL_I18N ? window.CTIL_I18N[he() ? "he" : "en"] : { copied: he() ? "הועתק" : "Copied", copy: he() ? "העתקה" : "Copy" };
+      function ok() { btn.textContent = pack.copied || (he() ? "הועתק" : "Copied"); btn.classList.add("copied"); setTimeout(function () { btn.textContent = he() ? "העתקה" : "Copy"; btn.classList.remove("copied"); }, 1400); }
+      function fallback(value) { var ta = document.createElement("textarea"); ta.value = value; ta.style.position = "fixed"; ta.style.left = "-9999px"; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); } catch (e) {} document.body.removeChild(ta); }
+      if (!text) return;
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok).catch(function () { fallback(text); ok(); });
+      else { fallback(text); ok(); }
+    }
+    var command = $("sec-command");
+    if (command) command.addEventListener("click", function (e) {
+      var copy = e.target.closest && e.target.closest("[data-ccopy]");
+      if (copy) { copyCc(copy, ccCopyBank[copy.getAttribute("data-ccopy")] || ""); return; }
+      var loadId = e.target.closest && e.target.closest("[data-vault-load]");
+      if (loadId) {
+        var id = loadId.getAttribute("data-vault-load");
+        var found = readVault().items.filter(function (it) { return it.id === id; })[0];
+        if (found) { applySnapshot(found.data); render(); if ($("vaultStatus")) $("vaultStatus").textContent = he() ? "התרחיש נטען." : "Scenario loaded."; }
+        return;
+      }
+      var delId = e.target.closest && e.target.closest("[data-vault-del]");
+      if (delId) {
+        var id2 = delId.getAttribute("data-vault-del");
+        var vault = readVault();
+        vault.items = vault.items.filter(function (it) { return it.id !== id2; });
+        writeVault(vault);
+        paintVault();
+      }
+    });
+    if ($("vaultSave")) $("vaultSave").addEventListener("click", function () {
+      var name = ($("vaultName") && $("vaultName").value.trim()) || new Date().toISOString().slice(0, 16).replace("T", " ");
+      var vault = readVault();
+      var item = { id: String(Date.now()), name: name, at: new Date().toISOString(), data: snapshot() };
+      vault.items = [item].concat(vault.items.filter(function (it) { return it.name !== name; })).slice(0, 12);
+      writeVault(vault);
+      paintVault();
+      if ($("vaultStatus")) $("vaultStatus").textContent = he() ? "התרחיש נשמר בדפדפן הזה." : "Scenario saved in this browser.";
+    });
+    if ($("vaultExport")) $("vaultExport").addEventListener("click", function () { downloadBrief(false); });
+    if ($("battlePrint")) $("battlePrint").addEventListener("click", function () { downloadBrief(true); });
+    if ($("battleFill")) $("battleFill").addEventListener("click", function () {
+      if ($("b1Base")) $("b1Base").value = $("offer").value;
+      if ($("b1Bonus") && ($("bonus").value || "") !== "") $("b1Bonus").value = $("bonus").value;
+      if ($("b1Name") && !$("b1Name").value.trim()) $("b1Name").value = ($("coA") && $("coA").value.trim()) || (he() ? "ההצעה" : "The offer");
+      render();
+    });
     window.ctilAfterLang = render;
     loadSal();
     render();

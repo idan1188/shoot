@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Career Tools IL | Salary and freelance rate calculators</title>
-  <meta name="description" content="Know the number before you say it. Salary brief and freelance quote for Israel. Launch offer: bundle ₪43 (was ₪129). Estimates, not advice." />
+  <title>Career Tools IL | Negotiation command center and pricing OS</title>
+  <meta name="description" content="A salary command center and a freelance pricing desk for Israel. Counters, messages, offer battle, scope-to-price. Bundle ₪43 (was ₪129). Estimates, not advice." />
   <meta name="theme-color" content="#0c0e12" />
   <meta name="robots" content="index,follow" />
   <meta name="author" content="Career Tools IL" />
@@ -596,11 +596,21 @@
     html[lang="he"] .compare th { letter-spacing: 0; }
     .compare td.us { color: var(--accent-2); }
     .compare tr:last-child td { border-bottom: 0; }
-    @media (max-width: 800px) { .story, .why-grid { grid-template-columns: 1fr; } }
+    .system-board { display: grid; grid-template-columns: 1.15fr .85fr; gap: 14px; }
+    .desk { position: relative; overflow: hidden; border: 1px solid #3a3428; border-radius: 12px; padding: 18px 18px 16px; background: radial-gradient(120% 80% at 100% 0%, rgba(198,165,109,.16), transparent 52%), var(--surface); }
+    .desk ol { margin: 10px 0 14px; padding-inline-start: 1.15rem; color: var(--muted); }
+    .desk li { margin: 6px 0; }
+    .desk h3 { margin-bottom: 4px; }
+    .desk .idx { color: var(--accent); font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+    html[lang="he"] .desk .idx { letter-spacing: 0; text-transform: none; font-size: .8rem; }
+    .desk-links { margin-top: 12px; color: var(--muted); font-size: .84rem; }
+    html.motion .desk::after { content: ""; position: absolute; width: 160px; height: 160px; inset-inline-end: -48px; top: -60px; background: radial-gradient(circle, rgba(228,210,174,.2), transparent 68%); animation: deskglow 8s ease-in-out infinite; pointer-events: none; }
+    @keyframes deskglow { 0%, 100% { transform: translate3d(0,0,0); opacity: .65; } 50% { transform: translate3d(-10px, 12px, 0); opacity: 1; } }
+    @media (max-width: 800px) { .story, .why-grid, .system-board { grid-template-columns: 1fr; } }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .scroll-rail { display: none; }
-      .hero-field, .hero-card, .logo-mark, .band-rule, .reveal, .tool, .inside article, .btn { animation: none !important; transition: none !important; transform: none !important; filter: none !important; opacity: 1 !important; }
+      .hero-field, .hero-card, .logo-mark, .band-rule, .reveal, .tool, .inside article, .btn, .desk::after { animation: none !important; transition: none !important; transform: none !important; filter: none !important; opacity: 1 !important; }
       .hero-field path { stroke-dashoffset: 0 !important; }
       #inside.pin { padding-bottom: 0; }
       #inside .pin-sticky { position: static; }
@@ -652,8 +662,8 @@
         </svg>
         <div class="hero-copy">
           <p class="eyebrow" data-i18n="pill">For Israel · Private in the browser · No account</p>
-          <h1 data-i18n="h1">Know the number before you say it.</h1>
-          <p class="lead" data-i18n="lead">A salary brief with an ask, a target, and a walk-away. A freelance quote with margin and break-even hours. Built for Israel. Estimates, not advice.</p>
+          <h1 data-i18n="h1">A desk for the number, not another calculator.</h1>
+          <p class="lead" data-i18n="lead">Salary: rehearse their counter, write three messages, rank the offers, and take a brief into the call. Freelance: turn scope into a price and answer a push-back. English and Hebrew. Estimates, not advice.</p>
           <div class="hero-ctas">
             <a class="btn btn-primary" href="#lead" data-i18n="ctaMail">Leave your email for the purchase link</a>
             <a class="btn btn-ghost" href="#tools" data-i18n="ctaDemo">Try the live demo</a>
@@ -705,12 +715,45 @@
           <p><a href="./why/" data-i18n="whyMore">Read the full case</a> · <a href="./why-us/" data-i18n="navFit">Why these tools</a></p>
         </div>
         <ol class="why-list">
-          <li class="reveal d1"><strong data-i18n="w1t">A position, not an average</strong><span data-i18n="w1d">Ask, target, and walk-away, plus a reason and leverage.</span></li>
-          <li class="reveal"><strong data-i18n="w2t">Language ready for the conversation</strong><span data-i18n="w2d">WhatsApp, email, a quote.</span></li>
-          <li class="reveal"><strong data-i18n="w3t">Built for the Israeli market</strong><span data-i18n="w3d"></span></li>
-          <li class="reveal"><strong data-i18n="w4t">Private</strong><span data-i18n="w4d">In the browser, offline after download, no tracking.</span></li>
-          <li class="reveal"><strong data-i18n="w5t">Both sides</strong><span data-i18n="w5d">Employee and freelance in one bundle.</span></li>
+          <li class="reveal d1"><strong data-i18n="w1t">Employer counters, not a single output</strong><span data-i18n="w1d">Low, mid, and high replies, the gap to your walk-away, and the next line in English and Hebrew.</span></li>
+          <li class="reveal"><strong data-i18n="w2t">Three messages from the live numbers</strong><span data-i18n="w2d">Ask, counter, and accept-or-walk. Copy them. They move when the brief moves.</span></li>
+          <li class="reveal"><strong data-i18n="w3t">An offer battle, then a brief you keep</strong><span data-i18n="w3d">Up to three offers, scored. Named scenarios stay in this browser. One HTML brief pack for the call.</span></li>
+          <li class="reveal"><strong data-i18n="w4t">A pricing desk for the scope</strong><span data-i18n="w4d">Deliverables become a package. Patur ×1.28 and murshe ×1.35, with VAT only on the invoice illustration.</span></li>
+          <li class="reveal"><strong data-i18n="w5t">Private, on your machine</strong><span data-i18n="w5d">The math runs in the browser. Nothing you type is sent. No account.</span></li>
         </ol>
+      </section>
+
+      <section class="section reveal" id="system">
+        <div class="band-rule" aria-hidden="true"></div>
+        <div class="section-head">
+          <h2 data-i18n="sysH">Two desks. One system.</h2>
+          <p data-i18n="sysP">A free calculator ends at a figure. These pages stay through the reply, the other offer, and the sentence you send.</p>
+        </div>
+        <div class="system-board">
+          <article class="desk">
+            <p class="idx" data-i18n="sysSalK">Salary</p>
+            <h3 data-i18n="sysSal">Negotiation Command Center</h3>
+            <ol>
+              <li data-i18n="sysS1">Low, mid, and high employer counters, with the gap to the walk-away</li>
+              <li data-i18n="sysS2">Ask, counter, and accept-or-walk, in English and Hebrew</li>
+              <li data-i18n="sysS3">A battle board for three offers: base, bonus, equity, commute, start date</li>
+              <li data-i18n="sysS4">A session vault, and one print-friendly HTML brief pack</li>
+            </ol>
+            <a class="btn btn-primary btn-sm" href="./salary-negotiator/#sec-command" data-i18n="sysSalCta">Open the command center</a>
+          </article>
+          <article class="desk">
+            <p class="idx" data-i18n="sysFrK">Freelance</p>
+            <h3 data-i18n="sysFr">Pricing OS</h3>
+            <ol>
+              <li data-i18n="sysF1">Check deliverables and hours. The package price updates live.</li>
+              <li data-i18n="sysF2">Patur ×1.28 and murshe ×1.35 stay on the same formula, with VAT drawn only on the invoice.</li>
+              <li data-i18n="sysF3">Three replies when a client pushes the rate down.</li>
+              <li data-i18n="sysF4">Break-even and utilization sit on that same desk.</li>
+            </ol>
+            <a class="btn btn-primary btn-sm" href="./freelance-rate/#sec-os" data-i18n="sysFrCta">Open the pricing desk</a>
+          </article>
+        </div>
+        <p class="desk-links"><a href="./why-us/" data-i18n="navFit">Why these tools</a> · <a href="./osek-patur-vs-murshah/" data-i18n="footOsek">Osek patur vs murshe</a> · <a href="./why/" data-i18n="whyMore">Read the full case</a></p>
       </section>
 
       <section class="section reveal" id="value">
@@ -749,6 +792,9 @@
             <tr><td data-i18n="vs3">Send-ready messages</td><td>—</td><td class="us">✓</td></tr>
             <tr><td data-i18n="vs4">An offline file</td><td>—</td><td class="us">✓</td></tr>
             <tr><td data-i18n="vs5">Israel-focused</td><td>—</td><td class="us">✓</td></tr>
+            <tr><td data-i18n="vs6">Simulated employer counters and a reply</td><td>—</td><td class="us">✓</td></tr>
+            <tr><td data-i18n="vs7">Three offers on one scored board</td><td>—</td><td class="us">✓</td></tr>
+            <tr><td data-i18n="vs8">Scope to a package, patur and murshe</td><td>—</td><td class="us">✓</td></tr>
           </tbody>
         </table>
       </section>
@@ -762,7 +808,7 @@
           <article class="tool reveal d1">
             <div class="tool-top">
               <h3 data-i18n="salH">Salary brief</h3>
-              <p class="desc" data-i18n="salD">Ask, target, and walk-away, with a counter ladder, a leverage score, and messages you can send.</p>
+              <p class="desc" data-i18n="salD">Command center: counters, a three-message pack, an offer battle, and a brief you can save.</p>
               <p class="meta-line" data-i18n="salMeta">Three cases · Gross and illustrative net · Printable brief</p>
               <div class="tool-badge">
                 <span class="sale-flag" data-i18n="sale">LAUNCH</span>
@@ -783,7 +829,7 @@
           <article class="tool reveal d2">
             <div class="tool-top">
               <h3 data-i18n="frH">Freelance quote</h3>
-              <p class="desc" data-i18n="frD">Break-even hourly, a quote with margin, utilization sensitivity, and an editable proposal.</p>
+              <p class="desc" data-i18n="frD">Pricing OS: scope to a package, patur and murshe on the same uplifts, and replies when the client pushes.</p>
               <p class="meta-line" data-i18n="frMeta">Day rate · Package margin · Client-facing text</p>
               <div class="tool-badge">
                 <span class="sale-flag" data-i18n="sale">LAUNCH</span>
@@ -963,8 +1009,8 @@
   (function () {
     var I18N = {
       en: {
-        title: "Career Tools IL | Salary and freelance rate calculators",
-        description: "Know the number before you say it. Salary brief and freelance quote for Israel. Launch offer: bundle ₪43 (was ₪129). Estimates, not advice.",
+        title: "Career Tools IL | Negotiation command center and pricing OS",
+        description: "A salary command center and a freelance pricing desk for Israel. Counters, messages, offer battle, scope-to-price. Launch offer: bundle ₪43 (was ₪129). Estimates, not advice.",
         ogAlt: "Career Tools IL — salary brief and freelance quote",
         navLabel: "Primary",
         langLabel: "Language",
@@ -978,8 +1024,8 @@
         navEmail: "Email",
         navCta: "Leave your email for the purchase link",
         pill: "For Israel · Private in the browser · No account",
-        h1: "Know the number before you say it.",
-        lead: "A salary brief with an ask, a target, and a walk-away. A freelance quote with margin and break-even hours. Built for Israel. Estimates, not advice.",
+        h1: "A desk for the number, not another calculator.",
+        lead: "Salary: rehearse their counter, write three messages, rank the offers, and take a brief into the call. Freelance: turn scope into a price and answer a push-back. English and Hebrew. Estimates, not advice.",
         ctaMail: "Leave your email for the purchase link",
         ctaDemo: "Try the live demo",
         ctaTry: "Try the live demo",
@@ -999,8 +1045,8 @@
         bundleLabel: "Career Tools IL bundle",
         per: "One-time purchase",
         saveLine: "Separately ₪49 at the launch price (was ₪148). This bundle is ₪43.",
-        b1: "Salary brief: ask, target, walk-away, counter ladder",
-        b2: "Freelance quote: margin, sensitivity, editable proposal",
+        b1: "Salary command center: counters, messages, offer battle, saved brief",
+        b2: "Pricing OS: scope to price, push-back replies, patur and murshe",
         b3: "Light formula updates for a year",
         b4: "Instant download · HTML files",
         bundleCta: "Get a purchase link by email",
@@ -1008,13 +1054,13 @@
         toolsH: "The two briefs",
         toolsP: "Open either one. The preview is the live tool.",
         salH: "Salary brief",
-        salD: "Ask, target, and walk-away, with a counter ladder, a leverage score, and messages you can send.",
+        salD: "Command center: counters, a three-message pack, an offer battle, and a brief you can save.",
         salMeta: "Three cases · Gross and illustrative net · Printable brief",
         openTool: "Open the tool",
         proSoon: "Pro soon · leave your email",
         salPreviewTitle: "Preview — salary negotiation",
         frH: "Freelance quote",
-        frD: "Break-even hourly, a quote with margin, utilization sensitivity, and an editable proposal.",
+        frD: "Pricing OS: scope to a package, patur and murshe on the same uplifts, and replies when the client pushes.",
         frMeta: "Day rate · Package margin · Client-facing text",
         inH: "What you leave with",
         inP: "A number, the case around it, and language that does not sound like a template.",
@@ -1033,16 +1079,32 @@
         priceP: "Two tools, one conversation — salary and freelance. Bundle ₪43 (was ₪129).",
         whyH: "Why us — not another calculator",
         whyMore: "Read the full case",
-        w1t: "A position, not an average",
-        w1d: "Ask, target, and walk-away, plus a reason and leverage.",
-        w2t: "Language ready for the conversation",
-        w2d: "WhatsApp, email, a quote.",
-        w3t: "Built for the Israeli market",
-        w3d: "",
-        w4t: "Private",
-        w4d: "In the browser, offline after download, no tracking.",
-        w5t: "Both sides",
-        w5d: "Employee and freelance in one bundle.",
+        w1t: "Employer counters, not a single output",
+        w1d: "Low, mid, and high replies, the gap to your walk-away, and the next line in English and Hebrew.",
+        w2t: "Three messages from the live numbers",
+        w2d: "Ask, counter, and accept-or-walk. Copy them. They move when the brief moves.",
+        w3t: "An offer battle, then a brief you keep",
+        w3d: "Up to three offers, scored. Named scenarios stay in this browser. One HTML brief pack for the call.",
+        w4t: "A pricing desk for the scope",
+        w4d: "Deliverables become a package. Patur ×1.28 and murshe ×1.35, with VAT only on the invoice illustration.",
+        w5t: "Private, on your machine",
+        w5d: "The math runs in the browser. Nothing you type is sent. No account.",
+        sysH: "Two desks. One system.",
+        sysP: "A free calculator ends at a figure. These pages stay through the reply, the other offer, and the sentence you send.",
+        sysSalK: "Salary",
+        sysSal: "Negotiation Command Center",
+        sysS1: "Low, mid, and high employer counters, with the gap to the walk-away",
+        sysS2: "Ask, counter, and accept-or-walk, in English and Hebrew",
+        sysS3: "A battle board for three offers: base, bonus, equity, commute, start date",
+        sysS4: "A session vault, and one print-friendly HTML brief pack",
+        sysSalCta: "Open the command center",
+        sysFrK: "Freelance",
+        sysFr: "Pricing OS",
+        sysF1: "Check deliverables and hours. The package price updates live.",
+        sysF2: "Patur ×1.28 and murshe ×1.35 stay on the same formula, with VAT drawn only on the invoice.",
+        sysF3: "Three replies when a client pushes the rate down.",
+        sysF4: "Break-even and utilization sit on that same desk.",
+        sysFrCta: "Open the pricing desk",
         valH: "The problem, then the number",
         valSk: "Salary",
         valSp: "You get one number and nothing to say when they push back.",
@@ -1059,6 +1121,9 @@
         vs3: "Send-ready messages",
         vs4: "An offline file",
         vs5: "Israel-focused",
+        vs6: "Simulated employer counters and a reply",
+        vs7: "Three offers on one scored board",
+        vs8: "Scope to a package, patur and murshe",
         priceNote: "Bundle <strong>₪43</strong> <s>₪129</s>. Separately at the launch price <strong>₪49</strong> <s>₪148</s> (₪26 + ₪23). You save ₪6 versus buying both at the launch price.",
         pSal: "Salary calculator",
         pFr: "Freelance rate",
@@ -1106,8 +1171,8 @@
         ldBundleOffer: "Launch offer. Original price 129 ILS."
       },
       he: {
-        title: "Career Tools IL | מחשבון שכר ותעריף פרילנס",
-        description: "תדע את המספר לפני שאתה אומר אותו. בריף שכר וציטוט פרילנס לישראל. הצעת השקה: באנדל ₪43 במקום ₪129. הערכות — לא ייעוץ.",
+        title: "Career Tools IL | מרכז פיקוד למשא ומתן ומערכת תמחור",
+        description: "מרכז פיקוד לשכר ומערכת תמחור לפרילנס, לישראל. נגדים, הודעות, קרב הצעות, ומהיקף למחיר. הצעת השקה: באנדל ₪43 במקום ₪129. הערכות — לא ייעוץ.",
         ogAlt: "Career Tools IL — תדריך שכר והצעת פרילנס",
         navLabel: "ניווט ראשי",
         langLabel: "שפה",
@@ -1121,8 +1186,8 @@
         navEmail: "מייל",
         navCta: "השאר מייל לקבלת קישור רכישה",
         pill: "לישראל · פרטי בדפדפן · בלי חשבון",
-        h1: "תדע את המספר לפני שאתה אומר אותו.",
-        lead: "בריף שכר עם בקשה, יעד ונקודת יציאה. ציטוט פרילנס עם מרווח ושעות איזון. בנוי לישראל. הערכות — לא ייעוץ.",
+        h1: "שולחן למספר, לא עוד מחשבון.",
+        lead: "שכר: מתרגלים את הנגד שלהם, כותבים שלוש הודעות, מדרגים הצעות, ולוקחים תדריך לשיחה. פרילנס: מהיקף למחיר, ותשובה כשלוחצים. עברית ואנגלית. הערכות — לא ייעוץ.",
         ctaMail: "השאר מייל לקבלת קישור רכישה",
         ctaDemo: "נסה את הדמו",
         ctaTry: "נסה את הדמו",
@@ -1142,8 +1207,8 @@
         bundleLabel: "חבילת Career Tools IL",
         per: "תשלום חד־פעמי",
         saveLine: "בנפרד בהצעת ההשקה ₪49 (במקום ₪148). החבילה ₪43.",
-        b1: "תדריך שכר: בקשה, יעד, יציאה, סולם נגד",
-        b2: "הצעת פרילנס: מרווח, רגישות, הצעה לעריכה",
+        b1: "מרכז פיקוד לשכר: נגדים, הודעות, קרב הצעות, תדריך שמור",
+        b2: "מערכת תמחור: מהיקף למחיר, תשובות ללחץ, פטור ומורשה",
         b3: "עדכוני נוסחאות קלים לשנה",
         b4: "הורדה מיידית · קבצי HTML",
         bundleCta: "קבלו קישור רכישה למייל",
@@ -1151,13 +1216,13 @@
         toolsH: "שני התדריכים",
         toolsP: "אפשר לפתוח כל אחד. מה שרואים הוא הכלי עצמו.",
         salH: "תדריך שכר",
-        salD: "בקשה, יעד ומספר יציאה, עם סולם נגד, ציון מנופים וניסוחים לשליחה.",
+        salD: "מרכז פיקוד: נגדים, שלוש הודעות, קרב הצעות, ותדריך שאפשר לשמור.",
         salMeta: "שלושה תרחישים · ברוטו ונטו להמחשה · תדריך להדפסה",
         openTool: "פתחו את הכלי",
         proSoon: "Pro בקרוב · השאירו מייל",
         salPreviewTitle: "תצוגה מקדימה — משא ומתן לשכר",
         frH: "הצעת פרילנס",
-        frD: "שעתי לאיזון, הצעה עם מרווח, רגישות לניצולת והצעה שאפשר לערוך.",
+        frD: "מערכת תמחור: מהיקף לחבילה, פטור ומורשה על אותן תוספות, ותשובות כשהלקוח לוחץ.",
         frMeta: "תעריף יומי · מרווח בחבילה · טקסט ללקוח",
         inH: "מה יוצא מהכלי",
         inP: "מספר, הנימוק סביבו, וניסוח שלא נשמע כמו תבנית.",
@@ -1176,16 +1241,32 @@
         priceP: "שני כלים, שיחה אחת — שכר ופרילנס. באנדל ₪43 במקום ₪129.",
         whyH: "למה אנחנו — ולא עוד מחשבון",
         whyMore: "הנימוק המלא",
-        w1t: "עמדה לא ממוצע",
-        w1d: "בקשה/יעד/נקודת יציאה + סיבה ומינוף",
-        w2t: "שפה מוכנה לשיחה",
-        w2d: "WhatsApp, מייל, הצעת מחיר",
-        w3t: "בנוי לשוק הישראלי",
-        w3d: "",
-        w4t: "פרטיות",
-        w4d: "בדפדפן, אופליין אחרי הורדה, בלי מעקב",
-        w5t: "שני צדדים",
-        w5d: "שכיר+פרילנס בבאנדל",
+        w1t: "נגדי מעסיק, לא פלט אחד",
+        w1d: "תשובה נמוכה, אמצעית וגבוהה, הפער מול נקודת היציאה, והשורה הבאה בעברית ובאנגלית.",
+        w2t: "שלוש הודעות מהמספרים החיים",
+        w2d: "בקשה, נגד, וקבלה או יציאה. מעתיקים. הן זזות כשהתדריך זז.",
+        w3t: "קרב הצעות, ואז תדריך שנשאר",
+        w3d: "עד שלוש הצעות, עם ציון. תרחישים בשם נשארים בדפדפן הזה. חבילת HTML אחת לשיחה.",
+        w4t: "שולחן תמחור להיקף",
+        w4d: "תוצרים הופכים לחבילה. פטור ×1.28 ומורשה ×1.35, ומע״מ רק בהמחשת החשבונית.",
+        w5t: "פרטי, על המחשב שלך",
+        w5d: "החישוב רץ בדפדפן. מה שמקלידים לא נשלח. בלי חשבון.",
+        sysH: "שני שולחנות. מערכת אחת.",
+        sysP: "מחשבון חינמי נגמר במספר. העמודים האלה נשארים דרך התשובה, ההצעה השנייה, והמשפט ששולחים.",
+        sysSalK: "שכר",
+        sysSal: "מרכז פיקוד למשא ומתן",
+        sysS1: "נגד נמוך, אמצעי וגבוה, עם הפער מול נקודת היציאה",
+        sysS2: "בקשה, נגד, וקבלה או יציאה — בעברית ובאנגלית",
+        sysS3: "לוח קרב לשלוש הצעות: בסיס, בונוס, אקוויטי, נסיעה, תאריך התחלה",
+        sysS4: "כספת תרחישים, וחבילת תדריך HTML אחת להדפסה",
+        sysSalCta: "פתיחת מרכז הפיקוד",
+        sysFrK: "פרילנס",
+        sysFr: "מערכת תמחור",
+        sysF1: "מסמנים תוצרים ושעות. מחיר החבילה מתעדכן חי.",
+        sysF2: "פטור ×1.28 ומורשה ×1.35 נשארים על אותה נוסחה, ומע״מ רק על החשבונית.",
+        sysF3: "שלוש תשובות כשלקוח מוריד את התעריף.",
+        sysF4: "איזון וניצולת יושבים על אותו שולחן.",
+        sysFrCta: "פתיחת שולחן התמחור",
         valH: "הבעיה, ואז המספר",
         valSk: "שכר",
         valSp: "מספר אחד, ובלי מה לומר כשדוחפים חזרה.",
@@ -1202,6 +1283,9 @@
         vs3: "הודעות מוכנות לשליחה",
         vs4: "קובץ אופליין",
         vs5: "ממוקד בישראל",
+        vs6: "נגדי מעסיק מדומים ותשובה",
+        vs7: "שלוש הצעות על לוח אחד עם ציון",
+        vs8: "מהיקף לחבילה, פטור ומורשה",
         priceNote: "חבילה <strong>₪43</strong> <s>₪129</s>. בנפרד בהצעת ההשקה <strong>₪49</strong> <s>₪148</s> (₪26 + ₪23). חיסכון של ₪6 לעומת קנייה נפרדת בהצעת ההשקה.",
         pSal: "מחשבון שכר",
         pFr: "תעריף פרילנס",

@@ -198,6 +198,8 @@
     html[lang="he"] .idx { letter-spacing: 0; }
     @media (max-width: 800px) { .inside, .tools { grid-template-columns: 1fr !important; } }
     .tools { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .hint { color: var(--muted); font-size: .84rem; margin-top: 12px; }
+    #system .tool p { color: var(--muted); margin: 8px 0 12px; }
     .tool h3 { margin-top: 0; }
     .tool .amt { display: flex; align-items: center; gap: 8px; margin: 10px 0 12px; font-variant-numeric: tabular-nums; }
     .tool .amt .price-now { font-size: 1.15rem; }
@@ -314,8 +316,8 @@
         </svg>
         <div class="hero-copy">
           <p class="eyebrow" data-i18n="pill">Why Career Tools IL · For this job</p>
-          <h1 data-i18n="h1">Built for the conversation, not for a PDF kit.</h1>
-          <p class="lead" data-i18n="lead">Two live calculators for Israel. A salary brief with an ask, a target, and a walk-away. A freelance quote with margin. English and Hebrew. No account and no tracking. Estimates, not advice.</p>
+          <h1 data-i18n="h1">A system you run before the conversation.</h1>
+          <p class="lead" data-i18n="lead">Not a calculator that stops at one figure. The salary desk rehearses their counter, writes the messages, and ranks offers. The freelance desk turns scope into a price. English and Hebrew. Estimates, not advice.</p>
           <div class="hero-ctas">
             <a class="btn btn-primary" href="../salary-negotiator/" data-i18n="ctaSal">Open the salary brief</a>
             <a class="btn btn-ghost" href="../freelance-rate/" data-i18n="ctaFr">Open the freelance quote</a>
@@ -384,6 +386,29 @@
             <a class="btn btn-primary btn-sm" href="../freelance-rate/" data-i18n="ctaFr">Open the freelance quote</a>
           </article>
         </div>
+      </section>
+
+      <section class="section reveal" id="system">
+        <div class="band-rule" aria-hidden="true"></div>
+        <div class="section-head">
+          <h2 data-i18n="sysH">What the desks actually do</h2>
+          <p data-i18n="sysP">Open either tool and the system is on the page. The purchase link is still an email. There is no checkout here.</p>
+        </div>
+        <div class="tools">
+          <article class="tool">
+            <p class="idx">01</p>
+            <h3 data-i18n="sysSal">Negotiation Command Center</h3>
+            <p data-i18n="sysSalP">Low, mid, and high employer counters against your walk-away. Three bilingual messages. A scored board for three offers. Named scenarios in this browser, and one HTML brief pack for the call.</p>
+            <a class="btn btn-primary btn-sm" href="../salary-negotiator/#sec-command" data-i18n="sysSalCta">Open the command center</a>
+          </article>
+          <article class="tool">
+            <p class="idx">02</p>
+            <h3 data-i18n="sysFr">Pricing OS</h3>
+            <p data-i18n="sysFrP">Deliverables and hours become a package at the live rate. Osek patur stays ×1.28. Osek murshe stays ×1.35, and 17% VAT is only an invoice illustration. Three replies if the client pushes down.</p>
+            <a class="btn btn-primary btn-sm" href="../freelance-rate/#sec-os" data-i18n="sysFrCta">Open the pricing desk</a>
+          </article>
+        </div>
+        <p class="hint" style="margin-top:12px"><a href="../osek-patur-vs-murshah/" data-i18n="sysOsek">Patur vs murshe, and what it does to the quote</a></p>
       </section>
 
       <section class="section reveal" id="different">
@@ -509,8 +534,17 @@
         navTools: "Tools", navWhy: "Why us", navCase: "The case", navOsek: "Osek guide", navSal: "Salary", navFr: "Freelance",
         navCta: "Get the bundle", crumb: "Why us",
         pill: "Why Career Tools IL · For this job",
-        h1: "Built for the conversation, not for a PDF kit.",
-        lead: "Two live calculators for Israel. A salary brief with an ask, a target, and a walk-away. A freelance quote with margin. English and Hebrew. No account and no tracking. Estimates, not advice.",
+        h1: "A system you run before the conversation.",
+        lead: "Not a calculator that stops at one figure. The salary desk rehearses their counter, writes the messages, and ranks offers. The freelance desk turns scope into a price. English and Hebrew. Estimates, not advice.",
+        sysH: "What the desks actually do",
+        sysP: "Open either tool and the system is on the page. The purchase link is still an email. There is no checkout here.",
+        sysSal: "Negotiation Command Center",
+        sysSalP: "Low, mid, and high employer counters against your walk-away. Three bilingual messages. A scored board for three offers. Named scenarios in this browser, and one HTML brief pack for the call.",
+        sysSalCta: "Open the command center",
+        sysFr: "Pricing OS",
+        sysFrP: "Deliverables and hours become a package at the live rate. Osek patur stays ×1.28. Osek murshe stays ×1.35, and 17% VAT is only an invoice illustration. Three replies if the client pushes down.",
+        sysFrCta: "Open the pricing desk",
+        sysOsek: "Patur vs murshe, and what it does to the quote",
         ctaSal: "Open the salary brief", ctaFr: "Open the freelance quote",
         share: "Share", shareWa: "WhatsApp", shareLi: "LinkedIn", shareCopy: "Copy link", shareCopied: "Link copied", shareCopiedShort: "Copied",
         trust1: "Live formulas in the browser", trust2: "English and Hebrew", trust3: "No account, no tracking",
@@ -571,8 +605,17 @@
         navTools: "הכלים", navWhy: "למה אנחנו", navCase: "הנימוק", navOsek: "מדריך עוסק", navSal: "שכר", navFr: "פרילנס",
         navCta: "לחבילה", crumb: "למה אנחנו",
         pill: "למה Career Tools IL · בשביל המשימה הזו",
-        h1: "נבנה לשיחה, לא לערכת PDF.",
-        lead: "שני מחשבונים חיים לישראל. תדריך שכר עם בקשה, יעד ומספר יציאה. הצעת פרילנס עם מרווח. עברית ואנגלית. בלי חשבון ובלי מעקב. אומדנים, לא ייעוץ.",
+        h1: "מערכת שמריצים לפני השיחה.",
+        lead: "לא מחשבון שנעצר במספר אחד. שולחן השכר מתרגל את הנגד, כותב את ההודעות ומדרג הצעות. שולחן הפרילנס הופך היקף למחיר. עברית ואנגלית. אומדנים, לא ייעוץ.",
+        sysH: "מה השולחנות באמת עושים",
+        sysP: "פותחים כלי והמערכת על העמוד. קישור הרכישה עדיין במייל. אין כאן סליקה.",
+        sysSal: "מרכז פיקוד למשא ומתן",
+        sysSalP: "נגד נמוך, אמצעי וגבוה מול נקודת היציאה. שלוש הודעות דו־לשוניות. לוח עם ציון לשלוש הצעות. תרחישים בשם בדפדפן הזה, וחבילת תדריך HTML אחת לשיחה.",
+        sysSalCta: "פתיחת מרכז הפיקוד",
+        sysFr: "מערכת תמחור",
+        sysFrP: "תוצרים ושעות הופכים לחבילה בתעריף החי. עוסק פטור נשאר ×1.28. עוסק מורשה נשאר ×1.35, ומע״מ 17% הוא רק המחשת חשבונית. שלוש תשובות אם הלקוח לוחץ למטה.",
+        sysFrCta: "פתיחת שולחן התמחור",
+        sysOsek: "פטור מול מורשה, ומה זה עושה לציטוט",
         ctaSal: "פתחו את תדריך השכר", ctaFr: "פתחו את הצעת הפרילנס",
         share: "שתפו", shareWa: "וואטסאפ", shareLi: "לינקדאין", shareCopy: "העתקת קישור", shareCopied: "הקישור הועתק", shareCopiedShort: "הועתק",
         trust1: "נוסחאות חיות בדפדפן", trust2: "עברית ואנגלית", trust3: "בלי חשבון ובלי מעקב",

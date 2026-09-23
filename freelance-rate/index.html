@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Freelance quote: rate, margin, break-even | Career Tools IL</title>
-  <meta name="description" content="A freelance quote for Israel: break-even rate, a commercial rate with margin, utilization sensitivity, and a proposal you can edit. Not tax advice. Launch offer: ₪23 (was ₪69)." />
+  <title>Pricing OS: scope, rate, push-back | Career Tools IL</title>
+  <meta name="description" content="Pricing OS for Israel: break-even, utilization, a scope-to-price wizard, and replies when a client pushes the rate down. Patur ×1.28, murshe ×1.35. Not tax advice. Launch offer: ₪23 (was ₪69)." />
   <meta name="theme-color" content="#0c0e12" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://idan1188.github.io/shoot/freelance-rate/" />
@@ -173,6 +173,20 @@
     .price-was { color: var(--muted); text-decoration: line-through; font-size: .8rem; }
     .price-now { font-weight: 600; }
     .fine { color: var(--faint); font-size: .72rem; margin: 8px 0 0; }
+    .os { border-color: #4a4336; background: linear-gradient(180deg, #19160f 0%, var(--surface) 140px); }
+    .os-dash { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
+    .deliv-list { display: grid; gap: 8px; margin-top: 8px; }
+    .deliv { display: grid; grid-template-columns: 1fr 92px; gap: 8px; align-items: center; }
+    .deliv .check { margin: 0; }
+    .deliv input[type="number"] { margin: 0; }
+    .bi { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .script { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .script header { display: flex; justify-content: space-between; gap: 8px; align-items: center; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+    .script header h3 { font-size: .82rem; margin: 0; }
+    .script pre { margin: 0; padding: 10px; white-space: pre-wrap; font: inherit; font-size: .82rem; line-height: 1.5; }
+    .os-note { color: var(--brass-2); }
+    @media (max-width: 800px) { .os-dash, .bi { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .os-dash, .bi, .deliv { grid-template-columns: 1fr; } }
     footer.moat { color: var(--faint); font-size: .75rem; }
     :root { --p: 0; --hero: 0.2; }
     @property --p { syntax: "<number>"; inherits: true; initial-value: 0; }
@@ -256,13 +270,13 @@
         <path pathLength="1" d="M40 78H480" stroke-width="1.1" opacity=".6"/>
         <path pathLength="1" d="M8 122H220" stroke-width="1.4"/>
       </svg>
-      <p class="kicker" data-i18n="kicker">Freelance quote</p>
-      <h1 data-i18n="h1">Price the work, not the hour you hope to bill.</h1>
-      <p data-i18n="sub">A break-even rate, a quote with margin, utilization sensitivity, and a proposal you can edit before you send it. Rough Israeli tax uplifts — not advice from an accountant.</p>
+      <p class="kicker" data-i18n="kicker">Pricing OS</p>
+      <h1 data-i18n="h1">Price the scope, then answer the push-back.</h1>
+      <p data-i18n="sub">Break-even, utilization, and a scope-to-price wizard on one desk. Patur stays ×1.28. Murshe stays ×1.35, with 17% VAT shown on the invoice only. Not advice from an accountant.</p>
     </header>
     <nav class="steps no-print" aria-label="Sections" data-i18n-aria="stepsLabel">
       <a href="#sec-target" data-step="sec-target" class="on"><b>01</b> <span data-i18n="step1">Inputs</span></a>
-      <a href="#sec-aids" data-step="sec-aids"><b>02</b> <span data-i18n="step2">Decision aids</span></a>
+      <a href="#sec-os" data-step="sec-os"><b>02</b> <span data-i18n="step2">Pricing OS</span></a>
       <a href="#sec-proposal" data-step="sec-proposal"><b>03</b> <span data-i18n="step3">Language</span></a>
     </nav>
     <div class="step-meter no-print" aria-hidden="true"><span id="stepMeter"></span></div>
@@ -314,9 +328,32 @@
           <input type="number" id="stress" min="0" max="100" step="5" value="" inputmode="numeric" placeholder="auto −15" data-i18n-placeholder="phStress" />
           <p class="hint" data-i18n="hintStress">Leave blank to stress the quote at 15 points below your utilization. A number replaces that low case.</p>
         </section>
-        <section class="card reveal" id="sec-aids">
-          <h2 data-i18n="aidH">02 · Decision aids</h2>
-          <div class="aid-block" style="margin-top:0;padding-top:0;border-top:0">
+        <section class="card reveal os" id="sec-os">
+          <p class="kicker" data-i18n="osKicker">Pricing OS</p>
+          <h2 data-i18n="aidH">02 · Pricing OS</h2>
+          <p class="hint" style="margin-top:0" data-i18n="osIntro">Pick the deliverables. The package uses the live quote rate. The patur and murshe rows rerun the same uplift the calculator already uses, so the hour you see above does not change unless you switch tax status.</p>
+          <div id="osDash"></div>
+          <div class="aid-block">
+            <h3 data-i18n="wizH">Scope → price</h3>
+            <p class="hint" data-i18n="wizHint">Checked rows are in the package. Twelve hours and up take 8% off. Thirty hours and up take 12% off. That discount is only on this package, not on the hourly quote.</p>
+            <div class="deliv-list">
+              <div class="deliv"><label class="check"><input type="checkbox" data-deliv="discovery" checked /><span data-i18n="dvDiscovery">Discovery</span></label><input class="deliv-h" type="number" min="0" step="0.5" value="2" data-i18n-aria="hoursAria" aria-label="Hours" /></div>
+              <div class="deliv"><label class="check"><input type="checkbox" data-deliv="research" /><span data-i18n="dvResearch">Research</span></label><input class="deliv-h" type="number" min="0" step="0.5" value="4" data-i18n-aria="hoursAria" aria-label="Hours" /></div>
+              <div class="deliv"><label class="check"><input type="checkbox" data-deliv="build" checked /><span data-i18n="dvBuild">Build</span></label><input class="deliv-h" type="number" min="0" step="0.5" value="12" data-i18n-aria="hoursAria" aria-label="Hours" /></div>
+              <div class="deliv"><label class="check"><input type="checkbox" data-deliv="review" checked /><span data-i18n="dvReview">Review round</span></label><input class="deliv-h" type="number" min="0" step="0.5" value="3" data-i18n-aria="hoursAria" aria-label="Hours" /></div>
+              <div class="deliv"><label class="check"><input type="checkbox" data-deliv="handoff" /><span data-i18n="dvHandoff">Handoff</span></label><input class="deliv-h" type="number" min="0" step="0.5" value="2" data-i18n-aria="hoursAria" aria-label="Hours" /></div>
+              <div class="deliv"><label class="check"><input type="checkbox" data-deliv="workshop" /><span data-i18n="dvWorkshop">Workshop</span></label><input class="deliv-h" type="number" min="0" step="0.5" value="6" data-i18n-aria="hoursAria" aria-label="Hours" /></div>
+            </div>
+            <div id="wizardOut"></div>
+          </div>
+          <div class="aid-block">
+            <h3 data-i18n="objH">If they push the price down</h3>
+            <label for="pushPrice" data-i18n="labPush">Their hourly (₪), optional</label>
+            <input type="number" id="pushPrice" min="0" step="10" inputmode="numeric" data-i18n-placeholder="phPush" placeholder="Blank uses 15% under your quote" />
+            <p class="hint" data-i18n="objHint">Three replies, in English and in Hebrew, from the live rate, the break-even, and the scope you checked.</p>
+            <div id="objOut"></div>
+          </div>
+          <div id="sec-aids" class="aid-block" style="margin-top:0;padding-top:12px">
             <h3 data-i18n="utilH">Utilization — quiet, base, busy</h3>
             <div id="utilTable"></div>
           </div>
@@ -448,15 +485,21 @@
   (function () {
     var I18N = {
       en: {
-        title: "Freelance quote: rate, margin, break-even | Career Tools IL",
-        description: "A freelance quote for Israel: break-even rate, a commercial rate with margin, utilization sensitivity, and a proposal you can edit. Not tax advice. Launch offer: ₪23 (was ₪69).",
+        title: "Pricing OS: scope, rate, push-back | Career Tools IL",
+        description: "Pricing OS for Israel: break-even, utilization, a scope-to-price wizard, and replies when a client pushes the rate down. Patur ×1.28, murshe ×1.35. Not tax advice. Launch offer: ₪23 (was ₪69).",
         ogAlt: "Career Tools IL freelance quote",
         langLabel: "Language", whyLink: "Why us", whyFit: "Why these tools", allTools: "All tools", crumbsLabel: "Breadcrumb", stepsLabel: "Sections",
         osekLink: "Patur vs murshe, and what it does to the quote",
         crumb: "Freelance quote", share: "Share", shareWa: "WhatsApp", shareLi: "LinkedIn", shareCopy: "Copy link", shareCopied: "Link copied", shareCopiedShort: "Copied",
-        kicker: "Freelance quote", h1: "Price the work, not the hour you hope to bill.",
-        sub: "A break-even rate, a quote with margin, utilization sensitivity, and a proposal you can edit before you send it. Rough Israeli tax uplifts — not advice from an accountant.",
-        step1: "Inputs", step2: "Decision aids", step3: "Language",
+        kicker: "Pricing OS", h1: "Price the scope, then answer the push-back.",
+        sub: "Break-even, utilization, and a scope-to-price wizard on one desk. Patur stays ×1.28. Murshe stays ×1.35, with 17% VAT shown on the invoice only. Not advice from an accountant.",
+        step1: "Inputs", step2: "Pricing OS", step3: "Language",
+        osKicker: "Pricing OS", osIntro: "Pick the deliverables. The package uses the live quote rate. The patur and murshe rows rerun the same uplift the calculator already uses, so the hour you see above does not change unless you switch tax status.",
+        wizH: "Scope → price", wizHint: "Checked rows are in the package. Twelve hours and up take 8% off. Thirty hours and up take 12% off. That discount is only on this package, not on the hourly quote.",
+        dvDiscovery: "Discovery", dvResearch: "Research", dvBuild: "Build", dvReview: "Review round", dvHandoff: "Handoff", dvWorkshop: "Workshop",
+        hoursAria: "Hours", objH: "If they push the price down", labPush: "Their hourly (₪), optional",
+        phPush: "Blank uses 15% under your quote",
+        objHint: "Three replies, in English and in Hebrew, from the live rate, the break-even, and the scope you checked.",
         inH: "01 · Inputs", labNet: "Monthly net you want (₪)",
         hintNet: "Cash you want after a rough tax uplift and tools. Not a profit-and-loss statement.",
         labTools: "Tools and overhead / month (₪)", labTax: "Tax status", taxAria: "Tax status",
@@ -466,7 +509,7 @@
         presetAria: "Presets", preSolo: "Solo, patur", preStudio: "Studio, murshe", preQuiet: "Quiet month",
         labStress: "Quiet-month utilization % (optional)", phStress: "auto −15",
         hintStress: "Leave blank to stress the quote at 15 points below your utilization. A number replaces that low case.",
-        aidH: "02 · Decision aids",
+        aidH: "02 · Pricing OS",
         utilH: "Utilization — quiet, base, busy",
         pkgBuild: "Package builder",
         scopeH: "Scope checklist",
@@ -493,15 +536,21 @@
         ldName: "Freelance rate calculator", ldOffer: "Launch offer. Original price 69 ILS."
       },
       he: {
-        title: "הצעת פרילנס: תעריף, מרווח, איזון | Career Tools IL",
-        description: "הצעת פרילנס לישראל: תעריף איזון, תעריף עם מרווח, רגישות לניצולת והצעה שאפשר לערוך. לא ייעוץ מס. הצעת השקה: ₪23 (במקום ₪69).",
+        title: "מערכת תמחור: היקף, תעריף, לחץ מחיר | Career Tools IL",
+        description: "מערכת תמחור לישראל: איזון, ניצולת, אשף מהיקף למחיר, ותשובות כשלוחצים על התעריף. פטור ×1.28, מורשה ×1.35. לא ייעוץ מס. הצעת השקה: ₪23 (במקום ₪69).",
         ogAlt: "הצעת פרילנס — Career Tools IL",
         langLabel: "שפה", whyLink: "למה אנחנו", whyFit: "למה הכלים", allTools: "כל הכלים", crumbsLabel: "פירורי לחם", stepsLabel: "חלקים",
         osekLink: "עוסק פטור מול מורשה — איך זה משנה את ההצעה",
         crumb: "הצעת פרילנס", share: "שתפו", shareWa: "וואטסאפ", shareLi: "לינקדאין", shareCopy: "העתקת קישור", shareCopied: "הקישור הועתק", shareCopiedShort: "הועתק",
-        kicker: "הצעת פרילנס", h1: "מתמחרים את העבודה, לא את השעה שמקווים לחייב.",
-        sub: "תעריף איזון, הצעת מחיר עם מרווח, רגישות לניצולת, והצעה שאפשר לערוך לפני השליחה. תוספי מס גסים לישראל — לא ייעוץ של רואה חשבון.",
-        step1: "קלט", step2: "עזרי החלטה", step3: "ניסוח",
+        kicker: "מערכת תמחור", h1: "מתמחרים את ההיקף, ואז עונים על הלחץ.",
+        sub: "איזון, ניצולת ואשף מהיקף למחיר על שולחן אחד. פטור נשאר ×1.28. מורשה נשאר ×1.35, ומע״מ 17% מוצג רק על החשבונית. לא ייעוץ של רואה חשבון.",
+        step1: "קלט", step2: "מערכת תמחור", step3: "ניסוח",
+        osKicker: "מערכת תמחור", osIntro: "בוחרים תוצרים. החבילה משתמשת בתעריף ההצעה החי. שורות הפטור והמורשה מריצות את אותה תוספת שהמחשבון כבר משתמש בה, כך שהשעה למעלה לא זזה אלא אם מחליפים מצב מס.",
+        wizH: "מהיקף למחיר", wizHint: "שורות מסומנות נכנסות לחבילה. מ־12 שעות יש 8% הנחה. מ־30 שעות יש 12% הנחה. ההנחה רק על החבילה הזו, לא על התעריף השעתי.",
+        dvDiscovery: "אפיון", dvResearch: "מחקר", dvBuild: "בנייה", dvReview: "סבב ביקורת", dvHandoff: "מסירה", dvWorkshop: "סדנה",
+        hoursAria: "שעות", objH: "אם מורידים את המחיר", labPush: "השעתי שלהם (₪), רשות",
+        phPush: "ריק = 15% מתחת לציטוט",
+        objHint: "שלוש תשובות, באנגלית ובעברית, מהתעריף החי, מנקודת האיזון ומההיקף שסימנתם.",
         inH: "01 · קלט", labNet: "נטו חודשי רצוי (₪)",
         hintNet: "המזומן שרוצים אחרי תוספת מס גסה וכלים. לא דוח רווח והפסד.",
         labTools: "כלים ותקורה / חודש (₪)", labTax: "מצב מס", taxAria: "מצב מס",
@@ -511,7 +560,7 @@
         presetAria: "הגדרות מוכנות", preSolo: "סולו, פטור", preStudio: "סטודיו, מורשה", preQuiet: "חודש שקט",
         labStress: "ניצולת לחודש שקט % (רשות)", phStress: "אוטומטי −15",
         hintStress: "השאירו ריק כדי לבדוק 15 נקודות מתחת לניצולת. מספר מחליף את המקרה הנמוך.",
-        aidH: "02 · עזרי החלטה",
+        aidH: "02 · מערכת תמחור",
         utilH: "ניצולת — שקט, בסיס, עמוס",
         pkgBuild: "בניית חבילות",
         scopeH: "רשימת היקף",
@@ -702,6 +751,163 @@
       }
         return "Full export\n\n1. Break-even " + nis(m.base.hourlyNice) + " · quote " + nis(m.quote) + " · day " + nis(m.day) + "\n2. Utilization:\n   " + line(m.lowU + "%", m.low) + "\n   " + line(p.util + "%", m.base) + "\n   " + line(m.highU + "%", m.high) + "\n3. Packages:\n" + pkgs + "\n4. Payment: 50% up front · 50% on delivery.\n5. Includes up to two light revision rounds. Beyond that, the hourly quote.\n6. Valid 14 days.\n7. B2B: the quote is between businesses. VAT follows the tax status above.";
     }
+    var objBank = {};
+    function el(tag, cls, text) {
+      var n = document.createElement(tag);
+      if (cls) n.className = cls;
+      if (text != null) n.textContent = text;
+      return n;
+    }
+    function scopeItems() {
+      var items = [];
+      document.querySelectorAll("[data-deliv]").forEach(function (box) {
+        var row = box.closest(".deliv");
+        var hEl = row && row.querySelector(".deliv-h");
+        var hours = Number(hEl && hEl.value) || 0;
+        var span = box.parentNode.querySelector("span");
+        if (box.checked && hours > 0) {
+          items.push({ key: box.getAttribute("data-deliv"), name: span ? span.textContent.trim() : box.getAttribute("data-deliv"), hours: hours });
+        }
+      });
+      return items;
+    }
+    function discountFor(hours) {
+      if (hours >= 30) return 0.12;
+      if (hours >= 12) return 0.08;
+      return 0;
+    }
+    function priced(quote, hours) {
+      var disc = discountFor(hours);
+      return { disc: disc, price: hours > 0 ? roundNice(quote * hours * (1 - disc)) : 0, hours: hours };
+    }
+    function quoteAt(p, taxKey) {
+      var base = floorAt({ net: p.net, hours: p.hours, util: p.util, admin: p.admin, tools: p.tools, tax: taxKey }, p.util);
+      return { quote: roundNice(base.hourlyNice * QUOTE_MULT), floor: base.hourlyNice, mul: (TAX[taxKey] || TAX.patur).mul };
+    }
+    function osCopyBtn(id) {
+      var b = el("button", "btn");
+      b.type = "button";
+      b.setAttribute("data-ocopy", id);
+      b.textContent = he() ? "העתקה" : "Copy";
+      return b;
+    }
+    function osBi(enText, heText, enId, heId) {
+      var wrap = el("div", "bi");
+      function col(label, text, id) {
+        var box = el("div", "script");
+        var head = el("header");
+        head.appendChild(el("h3", null, label));
+        head.appendChild(osCopyBtn(id));
+        box.appendChild(head);
+        box.appendChild(el("pre", null, text));
+        objBank[id] = text;
+        return box;
+      }
+      wrap.appendChild(col("EN", enText, enId));
+      wrap.appendChild(col("HE", heText, heId));
+      return wrap;
+    }
+    function paintOs(p, m) {
+      objBank = {};
+      var dash = $("osDash");
+      if (dash) {
+        dash.textContent = "";
+        var quiet = roundNice(m.low.hourlyNice * QUOTE_MULT);
+        var busy = roundNice(m.high.hourlyNice * QUOTE_MULT);
+        [
+          [he() ? "איזון / שעה" : "Break-even / hour", nis(m.base.hourlyNice)],
+          [he() ? "ציטוט / שעה" : "Quote / hour", nis(m.quote)],
+          [he() ? "ציטוט: שקט → עמוס" : "Quote, quiet → busy", nis(quiet) + " → " + nis(busy)],
+          [he() ? "שעות איזון" : "Break-even hours", m.beHours > 0 ? String(Math.round(m.beHours * 10) / 10) : "—"]
+        ].forEach(function (pair) {
+          var box = el("div", "stat");
+          box.appendChild(el("div", "k", pair[0]));
+          box.appendChild(el("div", "n", pair[1]));
+          dash.appendChild(box);
+        });
+      }
+      var items = scopeItems();
+      var hours = items.reduce(function (sum, item) { return sum + item.hours; }, 0);
+      var live = priced(m.quote, hours);
+      var patur = quoteAt(p, "patur");
+      var murshe = quoteAt(p, "murshe");
+      var paturPack = priced(patur.quote, hours);
+      var murshePack = priced(murshe.quote, hours);
+      var vat = murshePack.price > 0 ? roundNice(murshePack.price * 1.17) : 0;
+      var wiz = $("wizardOut");
+      if (wiz) {
+        wiz.textContent = "";
+        if (!(hours > 0)) {
+          wiz.appendChild(el("p", "hint", he() ? "סמנו תוצר אחד לפחות." : "Check at least one deliverable."));
+        } else {
+          wiz.appendChild(el("p", "why", items.map(function (item) { return item.name + " · " + item.hours + (he() ? " שע׳" : "h"); }).join("  ·  ")));
+          var table = el("table", "matrix");
+          var head = el("tr");
+          ["", he() ? "מכפיל" : "Uplift", he() ? "שעתי" : "Hourly", he() ? "חבילה" : "Package"].forEach(function (h) { head.appendChild(el("th", null, h)); });
+          table.appendChild(head);
+          function row(label, mul, hourly, price, on) {
+            var tr = el("tr");
+            [label, mul, nis(hourly), nis(price)].forEach(function (cell) { tr.appendChild(el("td", on ? "os-note" : "", cell)); });
+            table.appendChild(tr);
+          }
+          row(he() ? "חי עכשיו" : "Live now", "×" + ((TAX[p.tax] || TAX.patur).mul), m.quote, live.price, true);
+          row(he() ? "פטור להמחשה" : "Patur illustration", "×1.28", patur.quote, paturPack.price, p.tax === "patur");
+          row(he() ? "מורשה לפני מע״מ" : "Murshe before VAT", "×1.35", murshe.quote, murshePack.price, p.tax === "murshe");
+          wiz.appendChild(table);
+          wiz.appendChild(el("p", "hint", he()
+            ? "הנחת היקף " + Math.round(live.disc * 100) + "%. חשבונית מורשה להמחשה " + nis(vat) + " (החבילה ×1.17). מע״מ 17% אינו מזומן בכיס."
+            : "Scope discount " + Math.round(live.disc * 100) + "%. Murshe invoice illustration " + nis(vat) + " (package × 1.17). 17% VAT is not cash in your pocket."));
+        }
+      }
+      var theirRaw = Number($("pushPrice") && $("pushPrice").value) || 0;
+      var their = theirRaw > 0 ? theirRaw : roundNice(m.quote * 0.85);
+      var floor = m.base.hourlyNice;
+      var newHours = hours > 0 ? Math.max(0.5, Math.round((hours * (their / Math.max(m.quote, 1))) * 2) / 2) : 0;
+      if (their >= m.quote) newHours = hours;
+      var tradePrice = roundNice(their * newHours);
+      var underFloor = their < floor && floor > 0;
+      var holdEn, holdHe, tradeEn, tradeHe, walkEn, walkHe;
+      if (their >= m.quote && m.quote > 0) {
+        holdEn = "They named " + nis(their) + "/hour, which is at or above the quote of " + nis(m.quote) + "/hour. Confirm that number in writing and keep the " + hours + " hour scope.";
+        holdHe = "הם נקבו ב־" + nis(their) + " לשעה, על הציטוט " + nis(m.quote) + " או מעליו. מאשרים את המספר בכתב ושומרים על היקף של " + hours + " שעות.";
+      } else {
+        holdEn = "The rate for this scope is " + nis(m.quote) + "/hour. Break-even is " + nis(floor) + "/hour. " + nis(their) + "/hour is under the quote, so I am keeping " + nis(m.quote) + ".";
+        holdHe = "התעריף להיקף הזה הוא " + nis(m.quote) + " לשעה. האיזון הוא " + nis(floor) + " לשעה. " + nis(their) + " לשעה מתחת לציטוט, אז אני נשאר על " + nis(m.quote) + ".";
+      }
+      if (underFloor) {
+        tradeEn = "Cutting hours does not repair an hour under the break-even of " + nis(floor) + ". I can shrink the scope only at a rate above that floor.";
+        tradeHe = "קיצוץ שעות לא מתקן שעה שמתחת לאיזון של " + nis(floor) + ". אפשר לקצר היקף רק בתעריף שמעל הרצפה הזו.";
+      } else if (!(hours > 0)) {
+        tradeEn = "Check the deliverables first. Then I can trade hours against " + nis(their) + "/hour.";
+        tradeHe = "קודם מסמנים תוצרים. אחר כך אפשר להחליף שעות מול " + nis(their) + " לשעה.";
+      } else if (their >= m.quote) {
+        tradeEn = "No cut is needed. " + hours + " hours at " + nis(m.quote) + "/hour is already inside what they named.";
+        tradeHe = "אין צורך לקצץ. " + hours + " שעות ב־" + nis(m.quote) + " לשעה כבר בתוך המספר שהם נקבו.";
+      } else {
+        tradeEn = "I can meet " + nis(their) + "/hour if the scope moves from " + hours + " hours to " + newHours + " hours. That package is " + nis(tradePrice) + ". The hour stays above break-even.";
+        tradeHe = "אפשר לפגוש " + nis(their) + " לשעה אם ההיקף יורד מ־" + hours + " שעות ל־" + newHours + " שעות. החבילה " + nis(tradePrice) + ". השעה נשארת מעל האיזון.";
+      }
+      walkEn = "I will not go under " + nis(floor) + "/hour. That is break-even, before margin. If we cannot keep " + nis(m.quote) + "/hour, or a smaller scope above break-even, I will step back.";
+      walkHe = "לא ארד מתחת ל־" + nis(floor) + " לשעה. זה האיזון, לפני מרווח. אם אי אפשר להישאר על " + nis(m.quote) + " לשעה, או על היקף קטן יותר מעל האיזון — אצא.";
+      var obj = $("objOut");
+      if (obj) {
+        obj.textContent = "";
+        obj.appendChild(el("p", "why", he()
+          ? "התשובות מול " + nis(their) + " לשעה" + (theirRaw > 0 ? " (המספר שהוקלד)." : " (15% מתחת לציטוט).")
+          : "Replies against " + nis(their) + "/hour" + (theirRaw > 0 ? " (the number you typed)." : " (15% under the quote).")));
+        [
+          [he() ? "להחזיק את התעריף" : "Hold the rate", holdEn, holdHe, "hold"],
+          [he() ? "להחליף היקף" : "Trade scope", tradeEn, tradeHe, "trade"],
+          [he() ? "לצאת" : "Walk", walkEn, walkHe, "walk"]
+        ].forEach(function (block) {
+          var wrap = el("div", "aid-block");
+          wrap.appendChild(el("h3", null, block[0]));
+          wrap.appendChild(osBi(block[1], block[2], block[3] + "-en", block[3] + "-he"));
+          obj.appendChild(wrap);
+        });
+      }
+    }
+
     function render() {
       var p = read();
       var m = model(p);
@@ -782,6 +988,7 @@
           : "Client B\nSame quote " + nis(m.quote) + " against another net target.\nThe full compare stays locked.";
       }
       paintUtil(p, m);
+      paintOs(p, m);
       if (!proposalDirty) $("proposal").value = proposalText(p, m);
       lastQuote = quoteFile(p, m);
       saveFr();
@@ -904,14 +1111,20 @@
     if ($("printQuote")) $("printQuote").addEventListener("click", function () { window.print(); });
     document.querySelectorAll("[data-scope]").forEach(function (box) { box.addEventListener("change", render); });
     var FR_KEY = "ctil_freelance_v1";
-    var FR_FIELDS = ["net", "tools", "hours", "admin", "util", "stress", "pkgH1", "pkgD1", "pkgH2", "pkgD2", "pkgH3", "pkgD3", "client", "project"];
+    var FR_FIELDS = ["net", "tools", "hours", "admin", "util", "stress", "pkgH1", "pkgD1", "pkgH2", "pkgD2", "pkgH3", "pkgD3", "client", "project", "pushPrice"];
     function saveFr() {
       if (restoring) return;
-      var data = { tax: taxMode, dirty: proposalDirty, proposal: proposalDirty ? $("proposal").value : "", clauses: [], scope: [] };
+      var data = { tax: taxMode, dirty: proposalDirty, proposal: proposalDirty ? $("proposal").value : "", clauses: [], scope: [], deliv: [], delivHours: {} };
       FR_FIELDS.forEach(function (id) { var n = $(id); if (n) data[id] = n.value; });
       ["clPay", "clRev", "clDays"].forEach(function (id) { var n = $(id); if (n && n.checked) data.clauses.push(id); });
       document.querySelectorAll("[data-scope]").forEach(function (b) {
         if (b.checked) data.scope.push(b.getAttribute("data-scope") + ":" + b.value);
+      });
+      document.querySelectorAll("[data-deliv]").forEach(function (b) {
+        var key = b.getAttribute("data-deliv");
+        if (b.checked) data.deliv.push(key);
+        var h = b.closest(".deliv") && b.closest(".deliv").querySelector(".deliv-h");
+        if (h) data.delivHours[key] = h.value;
       });
       try { localStorage.setItem(FR_KEY, JSON.stringify(data)); } catch (e) {}
     }
@@ -933,6 +1146,14 @@
         var key = b.getAttribute("data-scope") + ":" + b.value;
         b.checked = Array.isArray(data.scope) && data.scope.indexOf(key) >= 0;
       });
+      if (Array.isArray(data.deliv)) {
+        document.querySelectorAll("[data-deliv]").forEach(function (b) {
+          var key = b.getAttribute("data-deliv");
+          b.checked = data.deliv.indexOf(key) >= 0;
+          var h = b.closest(".deliv") && b.closest(".deliv").querySelector(".deliv-h");
+          if (h && data.delivHours && data.delivHours[key] != null) h.value = data.delivHours[key];
+        });
+      }
       proposalDirty = !!data.dirty;
       if (proposalDirty && data.proposal && $("proposal")) {
         $("proposal").value = data.proposal;
@@ -941,7 +1162,7 @@
       }
       restoring = false;
     }
-    ["net", "hours", "util", "admin", "tools", "client", "project", "stress", "pkgH1", "pkgD1", "pkgH2", "pkgD2", "pkgH3", "pkgD3"].forEach(function (id) {
+    ["net", "hours", "util", "admin", "tools", "client", "project", "stress", "pkgH1", "pkgD1", "pkgH2", "pkgD2", "pkgH3", "pkgD3", "pushPrice"].forEach(function (id) {
       var node = $(id);
       if (!node) return;
       node.addEventListener("input", render);
@@ -984,18 +1205,35 @@
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
           if (!en.isIntersecting) return;
-          var stepOf = { "sec-target": "sec-target", "sec-capacity": "sec-target", "sec-aids": "sec-aids", "sec-proposal": "sec-proposal" };
+          var stepOf = { "sec-target": "sec-target", "sec-capacity": "sec-target", "sec-os": "sec-os", "sec-aids": "sec-os", "sec-proposal": "sec-proposal" };
           var step = stepOf[en.target.id] || en.target.id;
           document.querySelectorAll(".steps a").forEach(function (a) {
             a.classList.toggle("on", a.getAttribute("data-step") === step);
           });
           var meter = document.getElementById("stepMeter");
-          var widths = { "sec-target": "34%", "sec-capacity": "34%", "sec-aids": "67%", "sec-proposal": "100%" };
+          var widths = { "sec-target": "34%", "sec-capacity": "34%", "sec-os": "67%", "sec-aids": "67%", "sec-proposal": "100%" };
           if (meter && widths[en.target.id]) meter.style.width = widths[en.target.id];
         });
       }, { rootMargin: "-45% 0px -45% 0px", threshold: 0.01 });
-      ["sec-target", "sec-capacity", "sec-aids", "sec-proposal"].forEach(function (id) { var n = $(id); if (n) io.observe(n); });
+      ["sec-target", "sec-capacity", "sec-os", "sec-proposal"].forEach(function (id) { var n = $(id); if (n) io.observe(n); });
     }
+
+    document.querySelectorAll("[data-deliv], .deliv-h").forEach(function (node) {
+      node.addEventListener("input", render);
+      node.addEventListener("change", render);
+    });
+    var osRoot = $("sec-os");
+    if (osRoot) osRoot.addEventListener("click", function (e) {
+      var btn = e.target.closest && e.target.closest("[data-ocopy]");
+      if (!btn) return;
+      var text = objBank[btn.getAttribute("data-ocopy")] || "";
+      var pack = window.CTIL_I18N ? window.CTIL_I18N[he() ? "he" : "en"] : {};
+      function ok() { btn.textContent = pack.copied || (he() ? "הועתק" : "Copied"); btn.classList.add("copied"); setTimeout(function () { btn.textContent = he() ? "העתקה" : "Copy"; btn.classList.remove("copied"); }, 1400); }
+      function fallback(value) { var ta = document.createElement("textarea"); ta.value = value; ta.style.position = "fixed"; ta.style.left = "-9999px"; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); } catch (err) {} document.body.removeChild(ta); }
+      if (!text) return;
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok).catch(function () { fallback(text); ok(); });
+      else { fallback(text); ok(); }
+    });
     window.ctilAfterLang = function () { proposalDirty = false; var flag = $("dirtyFlag"); if (flag) flag.hidden = true; render(); };
     loadFr();
     render();
