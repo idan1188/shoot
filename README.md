@@ -19,6 +19,7 @@ Screenshots: social cards (Open Graph, Twitter, WhatsApp, LinkedIn) use [`previe
 | `osek-patur-vs-murshah/` | Hebrew-first explainer of how the freelance calculator treats osek patur vs murshe. Not tax or legal advice. |
 | `salary-negotiator/` | Salary brief. Existing command-center accessories stay. Header links to `/command-center/`. |
 | `first-job-offer-israel/` | Preparation guide before accepting or negotiating a first job offer in Israel: ready-versus-guessing checklist, figures the visitor types, and email, WhatsApp, and call templates they rewrite. Not advice. |
+| `promotion-interview-israel/` | Preparation guide for a promotion interview in Israel, in a role you already hold: a checklist of your own notes, current title, target title, and evidence you write, optional ask and floor, and email, WhatsApp, and talking-point drafts. Not advice. |
 | `freelance-rate/` | Pricing OS: scope wizard, objection replies, break-even and utilization on one desk. |
 | `404.html` | Not-found page (EN default, HE toggle); nested misses still link back under `/shoot/` |
 
