@@ -18,6 +18,7 @@ Screenshots: social cards (Open Graph, Twitter, WhatsApp, LinkedIn) use [`previe
 | `command-center/` | War room: employer-reply simulator, round log (`ctil_cc_rounds_v1`), six-message pack, two-offer compare, offline export. Reads `ctil_salary_v1`. Pro blocks link to `#lead` only. |
 | `osek-patur-vs-murshah/` | Hebrew-first explainer of how the freelance calculator treats osek patur vs murshe. Not tax or legal advice. |
 | `salary-negotiator/` | Salary brief. Existing command-center accessories stay. Header links to `/command-center/`. |
+| `first-job-offer-israel/` | Preparation guide before accepting or negotiating a first job offer in Israel: ready-versus-guessing checklist, figures the visitor types, and email, WhatsApp, and call templates they rewrite. Not advice. |
 | `freelance-rate/` | Pricing OS: scope wizard, objection replies, break-even and utilization on one desk. |
 | `404.html` | Not-found page (EN default, HE toggle); nested misses still link back under `/shoot/` |
 
