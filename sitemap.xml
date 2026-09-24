@@ -162,6 +162,16 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://idan1188.github.io/shoot/freelance-scope-creep-israel/"/>
   </url>
   <url>
+    <loc>https://idan1188.github.io/shoot/freelance-deposit-israel/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://idan1188.github.io/shoot/freelance-deposit-israel/"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://idan1188.github.io/shoot/freelance-deposit-israel/"/>
+    <xhtml:link rel="alternate" hreflang="he-IL" href="https://idan1188.github.io/shoot/freelance-deposit-israel/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://idan1188.github.io/shoot/freelance-deposit-israel/"/>
+  </url>
+  <url>
     <loc>https://idan1188.github.io/shoot/command-center/</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>weekly</changefreq>
