@@ -431,6 +431,8 @@
     .pricing p { color: var(--muted); margin-bottom: 12px; font-size: .92rem; }
     .pricing .note { color: var(--muted); font-size: .84rem; margin-top: 10px; }
     .pricing .note s { color: #7e858f; }
+    .why-pay { border-inline-start: 3px solid #8a7a5a; }
+    .why-pay .pay-kicker { margin: 0 0 2px; }
     .price-cards { display: grid; gap: 8px; }
     .p-card {
       background: var(--bg);
@@ -962,6 +964,32 @@
         </div>
       </section>
 
+      <section class="section reveal" id="why-pay" aria-label="Why pay when free calculators exist" data-i18n-aria="payAria">
+        <div class="pricing why-pay">
+          <div>
+            <h2 data-i18n="payH">Why pay when free calculators exist?</h2>
+            <p data-i18n="payP">Because a number without a position doesn’t help when they push back. A free calculator gives an average or a range. Here you get a system for salary talks and freelance pricing in Israel: ask, target, and walk-away · replies to a push · language you can send · runs in your browser, offline after download. The demo is free. When a real purchase link is ready, it goes to your email.</p>
+            <a class="btn btn-primary" href="#lead" data-i18n="payCta">Leave your email</a>
+            <p class="note" data-i18n="payDisc">Estimates only — not salary, tax, or career advice.</p>
+          </div>
+          <div class="price-cards">
+            <div class="launch-line pay-kicker" data-i18n="payPrice">Launch pricing</div>
+            <div class="p-card">
+              <div><strong data-i18n="paySal">Salary</strong></div>
+              <div class="p-amt"><span class="price-now">₪26</span></div>
+            </div>
+            <div class="p-card">
+              <div><strong data-i18n="payFr">Freelance</strong></div>
+              <div class="p-amt"><span class="price-now">₪23</span></div>
+            </div>
+            <div class="p-card featured">
+              <div><strong data-i18n="payBundle">Bundle</strong></div>
+              <div class="p-amt"><span class="price-now">₪43</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="section faq reveal" id="faq">
         <div class="section-head">
           <h2 data-i18n="faqH">Questions</h2>
@@ -1193,6 +1221,15 @@
         pFr: "Freelance rate",
         pBundle: "Both tools",
         save6: "Save ₪6 vs buying both at the launch price",
+        payAria: "Why pay when free calculators exist",
+        payH: "Why pay when free calculators exist?",
+        payP: "Because a number without a position doesn’t help when they push back. A free calculator gives an average or a range. Here you get a system for salary talks and freelance pricing in Israel: ask, target, and walk-away · replies to a push · language you can send · runs in your browser, offline after download. The demo is free. When a real purchase link is ready, it goes to your email.",
+        payCta: "Leave your email",
+        payPrice: "Launch pricing",
+        paySal: "Salary",
+        payFr: "Freelance",
+        payBundle: "Bundle",
+        payDisc: "Estimates only — not salary, tax, or career advice.",
         faqH: "Questions",
         faqP: "Short answers before you use a tool or leave an email.",
         q1: "Is this advice?",
@@ -1376,6 +1413,15 @@
         pFr: "תעריף פרילנס",
         pBundle: "שני הכלים",
         save6: "חיסכון ₪6 לעומת קנייה נפרדת בהצעת ההשקה",
+        payAria: "למה לשלם אם יש מחשבון חינמי",
+        payH: "למה לשלם אם יש מחשבון חינמי?",
+        payP: "כי מספר בלי עמדה לא עוזר כשדוחפים בחזרה. מחשבון חינמי נותן ממוצע או טווח. כאן מקבלים מערכת למשא ומתן ותמחור בישראל: בקשה, יעד ונקודת יציאה · תשובות לדחיפה · שפה שאפשר לשלוח · רץ בדפדפן, גם אחרי ההורדה. הדמו בחינם. כשיהיה קישור רכישה אמיתי — נשלח למייל.",
+        payCta: "השאירו מייל",
+        payPrice: "מחיר השקה",
+        paySal: "שכר",
+        payFr: "פרילנס",
+        payBundle: "חבילה",
+        payDisc: "הערכות בלבד — לא ייעוץ.",
         faqH: "שאלות נפוצות",
         faqP: "תשובות קצרות לפני שימוש או השארת מייל.",
         q1: "האם זה ייעוץ?",
